@@ -1,6 +1,6 @@
 # vantiq-sdk-ios
 
-[![CI Status](http://img.shields.io/travis/Michael Swan/vantiq-sdk-ios.svg?style=flat)](https://travis-ci.org/Michael Swan/vantiq-sdk-ios)
+[![CI Status](http://img.shields.io/travis/Vantiq/vantiq-sdk-ios.svg?style=flat)](https://travis-ci.org/Vantiq/vantiq-sdk-ios)
 [![Version](https://img.shields.io/cocoapods/v/vantiq-sdk-ios.svg?style=flat)](http://cocoapods.org/pods/vantiq-sdk-ios)
 [![License](https://img.shields.io/cocoapods/l/vantiq-sdk-ios.svg?style=flat)](http://cocoapods.org/pods/vantiq-sdk-ios)
 [![Platform](https://img.shields.io/cocoapods/p/vantiq-sdk-ios.svg?style=flat)](http://cocoapods.org/pods/vantiq-sdk-ios)
@@ -22,7 +22,7 @@ pod "vantiq-sdk-ios"
 
 ## Author
 
-Michael Swan, swan@iqvantage.com
+Vantiq, Inc., info@vantiq.com
 
 ## License
 

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '1CC3D8ACD7D332C9E301094C'
+               BlueprintIdentifier = '3E550DCF144AE8B64C6BC0A0'
                BlueprintName = 'vantiq-sdk-ios'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'vantiq_sdk_ios.framework'>

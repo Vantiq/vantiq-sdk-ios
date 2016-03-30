@@ -25,7 +25,7 @@ The Vantiq iOS SDK is Objective-C that provides an API into a Vantiq system for 
   s.author           = { "Vantiq, Inc." => "info@vantiq.com" }
   s.source           = { :git => "https://github.com/Vantiq/vantiq-sdk-ios.git", :tag => s.version.to_s }
 
-  s.platform     = :ios, '8.0'
+  s.platform     = :ios, '9.3'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'

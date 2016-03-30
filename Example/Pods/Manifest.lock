@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  vantiq-sdk-ios: 1e21e659cd6ddf11034bd00fecb78b59566d368d
+  vantiq-sdk-ios: cdd7612c65538bf5feeb2e82135003fe2b81241f
 
 COCOAPODS: 0.39.0
