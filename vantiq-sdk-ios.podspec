@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = "vantiq-sdk-ios"
   s.version          = "0.1.0"
-  s.summary          = "A short description of vantiq-sdk-ios."
+  s.summary          = "API for the Vantiq system for iOS applications."
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,16 +17,15 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
+The Vantiq iOS SDK is Objective-C that provides an API into a Vantiq system for iOS applications. The SDK connects to a Vantiq system using the Vantiq REST API.
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/vantiq-sdk-ios"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.homepage         = "https://github.com/Vantiq/vantiq-sdk-ios"
   s.license          = 'MIT'
-  s.author           = { "Michael Swan" => "swan@iqvantage.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/vantiq-sdk-ios.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { "Vantiq, Inc." => "info@vantiq.com" }
+  s.source           = { :git => "https://github.com/Vantiq/vantiq-sdk-ios.git", :tag => s.version.to_s }
 
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '8.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
@@ -35,6 +34,4 @@ Pod::Spec.new do |s|
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
