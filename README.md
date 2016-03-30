@@ -22,7 +22,7 @@ pod "vantiq-sdk-ios"
 
 ## API
 
-Documentation for the SDK methods may be found here: [VIQ Classes](https://github.com/Vantiq/vantiq-sdk-ios/Pod/help/html/index.html)
+HTML-format documentation for the SDK methods may be found in the Pod/help/html directory.
 
 ## Author
 
