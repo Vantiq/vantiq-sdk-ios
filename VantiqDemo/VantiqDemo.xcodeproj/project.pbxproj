@@ -1,0 +1,372 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		560502E21CAC49DE001256AE /* libVIQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 560502E11CAC49DE001256AE /* libVIQ.a */; };
+		560996D01CA4907000E8868E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 560996CF1CA4907000E8868E /* main.m */; };
+		560996D31CA4907000E8868E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 560996D21CA4907000E8868E /* AppDelegate.m */; };
+		560996D61CA4907000E8868E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560996D51CA4907000E8868E /* ViewController.m */; };
+		560996D91CA4907000E8868E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560996D71CA4907000E8868E /* Main.storyboard */; };
+		560996DB1CA4907000E8868E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 560996DA1CA4907000E8868E /* Assets.xcassets */; };
+		560996DE1CA4907000E8868E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560996DC1CA4907000E8868E /* LaunchScreen.storyboard */; };
+		560996E91CA494FE00E8868E /* Vantiq-151x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 560996E61CA494FE00E8868E /* Vantiq-151x40.png */; };
+		560996F41CA4991200E8868E /* Vantiq60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 560996F01CA4991200E8868E /* Vantiq60@2x.png */; };
+		560996F51CA4991200E8868E /* Vantiq60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 560996F11CA4991200E8868E /* Vantiq60@3x.png */; };
+		560996FA1CA49A2600E8868E /* Vantiq76.png in Resources */ = {isa = PBXBuildFile; fileRef = 560996F81CA49A2600E8868E /* Vantiq76.png */; };
+		560996FB1CA49A2600E8868E /* Vantiq76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 560996F91CA49A2600E8868E /* Vantiq76@2x.png */; };
+		560996FD1CA4ABC400E8868E /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 560996FC1CA4ABC400E8868E /* en.lproj */; };
+		560997211CA5B82200E8868E /* DecodeError.m in Sources */ = {isa = PBXBuildFile; fileRef = 560997201CA5B82200E8868E /* DecodeError.m */; };
+		560997241CA5BBB800E8868E /* DisplayAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 560997231CA5BBB800E8868E /* DisplayAlert.m */; };
+		560997271CA5F16200E8868E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560997261CA5F16200E8868E /* HomeViewController.m */; };
+		5609975A1CAB4DD300E8868E /* Vantiq835@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 560997591CAB4DD300E8868E /* Vantiq835@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		560502E11CAC49DE001256AE /* libVIQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVIQ.a; path = ../../VIQ/libVIQ.a; sourceTree = "<group>"; };
+		560996CB1CA4907000E8868E /* VantiqDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VantiqDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		560996CF1CA4907000E8868E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		560996D11CA4907000E8868E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		560996D21CA4907000E8868E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		560996D41CA4907000E8868E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		560996D51CA4907000E8868E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		560996D81CA4907000E8868E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		560996DA1CA4907000E8868E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		560996DD1CA4907000E8868E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		560996DF1CA4907000E8868E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		560996E61CA494FE00E8868E /* Vantiq-151x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vantiq-151x40.png"; path = "Images/Vantiq-151x40.png"; sourceTree = "<group>"; };
+		560996F01CA4991200E8868E /* Vantiq60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vantiq60@2x.png"; path = "Images/Vantiq60@2x.png"; sourceTree = "<group>"; };
+		560996F11CA4991200E8868E /* Vantiq60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vantiq60@3x.png"; path = "Images/Vantiq60@3x.png"; sourceTree = "<group>"; };
+		560996F81CA49A2600E8868E /* Vantiq76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Vantiq76.png; path = Images/Vantiq76.png; sourceTree = "<group>"; };
+		560996F91CA49A2600E8868E /* Vantiq76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vantiq76@2x.png"; path = "Images/Vantiq76@2x.png"; sourceTree = "<group>"; };
+		560996FC1CA4ABC400E8868E /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
+		5609971F1CA5B82200E8868E /* DecodeError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecodeError.h; sourceTree = "<group>"; };
+		560997201CA5B82200E8868E /* DecodeError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecodeError.m; sourceTree = "<group>"; };
+		560997221CA5BBB800E8868E /* DisplayAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayAlert.h; sourceTree = "<group>"; };
+		560997231CA5BBB800E8868E /* DisplayAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayAlert.m; sourceTree = "<group>"; };
+		560997251CA5F16200E8868E /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		560997261CA5F16200E8868E /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		560997591CAB4DD300E8868E /* Vantiq835@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vantiq835@2x.png"; path = "Images/Vantiq835@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		560996C81CA4907000E8868E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				560502E21CAC49DE001256AE /* libVIQ.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		560996C21CA4907000E8868E = {
+			isa = PBXGroup;
+			children = (
+				560996CD1CA4907000E8868E /* VantiqDemo */,
+				560996CC1CA4907000E8868E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		560996CC1CA4907000E8868E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				560996CB1CA4907000E8868E /* VantiqDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		560996CD1CA4907000E8868E /* VantiqDemo */ = {
+			isa = PBXGroup;
+			children = (
+				560996D11CA4907000E8868E /* AppDelegate.h */,
+				560996D21CA4907000E8868E /* AppDelegate.m */,
+				560996D41CA4907000E8868E /* ViewController.h */,
+				560996D51CA4907000E8868E /* ViewController.m */,
+				560997251CA5F16200E8868E /* HomeViewController.h */,
+				560997261CA5F16200E8868E /* HomeViewController.m */,
+				5609971F1CA5B82200E8868E /* DecodeError.h */,
+				560997201CA5B82200E8868E /* DecodeError.m */,
+				560997221CA5BBB800E8868E /* DisplayAlert.h */,
+				560997231CA5BBB800E8868E /* DisplayAlert.m */,
+				560996D71CA4907000E8868E /* Main.storyboard */,
+				560996DA1CA4907000E8868E /* Assets.xcassets */,
+				560996DC1CA4907000E8868E /* LaunchScreen.storyboard */,
+				560996DF1CA4907000E8868E /* Info.plist */,
+				560996CE1CA4907000E8868E /* Supporting Files */,
+			);
+			path = VantiqDemo;
+			sourceTree = "<group>";
+		};
+		560996CE1CA4907000E8868E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				560502E11CAC49DE001256AE /* libVIQ.a */,
+				560996E51CA4946E00E8868E /* Images */,
+				560996FC1CA4ABC400E8868E /* en.lproj */,
+				560996CF1CA4907000E8868E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		560996E51CA4946E00E8868E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				560996F81CA49A2600E8868E /* Vantiq76.png */,
+				560996F91CA49A2600E8868E /* Vantiq76@2x.png */,
+				560996F01CA4991200E8868E /* Vantiq60@2x.png */,
+				560996F11CA4991200E8868E /* Vantiq60@3x.png */,
+				560996E61CA494FE00E8868E /* Vantiq-151x40.png */,
+				560997591CAB4DD300E8868E /* Vantiq835@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		560996CA1CA4907000E8868E /* VantiqDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 560996E21CA4907000E8868E /* Build configuration list for PBXNativeTarget "VantiqDemo" */;
+			buildPhases = (
+				560996C71CA4907000E8868E /* Sources */,
+				560996C81CA4907000E8868E /* Frameworks */,
+				560996C91CA4907000E8868E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VantiqDemo;
+			productName = VantiqDemo;
+			productReference = 560996CB1CA4907000E8868E /* VantiqDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		560996C31CA4907000E8868E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Vantiq, Inc.";
+				TargetAttributes = {
+					560996CA1CA4907000E8868E = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = 560996C61CA4907000E8868E /* Build configuration list for PBXProject "VantiqDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 560996C21CA4907000E8868E;
+			productRefGroup = 560996CC1CA4907000E8868E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				560996CA1CA4907000E8868E /* VantiqDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		560996C91CA4907000E8868E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				560996DE1CA4907000E8868E /* LaunchScreen.storyboard in Resources */,
+				560996DB1CA4907000E8868E /* Assets.xcassets in Resources */,
+				5609975A1CAB4DD300E8868E /* Vantiq835@2x.png in Resources */,
+				560996FA1CA49A2600E8868E /* Vantiq76.png in Resources */,
+				560996F51CA4991200E8868E /* Vantiq60@3x.png in Resources */,
+				560996FB1CA49A2600E8868E /* Vantiq76@2x.png in Resources */,
+				560996D91CA4907000E8868E /* Main.storyboard in Resources */,
+				560996E91CA494FE00E8868E /* Vantiq-151x40.png in Resources */,
+				560996FD1CA4ABC400E8868E /* en.lproj in Resources */,
+				560996F41CA4991200E8868E /* Vantiq60@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		560996C71CA4907000E8868E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				560996D61CA4907000E8868E /* ViewController.m in Sources */,
+				560996D31CA4907000E8868E /* AppDelegate.m in Sources */,
+				560997211CA5B82200E8868E /* DecodeError.m in Sources */,
+				560996D01CA4907000E8868E /* main.m in Sources */,
+				560997241CA5BBB800E8868E /* DisplayAlert.m in Sources */,
+				560997271CA5F16200E8868E /* HomeViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		560996D71CA4907000E8868E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				560996D81CA4907000E8868E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		560996DC1CA4907000E8868E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				560996DD1CA4907000E8868E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		560996E01CA4907000E8868E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		560996E11CA4907000E8868E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		560996E31CA4907000E8868E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = ../VIQ/VIQ;
+				INFOPLIST_FILE = VantiqDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = ../VIQ;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vantiq.VantiqDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		560996E41CA4907000E8868E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = ../VIQ/VIQ;
+				INFOPLIST_FILE = VantiqDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = ../VIQ;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vantiq.VantiqDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		560996C61CA4907000E8868E /* Build configuration list for PBXProject "VantiqDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				560996E01CA4907000E8868E /* Debug */,
+				560996E11CA4907000E8868E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		560996E21CA4907000E8868E /* Build configuration list for PBXNativeTarget "VantiqDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				560996E31CA4907000E8868E /* Debug */,
+				560996E41CA4907000E8868E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 560996C31CA4907000E8868E /* Project object */;
+}
