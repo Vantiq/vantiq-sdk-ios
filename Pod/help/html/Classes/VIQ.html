@@ -74,6 +74,8 @@
 		
 		<option value="//api/name/delete:where:completionHandler:">- delete:where:completionHandler:</option>
 		
+		<option value="//api/name/deleteOne:id:completionHandler:">- deleteOne:id:completionHandler:</option>
+		
 		<option value="//api/name/execute:completionHandler:">- execute:completionHandler:</option>
 		
 		<option value="//api/name/execute:params:completionHandler:">- execute:params:completionHandler:</option>
@@ -93,6 +95,8 @@
 		<option value="//api/name/select:props:where:completionHandler:">- select:props:where:completionHandler:</option>
 		
 		<option value="//api/name/select:props:where:sort:completionHandler:">- select:props:where:sort:completionHandler:</option>
+		
+		<option value="//api/name/selectOne:id:completionHandler:">- selectOne:id:completionHandler:</option>
 		
 		<option value="//api/name/update:id:object:completionHandler:">- update:id:object:completionHandler:</option>
 		
@@ -373,9 +377,9 @@ credentials used to authorize the user. The username and password credentials ar
 				<p>The authenticate method connects to the Vantiq server with the given authentication
 credentials used to authorize the user. The username and password credentials are not stored.</p>
 
-<p>Please also note this method invokes callback blocks associated with network-
-related blocks. Because these blocks are called from asynchronous network operations,
-their code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+<p>Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
 to ensure UI operations are completed on the main thread.</p>
 			</div>
 			
@@ -458,9 +462,9 @@ The select may query both user-defined types as well as system types, such as pr
 				<p>The select method issues a query to select all matching records for a given type.
 The select may query both user-defined types as well as system types, such as procedures and types.</p>
 
-<p>Please also note this method invokes callback blocks associated with network-
-related blocks. Because these blocks are called from asynchronous network operations,
-their code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+<p>Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
 to ensure UI operations are completed on the main thread.</p>
 			</div>
 			
@@ -538,9 +542,9 @@ The select may query both user-defined types as well as system types, such as pr
 				<p>The select method issues a query to select all matching records for a given type.
 The select may query both user-defined types as well as system types, such as procedures and types.</p>
 
-<p>Please also note this method invokes callback blocks associated with network-
-related blocks. Because these blocks are called from asynchronous network operations,
-their code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+<p>Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
@@ -616,9 +620,9 @@ The select may query both user-defined types as well as system types, such as pr
 				<p>The select method issues a query to select all matching records for a given type.
 The select may query both user-defined types as well as system types, such as procedures and types.</p>
 
-<p>Please also note this method invokes callback blocks associated with network-
-related blocks. Because these blocks are called from asynchronous network operations,
-their code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+<p>Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
@@ -689,13 +693,89 @@ The select may query both user-defined types as well as system types, such as pr
 				<p>The select method issues a query to select all matching records for a given type.
 The select may query both user-defined types as well as system types, such as procedures and types.</p>
 
-<p>Please also note this method invokes callback blocks associated with network-
-related blocks. Because these blocks are called from asynchronous network operations,
-their code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+<p>Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
 errors returned by the select operation. The callback data returned is an array of NSDictionary objects.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">VIQ.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/selectOne:id:completionHandler:" title="selectOne:id:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/selectOne:id:completionHandler:">&ndash;&nbsp;selectOne:id:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The selectOne method issues a query to select a single record for a given type and unique identifier.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)selectOne:(NSString *)<em>type</em> id:(NSString *)<em>ID</em> completionHandler:(void ( ^ ) ( NSArray *data , NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>type</code></th>
+						<td><p>The data type to query.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ID</code></th>
+						<td><p>The unique identifier that matches the type&rsquo;s &lsquo;_id&rsquo; property.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>The handler block to execute.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The selectOne method issues a query to select a single record for a given type and unique identifier.</p>
+
+<p>Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+to ensure UI operations are completed on the main thread.</p>
+
+<p>It is important to check the response and error callback return values to verify there were no
+errors returned by the selectOne operation. The callback data returned is an array of NSDictionary objects.</p>
 			</div>
 			
 
@@ -765,9 +845,9 @@ errors returned by the select operation. The callback data returned is an array 
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>The count method is similar to the select method except it returns only the number of records rather than returning the records themselves.</p>
 
-<p>Please also note this method invokes callback blocks associated with network-
-related blocks. Because these blocks are called from asynchronous network operations,
-their code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+<p>Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
@@ -836,9 +916,9 @@ errors returned by the count operation. The callback count returned is a count o
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>The count method is similar to the select method except it returns only the number of records rather than returning the records themselves.</p>
 
-<p>Please also note this method invokes callback blocks associated with network-
-related blocks. Because these blocks are called from asynchronous network operations,
-their code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+<p>Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
@@ -912,9 +992,9 @@ errors returned by the count operation. The callback count returned is a count o
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>The insert method creates a new record of a given type.</p>
 
-<p>Please also note this method invokes callback blocks associated with network-
-related blocks. Because these blocks are called from asynchronous network operations,
-their code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+<p>Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
@@ -993,9 +1073,9 @@ errors returned by the insert operation. The callback data returned is a copy of
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>The update method updates an existing record of a given type. This method supports partial updates meaning that only the properties provided are updated. Any properties not specified are not changed in the underlying record.</p>
 
-<p>Please also note this method invokes callback blocks associated with network-
-related blocks. Because these blocks are called from asynchronous network operations,
-their code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+<p>Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
@@ -1069,9 +1149,9 @@ errors returned by the insert operation. The callback data returned is a copy of
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>The upsert method either creates or updates a record in the database depending if the record already exists. The method tests for existence by looking at the natural keys defined on the type.</p>
 
-<p>Please also note this method invokes callback blocks associated with network-
-related blocks. Because these blocks are called from asynchronous network operations,
-their code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+<p>Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
@@ -1145,9 +1225,85 @@ errors returned by the insert operation. The callback data returned is a copy of
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>The delete method removes records from the system for a given type. Deletes always require a constraint indicating which records to remove.</p>
 
-<p>Please also note this method invokes callback blocks associated with network-
-related blocks. Because these blocks are called from asynchronous network operations,
-their code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+<p>Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+to ensure UI operations are completed on the main thread.</p>
+
+<p>It is important to check the response and error callback return values to verify there were no
+errors returned by the deleteOne operation.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">VIQ.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deleteOne:id:completionHandler:" title="deleteOne:id:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteOne:id:completionHandler:">&ndash;&nbsp;deleteOne:id:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The deleteOne method issues a query to delete a single record for a given type and unique identifier.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)deleteOne:(NSString *)<em>type</em> id:(NSString *)<em>ID</em> completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>type</code></th>
+						<td><p>The data type to query.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ID</code></th>
+						<td><p>The unique identifier that matches the type&rsquo;s &lsquo;_id&rsquo; property.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>The handler block to execute.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The deleteOne method issues a query to delete a single record for a given type and unique identifier.</p>
+
+<p>Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
@@ -1223,9 +1379,9 @@ errors returned by the delete operation.</p>
 
 <p>Topics are slash-delimited strings, such as &lsquo;/test/topic&rsquo;. Vantiq system-defined topics begin with /type, /property, /system, and /source.</p>
 
-<p>Please also note this method invokes callback blocks associated with network-
-related blocks. Because these blocks are called from asynchronous network operations,
-their code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+<p>Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
@@ -1299,9 +1455,9 @@ errors returned by the publish operation.</p>
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>The execute method executes a procedure on the Vantiq server. Procedures can take parameters (i.e. arguments) and produce a result.</p>
 
-<p>Please also note this method invokes callback blocks associated with network-
-related blocks. Because these blocks are called from asynchronous network operations,
-their code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+<p>Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
@@ -1370,9 +1526,9 @@ errors returned by the execute operation. The callback data returns the results 
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>The execute method executes a procedure on the Vantiq server. Procedures can take parameters (i.e. arguments) and produce a result.</p>
 
-<p>Please also note this method invokes callback blocks associated with network-
-related blocks. Because these blocks are called from asynchronous network operations,
-their code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+<p>Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
@@ -1408,7 +1564,7 @@ errors returned by the execute operation. The callback data returns the results 
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 VantIQ, Inc. All rights reserved. Updated: 2016-03-30</p>
+						<p class="copyright">Copyright &copy; 2016 VantIQ, Inc. All rights reserved. Updated: 2016-04-01</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

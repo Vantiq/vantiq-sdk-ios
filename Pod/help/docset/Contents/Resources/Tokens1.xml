@@ -214,6 +214,29 @@ The select may query both user-defined types as well as system types, such as pr
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/VIQ/selectOne:id:completionHandler:</TokenIdentifier>
+			<Abstract type="html">The selectOne method issues a query to select a single record for a given type and unique identifier.</Abstract>
+			<DeclaredIn>VIQ.h</DeclaredIn>
+			
+			<Declaration>- (void)selectOne:(NSString *)type id:(NSString *)ID completionHandler:(void ( ^ ) ( NSArray *data , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>type</Name>
+					<Abstract type="html">The data type to query.</Abstract>
+				</Parameter><Parameter>
+					<Name>ID</Name>
+					<Abstract type="html">The unique identifier that matches the type&apos;s &apos;_id&apos; property.</Abstract>
+				</Parameter><Parameter>
+					<Name>handler</Name>
+					<Abstract type="html">The handler block to execute.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/selectOne:id:completionHandler:</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/VIQ/count:where:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The count method is similar to the select method except it returns only the number of records rather than returning the records themselves.</Abstract>
 			<DeclaredIn>VIQ.h</DeclaredIn>
@@ -348,6 +371,29 @@ The select may query both user-defined types as well as system types, such as pr
 			</Parameters>
 			
 			<Anchor>//api/name/delete:where:completionHandler:</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/VIQ/deleteOne:id:completionHandler:</TokenIdentifier>
+			<Abstract type="html">The deleteOne method issues a query to delete a single record for a given type and unique identifier.</Abstract>
+			<DeclaredIn>VIQ.h</DeclaredIn>
+			
+			<Declaration>- (void)deleteOne:(NSString *)type id:(NSString *)ID completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>type</Name>
+					<Abstract type="html">The data type to query.</Abstract>
+				</Parameter><Parameter>
+					<Name>ID</Name>
+					<Abstract type="html">The unique identifier that matches the type&apos;s &apos;_id&apos; property.</Abstract>
+				</Parameter><Parameter>
+					<Name>handler</Name>
+					<Abstract type="html">The handler block to execute.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/deleteOne:id:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		

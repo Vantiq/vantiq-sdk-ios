@@ -74,6 +74,19 @@ extern VIQ *v;
     }];
 }
 
+- (void)runSelectOneTest:(NSString *)type id:(NSString *)ID {
+    [v selectOne:type id:ID completionHandler:^(NSArray *data, NSHTTPURLResponse *response, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            NSString *resultStr;
+            if (![DecodeError formError:response error:error
+                              diagnosis:NSLocalizedString(@"com.vantiq.demo.SelectOneErrorExplain", @"") resultStr:&resultStr]) {
+                resultStr = [NSString stringWithFormat:@"selectOne(%@) successful.", type];
+            }
+            AddToResults();
+        });
+    }];
+}
+
 - (void)runCountTest:(NSString *)type where:(NSString *)where {
     [v count:type where:where completionHandler:^(int count, NSHTTPURLResponse *response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^ {
@@ -146,6 +159,19 @@ extern VIQ *v;
     }];
 }
 
+- (void)runDeleteOneTest:(NSString *)type id:(NSString *)ID {
+    [v deleteOne:type id:ID completionHandler:^(NSHTTPURLResponse *response, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            NSString *resultStr;
+            if (![DecodeError formError:response error:error
+                              diagnosis:NSLocalizedString(@"com.vantiq.demo.DeleteOneErrorExplain", @"") resultStr:&resultStr]) {
+                resultStr = [NSString stringWithFormat:@"deleteOne(%@) successful.", type];
+            }
+            AddToResults();
+        });
+    }];
+}
+
 - (void)runPublishTest:(NSString *)topic message:(NSString *)message {
     [v publish:topic message:message completionHandler:^(NSHTTPURLResponse *response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^ {
@@ -161,7 +187,7 @@ extern VIQ *v;
 
 - (void)runExecuteTest:(NSString *)procedure params:(NSString *)params {
     [v execute:procedure params:params completionHandler:^(NSDictionary *data, NSHTTPURLResponse *response, NSError *error) {
-            dispatch_async(dispatch_get_main_queue(), ^ {
+        dispatch_async(dispatch_get_main_queue(), ^ {
             NSString *resultStr;
             if (![DecodeError formError:response error:error
                 diagnosis:NSLocalizedString(@"com.vantiq.demo.ExecuteErrorExplain", @"") resultStr:&resultStr]) {
@@ -210,12 +236,18 @@ extern VIQ *v;
     [self runUpdateTest:@"TestType" id:lastVantiqID object:@"{\"stringValue\":\"Updated String.\"}"];
     
     [NSThread sleepForTimeInterval:.3];
+    [self runSelectOneTest:@"TestType" id:lastVantiqID];
+    
+    [NSThread sleepForTimeInterval:.3];
     [self runPublishTest:@"/vantiq" message:@"{\"intValue\":42}"];
     
     [NSThread sleepForTimeInterval:.3];
     [self runExecuteTest:@"sumTwo" params:@"[35, 21]"];
     [NSThread sleepForTimeInterval:.3];
     [self runExecuteTest:@"sumTwo" params:@"{\"val2\":35, \"val1\":21}"];
+    
+    [NSThread sleepForTimeInterval:.3];
+    [self runDeleteOneTest:@"TestType" id:lastVantiqID];
     
     [NSThread sleepForTimeInterval:.3];
     [self runDeleteTest:@"TestType" where:@"{\"intValue\":42}"];
@@ -234,7 +266,7 @@ extern VIQ *v;
 - (IBAction)runTestsTapped:(id)sender {
     _runTests.enabled = false;
     finishedQueuing = false;
-    _queueCount = [NSNumber numberWithInt:17];
+    _queueCount = [NSNumber numberWithInt:19];
     results = [NSMutableString stringWithString:@""];
     
     [self appendAndScroll:[NSString stringWithFormat:@"Starting %d tests...", [_queueCount intValue]]];

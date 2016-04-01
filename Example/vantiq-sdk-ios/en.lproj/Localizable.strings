@@ -10,11 +10,13 @@
 "com.vantiq.demo.LoginError"="Login Failed";
 "com.vantiq.demo.LoginErrorExplain"="Login failed: error status = %@.";
 "com.vantiq.demo.SelectErrorExplain"="select failed: error status = %@.";
+"com.vantiq.demo.SelectOneErrorExplain"="selectOne failed: error status = %@.";
 "com.vantiq.demo.CountErrorExplain"="count failed: error status = %@.";
 "com.vantiq.demo.InsertErrorExplain"="insert failed: error status = %@.";
 "com.vantiq.demo.UpdateErrorExplain"="update failed: error status = %@.";
 "com.vantiq.demo.UpsertErrorExplain"="upsert failed: error status = %@.";
 "com.vantiq.demo.DeleteErrorExplain"="delete failed: error status = %@.";
+"com.vantiq.demo.DeleteOneErrorExplain"="deleteOne failed: error status = %@.";
 "com.vantiq.demo.PublishErrorExplain"="publish failed: error status = %@.";
 "com.vantiq.demo.ExecuteErrorExplain"="execute failed: error status = %@.";
 

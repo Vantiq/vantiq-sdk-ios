@@ -215,6 +215,11 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     }];
     [task resume];
 }
+- (void)deleteOne:(NSString *)type id:(NSString *)ID
+    completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
+    NSString *whereClause = [NSString stringWithFormat:@"{\"_id\":\"%@\"}", ID];
+    [self delete:type where:whereClause completionHandler:handler];
+}
 
 - (void)publish:(NSString *)topic message:(NSString *)message
     completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
@@ -389,6 +394,11 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
 - (void)select:(NSString *)type
     completionHandler:(void (^)(NSArray *data, NSHTTPURLResponse *response, NSError *error))handler {
     [self select:type props:NULL where:NULL sort:NULL completionHandler:handler];
+}
+- (void)selectOne:(NSString *)type id:(NSString *)ID
+    completionHandler:(void (^)(NSArray *data, NSHTTPURLResponse *response, NSError *error))handler {
+    NSString *whereClause = [NSString stringWithFormat:@"{\"_id\":\"%@\"}", ID];
+    [self select:type props:NULL where:whereClause sort:NULL completionHandler:handler];
 }
 
 @end
