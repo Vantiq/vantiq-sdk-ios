@@ -1,6 +1,6 @@
 //
-//  VIQ.h
-//  VIQ
+//  Vantiq.h
+//  Vantiq
 //
 //  Created by Michael Swan on 3/25/16.
 //  Copyright © 2016 Vantiq, Inc. All rights reserved.
@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-#define VIQAPIVersion               1
+#define VantiqAPIVersion               1
 #define errorCodeIncompleteJSON     1
-#define VIQErrorDomain              @"com.vantiq.viq"
+#define VantiqErrorDomain              @"com.vantiq.Vantiq"
 
 /**
-The VIQ class declares the interface for authentication and subsequent interaction with a Vantiq server.
+The Vantiq class declares the interface for authentication and subsequent interaction with a Vantiq server.
  */
-@interface VIQ : NSObject
+@interface Vantiq : NSObject
 /**
 Access token to be used for direct Vantiq server operations.
  */

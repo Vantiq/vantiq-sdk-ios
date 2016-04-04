@@ -1,1776 +1,781 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>01F80194936CA390E8E5094E8EA46013</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>9983EDC1DB5871BEED1C2D6B273158DE</string>
-			</array>
-			<key>isa</key>
-			<string>PBXHeadersBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>02324A9F539C38B6E16B76C543AB75F1</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>vantiq-sdk-ios.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>09B931713DAC15B8B3E7D665D60DD5D7</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>DC25FEC8A7477670384ECD3429B3120D</string>
-				<string>E73C7553638AAE87337DECDE30C15391</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>0B4473FDD53CF875211173250C301749</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Pods-vantiq-sdk-ios_Example.modulemap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>10E2D4DF063E27E45F5FA1E7D0B510E0</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>6BB3ECA478C2FBF2B3BF114ECCCF4620</string>
-				<string>4ABD2607AF1850D041260020460B4664</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>vantiq-sdk-ios</string>
-			<key>path</key>
-			<string>../..</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>14115272E0EE4015EE0A5C4A62781856</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>vantiq-sdk-ios-umbrella.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>1492AF615EE36A2863EED0687E247B86</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3E4E89230EF59BC255123B67864ACF77</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>177C27DAFF3462E77CED46EFDF61646F</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>27BF793638DDBAE237CB0C52B39D98BB</string>
-			<key>buildPhases</key>
-			<array>
-				<string>30D9430E9BCEA24948D3A17EFD5B9920</string>
-				<string>DA83A820BBD59A05D276868AF174F9DF</string>
-				<string>AF04FB2FDDA3435994881BE213C48E8E</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>F68E5097B6143ECBDADA932C9800D6A8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>Pods-vantiq-sdk-ios_Example</string>
-			<key>productName</key>
-			<string>Pods-vantiq-sdk-ios_Example</string>
-			<key>productReference</key>
-			<string>FC2C57E78CE6DA0AF41436D13F54B898</string>
-			<key>productType</key>
-			<string>com.apple.product-type.framework</string>
-		</dict>
-		<key>18332C49AC003D56C1DBE8F4BCDB9359</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-vantiq-sdk-ios_Example.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>1876E3F812C692202A4B8B7A5CDAAA42</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>10E2D4DF063E27E45F5FA1E7D0B510E0</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Development Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>197EA53C012EC683F05564A0609A4765</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-vantiq-sdk-ios_Tests.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>227D8EF64FAC1538DAB1372A64166BD1</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>Pods-vantiq-sdk-ios_Tests-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>22B47B101EC6DE4BAAF632D476B4721D</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>09B931713DAC15B8B3E7D665D60DD5D7</string>
-			<key>buildPhases</key>
-			<array>
-				<string>362FF7CEF7E1A81FE50504FFF86B0B09</string>
-				<string>DF36553EF61B50696BB7463D7FF3B7BB</string>
-				<string>8B2BF3E1DCCCD2A663B58263E2A6BC19</string>
-				<string>E44687E4965594854636120CEE9D2FBE</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>39C759AEBA6E1B32970489D972F5AF63</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>vantiq-sdk-ios</string>
-			<key>productName</key>
-			<string>vantiq-sdk-ios</string>
-			<key>productReference</key>
-			<string>77EEF8BE927986F2FCD8DF68A9CDC1B9</string>
-			<key>productType</key>
-			<string>com.apple.product-type.framework</string>
-		</dict>
-		<key>273A7623CC17128E16E67E80C4149B15</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F6C761359766A793AA55F148D4A08F69</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>27BF793638DDBAE237CB0C52B39D98BB</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>6ADBECDA4B4622E3AC3F1C6E41EF76B7</string>
-				<string>32421BE7C357C8D870DD67ADE1DF07AE</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>296090CE7EDA2EF92D835EF108EEFEAD</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>58BBDE57901A603A70A398593AC2C075</string>
-				<string>69609FE8E202722C82B44348843392A8</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>2B389FAB51F6EEA43F72CA7BDC8E8E28</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.3</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>STRIP_INSTALLED_PRODUCT</key>
-				<string>NO</string>
-				<key>SYMROOT</key>
-				<string>${SRCROOT}/../build</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>2C2C544FDD1FC972675C7EE9DD2CD80D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>227D8EF64FAC1538DAB1372A64166BD1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>2D8E8EC45A3A1A1D94AE762CB5028504</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>2B389FAB51F6EEA43F72CA7BDC8E8E28</string>
-				<string>5A0C6FE968931D888F00C9EC18DDF5BC</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>30D9430E9BCEA24948D3A17EFD5B9920</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>CD9D86755E513CF61BE71A269D12A5FE</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>32421BE7C357C8D870DD67ADE1DF07AE</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>7E8572C391CE334530C5AE65D40EEFDF</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>1</string>
-				<key>DEFINES_MODULE</key>
-				<string>YES</string>
-				<key>DYLIB_COMPATIBILITY_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_CURRENT_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_INSTALL_NAME_BASE</key>
-				<string>@rpath</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Target Support Files/Pods-vantiq-sdk-ios_Example/Info.plist</string>
-				<key>INSTALL_PATH</key>
-				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.3</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>@executable_path/Frameworks</string>
-					<string>@loader_path/Frameworks</string>
-				</array>
-				<key>MACH_O_TYPE</key>
-				<string>staticlib</string>
-				<key>MODULEMAP_FILE</key>
-				<string>Target Support Files/Pods-vantiq-sdk-ios_Example/Pods-vantiq-sdk-ios_Example.modulemap</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PODS_ROOT</key>
-				<string>$(SRCROOT)</string>
-				<key>PRODUCT_NAME</key>
-				<string>Pods_vantiq_sdk_ios_Example</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VERSIONING_SYSTEM</key>
-				<string>apple-generic</string>
-				<key>VERSION_INFO_PREFIX</key>
-				<string></string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>362FF7CEF7E1A81FE50504FFF86B0B09</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>273A7623CC17128E16E67E80C4149B15</string>
-				<string>551595F7FDAA363D0E30C53AFD3BDD4C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>39C759AEBA6E1B32970489D972F5AF63</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>name</key>
-			<string>vantiq-sdk-ios-vantiq-sdk-ios</string>
-			<key>target</key>
-			<string>3F6B1EEF133E975512946BAF3E4442C0</string>
-			<key>targetProxy</key>
-			<string>F62C52B6EE9CC3B7BDB77ECB7E932C3F</string>
-		</dict>
-		<key>3B6E32B70E3CE42F71E12D77A1833D2A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>path</key>
-			<string>Pods-vantiq-sdk-ios_Example-acknowledgements.markdown</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3CE5A6CC285D6B8632F9887FFFBFC665</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>B41004158F556364E9109198FC9B2DB2</string>
-			<key>buildPhases</key>
-			<array>
-				<string>F5CB0C5B527998DAB76B634B462E6554</string>
-				<string>ABE3FBB604330CAE8E21F9F126451E7B</string>
-				<string>01F80194936CA390E8E5094E8EA46013</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>E6FC49BE5E355622A80909A36A61D0CF</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>Pods-vantiq-sdk-ios_Tests</string>
-			<key>productName</key>
-			<string>Pods-vantiq-sdk-ios_Tests</string>
-			<key>productReference</key>
-			<string>E740C127D401D22ECC575BE922CDB390</string>
-			<key>productType</key>
-			<string>com.apple.product-type.framework</string>
-		</dict>
-		<key>3E4E89230EF59BC255123B67864ACF77</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>DEVELOPER_DIR</string>
-		</dict>
-		<key>3F6B1EEF133E975512946BAF3E4442C0</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>296090CE7EDA2EF92D835EF108EEFEAD</string>
-			<key>buildPhases</key>
-			<array>
-				<string>AAA05C7DB75F995AEB0DFA803D17E8A7</string>
-				<string>D04F824226EFD619B145E6AA3D12F4A3</string>
-				<string>CF56090014334255578F884084A9351A</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>vantiq-sdk-ios-vantiq-sdk-ios</string>
-			<key>productName</key>
-			<string>vantiq-sdk-ios-vantiq-sdk-ios</string>
-			<key>productReference</key>
-			<string>541DD37AAC2234A040951BAAE9B01F7D</string>
-			<key>productType</key>
-			<string>com.apple.product-type.bundle</string>
-		</dict>
-		<key>42070BF031AD8136C314A7D7983EC0E4</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>A24C7C4A700EE995251FBDFF9BA54AAD</string>
-				<string>D9E516BD516E2D8F5F28BE6F26682256</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Classes</string>
-			<key>path</key>
-			<string>Classes</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4909A6FD19E838C3DB342DACFB7B1D68</key>
-		<dict>
-			<key>fileRef</key>
-			<string>541DD37AAC2234A040951BAAE9B01F7D</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>4A979AE79E7B46A72D0C072B0359F232</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B84421566B8898798DA06049B573F378</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>4AA7D22ECD0538EDB599DA723AEC9641</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>BADBEB0FB2911A467DFBFC07060AB19E</string>
-				<string>DB8E0B8E5640FD7DAD82D25702675B9F</string>
-				<string>C0B0B19FD0615CADFD5FC0190A62980E</string>
-				<string>D3EFDD37F49A415F754302A4A41DFFBA</string>
-				<string>227D8EF64FAC1538DAB1372A64166BD1</string>
-				<string>E410B45742299DA661A9B024CF7A6D64</string>
-				<string>C6C6E07847E984769CEEBB6CEE4CDBC2</string>
-				<string>897B35CBEB0B3D8A6C848E2D1185A44E</string>
-				<string>197EA53C012EC683F05564A0609A4765</string>
-				<string>7C3D7B736F1013A479D78CDFC15BDDC6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods-vantiq-sdk-ios_Tests</string>
-			<key>path</key>
-			<string>Target Support Files/Pods-vantiq-sdk-ios_Tests</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4ABD2607AF1850D041260020460B4664</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>7B43832B785FBCFC8C9254EEF69F139E</string>
-				<string>4D250F011FC512B4C64874E03FEEE5D2</string>
-				<string>02324A9F539C38B6E16B76C543AB75F1</string>
-				<string>F6C761359766A793AA55F148D4A08F69</string>
-				<string>58CAA25EFF80D35CD8BA5BEA825DA1EE</string>
-				<string>14115272E0EE4015EE0A5C4A62781856</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>Example/Pods/Target Support Files/vantiq-sdk-ios</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4CA597648C6CFFB0CD5096FA72F16B43</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>C98AF2739C1C4F9535E026FB177586E6</string>
-				<string>0B4473FDD53CF875211173250C301749</string>
-				<string>3B6E32B70E3CE42F71E12D77A1833D2A</string>
-				<string>7981C48DAF0AF25A7002102B70120114</string>
-				<string>648B0DA8D3A6A3AA8F116B4EFBF9446D</string>
-				<string>F12C7610B0BA88BC15119CFE84C22072</string>
-				<string>54C8BFBA2875DD29DDD2CD4098E3EF3A</string>
-				<string>B84421566B8898798DA06049B573F378</string>
-				<string>18332C49AC003D56C1DBE8F4BCDB9359</string>
-				<string>7E8572C391CE334530C5AE65D40EEFDF</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods-vantiq-sdk-ios_Example</string>
-			<key>path</key>
-			<string>Target Support Files/Pods-vantiq-sdk-ios_Example</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4D250F011FC512B4C64874E03FEEE5D2</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>vantiq-sdk-ios.modulemap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>541DD37AAC2234A040951BAAE9B01F7D</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.cfbundle</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>vantiq-sdk-ios.bundle</string>
-			<key>path</key>
-			<string>vantiq-sdk-ios.bundle</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>54C8BFBA2875DD29DDD2CD4098E3EF3A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
-			<key>path</key>
-			<string>Pods-vantiq-sdk-ios_Example-resources.sh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>551595F7FDAA363D0E30C53AFD3BDD4C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>D9E516BD516E2D8F5F28BE6F26682256</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>58BBDE57901A603A70A398593AC2C075</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>02324A9F539C38B6E16B76C543AB75F1</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>PRODUCT_NAME</key>
-				<string>vantiq-sdk-ios</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>bundle</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>58CAA25EFF80D35CD8BA5BEA825DA1EE</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>vantiq-sdk-ios-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>5A0C6FE968931D888F00C9EC18DDF5BC</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>RELEASE=1</string>
-				</array>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.3</string>
-				<key>STRIP_INSTALLED_PRODUCT</key>
-				<string>NO</string>
-				<key>SYMROOT</key>
-				<string>${SRCROOT}/../build</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>648B0DA8D3A6A3AA8F116B4EFBF9446D</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>Pods-vantiq-sdk-ios_Example-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>69609FE8E202722C82B44348843392A8</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>02324A9F539C38B6E16B76C543AB75F1</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>PRODUCT_NAME</key>
-				<string>vantiq-sdk-ios</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>bundle</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>6ADBECDA4B4622E3AC3F1C6E41EF76B7</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>18332C49AC003D56C1DBE8F4BCDB9359</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>1</string>
-				<key>DEFINES_MODULE</key>
-				<string>YES</string>
-				<key>DYLIB_COMPATIBILITY_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_CURRENT_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_INSTALL_NAME_BASE</key>
-				<string>@rpath</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Target Support Files/Pods-vantiq-sdk-ios_Example/Info.plist</string>
-				<key>INSTALL_PATH</key>
-				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.3</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>@executable_path/Frameworks</string>
-					<string>@loader_path/Frameworks</string>
-				</array>
-				<key>MACH_O_TYPE</key>
-				<string>staticlib</string>
-				<key>MODULEMAP_FILE</key>
-				<string>Target Support Files/Pods-vantiq-sdk-ios_Example/Pods-vantiq-sdk-ios_Example.modulemap</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PODS_ROOT</key>
-				<string>$(SRCROOT)</string>
-				<key>PRODUCT_NAME</key>
-				<string>Pods_vantiq_sdk_ios_Example</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VERSIONING_SYSTEM</key>
-				<string>apple-generic</string>
-				<key>VERSION_INFO_PREFIX</key>
-				<string></string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>6BB3ECA478C2FBF2B3BF114ECCCF4620</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>42070BF031AD8136C314A7D7983EC0E4</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pod</string>
-			<key>path</key>
-			<string>Pod</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>723EBB7BF42EF9C255A6B3242F637A5F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>FC2C57E78CE6DA0AF41436D13F54B898</string>
-				<string>E740C127D401D22ECC575BE922CDB390</string>
-				<string>541DD37AAC2234A040951BAAE9B01F7D</string>
-				<string>77EEF8BE927986F2FCD8DF68A9CDC1B9</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>77EEF8BE927986F2FCD8DF68A9CDC1B9</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>vantiq_sdk_ios.framework</string>
-			<key>path</key>
-			<string>vantiq_sdk_ios.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>7981C48DAF0AF25A7002102B70120114</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Pods-vantiq-sdk-ios_Example-acknowledgements.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7B43832B785FBCFC8C9254EEF69F139E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7C3D7B736F1013A479D78CDFC15BDDC6</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-vantiq-sdk-ios_Tests.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7DB346D0F39D3F0E887471402A8071AB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>BA6428E9F66FD5A23C0A2E06ED26CD2F</string>
-				<string>1876E3F812C692202A4B8B7A5CDAAA42</string>
-				<string>BC3CA7F9E30CC8F7E2DD044DD34432FC</string>
-				<string>723EBB7BF42EF9C255A6B3242F637A5F</string>
-				<string>9C2BAC615F3B915EB984BD7E764F454B</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7E8572C391CE334530C5AE65D40EEFDF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-vantiq-sdk-ios_Example.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>897B35CBEB0B3D8A6C848E2D1185A44E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>Pods-vantiq-sdk-ios_Tests-umbrella.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8B2BF3E1DCCCD2A663B58263E2A6BC19</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>4909A6FD19E838C3DB342DACFB7B1D68</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>915BB99B4E27EBE6962410F8093A06AB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3E4E89230EF59BC255123B67864ACF77</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>9983EDC1DB5871BEED1C2D6B273158DE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>897B35CBEB0B3D8A6C848E2D1185A44E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>9BDBC8C19ECB9B1864ED8209EAEB1809</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>D41D8CD98F00B204E9800998ECF8427E</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>22B47B101EC6DE4BAAF632D476B4721D</string>
-			<key>remoteInfo</key>
-			<string>vantiq-sdk-ios</string>
-		</dict>
-		<key>9C2BAC615F3B915EB984BD7E764F454B</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>4CA597648C6CFFB0CD5096FA72F16B43</string>
-				<string>4AA7D22ECD0538EDB599DA723AEC9641</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Targets Support Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A24C7C4A700EE995251FBDFF9BA54AAD</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>VIQ.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AAA05C7DB75F995AEB0DFA803D17E8A7</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>ABE3FBB604330CAE8E21F9F126451E7B</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>EECBB9F44115C59A450C865DBD3DA94D</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>AF04FB2FDDA3435994881BE213C48E8E</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>4A979AE79E7B46A72D0C072B0359F232</string>
-			</array>
-			<key>isa</key>
-			<string>PBXHeadersBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>B41004158F556364E9109198FC9B2DB2</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>D18DD0B41C27472CC954D89157501C91</string>
-				<string>D989A073EA3EF2FE3BC7BC51BFAE3640</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>B84421566B8898798DA06049B573F378</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>Pods-vantiq-sdk-ios_Example-umbrella.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>BA6428E9F66FD5A23C0A2E06ED26CD2F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>name</key>
-			<string>Podfile</string>
-			<key>path</key>
-			<string>../Podfile</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-			<key>xcLanguageSpecificationIdentifier</key>
-			<string>xcode.lang.ruby</string>
-		</dict>
-		<key>BADBEB0FB2911A467DFBFC07060AB19E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>BC3CA7F9E30CC8F7E2DD044DD34432FC</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>BF6342C8B29F4CEEA088EFF7AB4DE362</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>BF6342C8B29F4CEEA088EFF7AB4DE362</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>3E4E89230EF59BC255123B67864ACF77</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>iOS</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C0B0B19FD0615CADFD5FC0190A62980E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>path</key>
-			<string>Pods-vantiq-sdk-ios_Tests-acknowledgements.markdown</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C6C6E07847E984769CEEBB6CEE4CDBC2</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
-			<key>path</key>
-			<string>Pods-vantiq-sdk-ios_Tests-resources.sh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>C98AF2739C1C4F9535E026FB177586E6</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>CD9D86755E513CF61BE71A269D12A5FE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>648B0DA8D3A6A3AA8F116B4EFBF9446D</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>CF56090014334255578F884084A9351A</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>D04F824226EFD619B145E6AA3D12F4A3</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>D18DD0B41C27472CC954D89157501C91</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>197EA53C012EC683F05564A0609A4765</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>1</string>
-				<key>DEFINES_MODULE</key>
-				<string>YES</string>
-				<key>DYLIB_COMPATIBILITY_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_CURRENT_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_INSTALL_NAME_BASE</key>
-				<string>@rpath</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Target Support Files/Pods-vantiq-sdk-ios_Tests/Info.plist</string>
-				<key>INSTALL_PATH</key>
-				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.3</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>@executable_path/Frameworks</string>
-					<string>@loader_path/Frameworks</string>
-				</array>
-				<key>MACH_O_TYPE</key>
-				<string>staticlib</string>
-				<key>MODULEMAP_FILE</key>
-				<string>Target Support Files/Pods-vantiq-sdk-ios_Tests/Pods-vantiq-sdk-ios_Tests.modulemap</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PODS_ROOT</key>
-				<string>$(SRCROOT)</string>
-				<key>PRODUCT_NAME</key>
-				<string>Pods_vantiq_sdk_ios_Tests</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VERSIONING_SYSTEM</key>
-				<string>apple-generic</string>
-				<key>VERSION_INFO_PREFIX</key>
-				<string></string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>D3EFDD37F49A415F754302A4A41DFFBA</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Pods-vantiq-sdk-ios_Tests-acknowledgements.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D41D8CD98F00B204E9800998ECF8427E</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>LastSwiftUpdateCheck</key>
-				<string>0700</string>
-				<key>LastUpgradeCheck</key>
-				<string>0700</string>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>2D8E8EC45A3A1A1D94AE762CB5028504</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-			</array>
-			<key>mainGroup</key>
-			<string>7DB346D0F39D3F0E887471402A8071AB</string>
-			<key>productRefGroup</key>
-			<string>723EBB7BF42EF9C255A6B3242F637A5F</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>177C27DAFF3462E77CED46EFDF61646F</string>
-				<string>3CE5A6CC285D6B8632F9887FFFBFC665</string>
-				<string>22B47B101EC6DE4BAAF632D476B4721D</string>
-				<string>3F6B1EEF133E975512946BAF3E4442C0</string>
-			</array>
-		</dict>
-		<key>D989A073EA3EF2FE3BC7BC51BFAE3640</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>7C3D7B736F1013A479D78CDFC15BDDC6</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>1</string>
-				<key>DEFINES_MODULE</key>
-				<string>YES</string>
-				<key>DYLIB_COMPATIBILITY_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_CURRENT_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_INSTALL_NAME_BASE</key>
-				<string>@rpath</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Target Support Files/Pods-vantiq-sdk-ios_Tests/Info.plist</string>
-				<key>INSTALL_PATH</key>
-				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.3</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>@executable_path/Frameworks</string>
-					<string>@loader_path/Frameworks</string>
-				</array>
-				<key>MACH_O_TYPE</key>
-				<string>staticlib</string>
-				<key>MODULEMAP_FILE</key>
-				<string>Target Support Files/Pods-vantiq-sdk-ios_Tests/Pods-vantiq-sdk-ios_Tests.modulemap</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PODS_ROOT</key>
-				<string>$(SRCROOT)</string>
-				<key>PRODUCT_NAME</key>
-				<string>Pods_vantiq_sdk_ios_Tests</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VERSIONING_SYSTEM</key>
-				<string>apple-generic</string>
-				<key>VERSION_INFO_PREFIX</key>
-				<string></string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>D9E516BD516E2D8F5F28BE6F26682256</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>VIQ.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>DA83A820BBD59A05D276868AF174F9DF</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>1492AF615EE36A2863EED0687E247B86</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>DB8E0B8E5640FD7DAD82D25702675B9F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Pods-vantiq-sdk-ios_Tests.modulemap</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>DC25FEC8A7477670384ECD3429B3120D</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>02324A9F539C38B6E16B76C543AB75F1</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>1</string>
-				<key>DEFINES_MODULE</key>
-				<string>YES</string>
-				<key>DYLIB_COMPATIBILITY_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_CURRENT_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_INSTALL_NAME_BASE</key>
-				<string>@rpath</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/vantiq-sdk-ios/vantiq-sdk-ios-prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Target Support Files/vantiq-sdk-ios/Info.plist</string>
-				<key>INSTALL_PATH</key>
-				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.3</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>@executable_path/Frameworks</string>
-					<string>@loader_path/Frameworks</string>
-				</array>
-				<key>MODULEMAP_FILE</key>
-				<string>Target Support Files/vantiq-sdk-ios/vantiq-sdk-ios.modulemap</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>PRODUCT_NAME</key>
-				<string>vantiq_sdk_ios</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VERSIONING_SYSTEM</key>
-				<string>apple-generic</string>
-				<key>VERSION_INFO_PREFIX</key>
-				<string></string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>DD8801DCBFA4A703CB04D9415A408BBD</key>
-		<dict>
-			<key>fileRef</key>
-			<string>14115272E0EE4015EE0A5C4A62781856</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>DF36553EF61B50696BB7463D7FF3B7BB</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>915BB99B4E27EBE6962410F8093A06AB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>E410B45742299DA661A9B024CF7A6D64</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
-			<key>path</key>
-			<string>Pods-vantiq-sdk-ios_Tests-frameworks.sh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E44687E4965594854636120CEE9D2FBE</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>DD8801DCBFA4A703CB04D9415A408BBD</string>
-				<string>E58A979C7760197D94CF29E0BF25441D</string>
-			</array>
-			<key>isa</key>
-			<string>PBXHeadersBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>E58A979C7760197D94CF29E0BF25441D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A24C7C4A700EE995251FBDFF9BA54AAD</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>E6FC49BE5E355622A80909A36A61D0CF</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>name</key>
-			<string>vantiq-sdk-ios</string>
-			<key>target</key>
-			<string>22B47B101EC6DE4BAAF632D476B4721D</string>
-			<key>targetProxy</key>
-			<string>9BDBC8C19ECB9B1864ED8209EAEB1809</string>
-		</dict>
-		<key>E73C7553638AAE87337DECDE30C15391</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>02324A9F539C38B6E16B76C543AB75F1</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>1</string>
-				<key>DEFINES_MODULE</key>
-				<string>YES</string>
-				<key>DYLIB_COMPATIBILITY_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_CURRENT_VERSION</key>
-				<string>1</string>
-				<key>DYLIB_INSTALL_NAME_BASE</key>
-				<string>@rpath</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/vantiq-sdk-ios/vantiq-sdk-ios-prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Target Support Files/vantiq-sdk-ios/Info.plist</string>
-				<key>INSTALL_PATH</key>
-				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.3</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>@executable_path/Frameworks</string>
-					<string>@loader_path/Frameworks</string>
-				</array>
-				<key>MODULEMAP_FILE</key>
-				<string>Target Support Files/vantiq-sdk-ios/vantiq-sdk-ios.modulemap</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>PRODUCT_NAME</key>
-				<string>vantiq_sdk_ios</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VERSIONING_SYSTEM</key>
-				<string>apple-generic</string>
-				<key>VERSION_INFO_PREFIX</key>
-				<string></string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>E740C127D401D22ECC575BE922CDB390</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>Pods_vantiq_sdk_ios_Tests.framework</string>
-			<key>path</key>
-			<string>Pods_vantiq_sdk_ios_Tests.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>EECBB9F44115C59A450C865DBD3DA94D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3E4E89230EF59BC255123B67864ACF77</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F12C7610B0BA88BC15119CFE84C22072</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
-			<key>path</key>
-			<string>Pods-vantiq-sdk-ios_Example-frameworks.sh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F3FBCB0031FF57481F970D40D49F96F7</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>D41D8CD98F00B204E9800998ECF8427E</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>22B47B101EC6DE4BAAF632D476B4721D</string>
-			<key>remoteInfo</key>
-			<string>vantiq-sdk-ios</string>
-		</dict>
-		<key>F5CB0C5B527998DAB76B634B462E6554</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>2C2C544FDD1FC972675C7EE9DD2CD80D</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F62C52B6EE9CC3B7BDB77ECB7E932C3F</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>D41D8CD98F00B204E9800998ECF8427E</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>3F6B1EEF133E975512946BAF3E4442C0</string>
-			<key>remoteInfo</key>
-			<string>vantiq-sdk-ios-vantiq-sdk-ios</string>
-		</dict>
-		<key>F68E5097B6143ECBDADA932C9800D6A8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>name</key>
-			<string>vantiq-sdk-ios</string>
-			<key>target</key>
-			<string>22B47B101EC6DE4BAAF632D476B4721D</string>
-			<key>targetProxy</key>
-			<string>F3FBCB0031FF57481F970D40D49F96F7</string>
-		</dict>
-		<key>F6C761359766A793AA55F148D4A08F69</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>vantiq-sdk-ios-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>FC2C57E78CE6DA0AF41436D13F54B898</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>Pods_vantiq_sdk_ios_Example.framework</string>
-			<key>path</key>
-			<string>Pods_vantiq_sdk_ios_Example.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>D41D8CD98F00B204E9800998ECF8427E</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1492AF615EE36A2863EED0687E247B86 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		273A7623CC17128E16E67E80C4149B15 /* vantiq-sdk-ios-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F6C761359766A793AA55F148D4A08F69 /* vantiq-sdk-ios-dummy.m */; };
+		2C2C544FDD1FC972675C7EE9DD2CD80D /* Pods-vantiq-sdk-ios_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 227D8EF64FAC1538DAB1372A64166BD1 /* Pods-vantiq-sdk-ios_Tests-dummy.m */; };
+		4909A6FD19E838C3DB342DACFB7B1D68 /* vantiq-sdk-ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 541DD37AAC2234A040951BAAE9B01F7D /* vantiq-sdk-ios.bundle */; };
+		4A979AE79E7B46A72D0C072B0359F232 /* Pods-vantiq-sdk-ios_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B84421566B8898798DA06049B573F378 /* Pods-vantiq-sdk-ios_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		551595F7FDAA363D0E30C53AFD3BDD4C /* Vantiq.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E516BD516E2D8F5F28BE6F26682256 /* Vantiq.m */; };
+		915BB99B4E27EBE6962410F8093A06AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		9983EDC1DB5871BEED1C2D6B273158DE /* Pods-vantiq-sdk-ios_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 897B35CBEB0B3D8A6C848E2D1185A44E /* Pods-vantiq-sdk-ios_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD9D86755E513CF61BE71A269D12A5FE /* Pods-vantiq-sdk-ios_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 648B0DA8D3A6A3AA8F116B4EFBF9446D /* Pods-vantiq-sdk-ios_Example-dummy.m */; };
+		DD8801DCBFA4A703CB04D9415A408BBD /* vantiq-sdk-ios-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 14115272E0EE4015EE0A5C4A62781856 /* vantiq-sdk-ios-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E58A979C7760197D94CF29E0BF25441D /* Vantiq.h in Headers */ = {isa = PBXBuildFile; fileRef = A24C7C4A700EE995251FBDFF9BA54AAD /* Vantiq.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EECBB9F44115C59A450C865DBD3DA94D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9BDBC8C19ECB9B1864ED8209EAEB1809 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22B47B101EC6DE4BAAF632D476B4721D;
+			remoteInfo = "vantiq-sdk-ios";
+		};
+		F3FBCB0031FF57481F970D40D49F96F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22B47B101EC6DE4BAAF632D476B4721D;
+			remoteInfo = "vantiq-sdk-ios";
+		};
+		F62C52B6EE9CC3B7BDB77ECB7E932C3F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F6B1EEF133E975512946BAF3E4442C0;
+			remoteInfo = "vantiq-sdk-ios-vantiq-sdk-ios";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02324A9F539C38B6E16B76C543AB75F1 /* vantiq-sdk-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "vantiq-sdk-ios.xcconfig"; sourceTree = "<group>"; };
+		0B4473FDD53CF875211173250C301749 /* Pods-vantiq-sdk-ios_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-vantiq-sdk-ios_Example.modulemap"; sourceTree = "<group>"; };
+		14115272E0EE4015EE0A5C4A62781856 /* vantiq-sdk-ios-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "vantiq-sdk-ios-umbrella.h"; sourceTree = "<group>"; };
+		18332C49AC003D56C1DBE8F4BCDB9359 /* Pods-vantiq-sdk-ios_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-vantiq-sdk-ios_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		197EA53C012EC683F05564A0609A4765 /* Pods-vantiq-sdk-ios_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-vantiq-sdk-ios_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		227D8EF64FAC1538DAB1372A64166BD1 /* Pods-vantiq-sdk-ios_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-vantiq-sdk-ios_Tests-dummy.m"; sourceTree = "<group>"; };
+		3B6E32B70E3CE42F71E12D77A1833D2A /* Pods-vantiq-sdk-ios_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-vantiq-sdk-ios_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		4D250F011FC512B4C64874E03FEEE5D2 /* vantiq-sdk-ios.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "vantiq-sdk-ios.modulemap"; sourceTree = "<group>"; };
+		541DD37AAC2234A040951BAAE9B01F7D /* vantiq-sdk-ios.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "vantiq-sdk-ios.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		54C8BFBA2875DD29DDD2CD4098E3EF3A /* Pods-vantiq-sdk-ios_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-vantiq-sdk-ios_Example-resources.sh"; sourceTree = "<group>"; };
+		58CAA25EFF80D35CD8BA5BEA825DA1EE /* vantiq-sdk-ios-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "vantiq-sdk-ios-prefix.pch"; sourceTree = "<group>"; };
+		648B0DA8D3A6A3AA8F116B4EFBF9446D /* Pods-vantiq-sdk-ios_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-vantiq-sdk-ios_Example-dummy.m"; sourceTree = "<group>"; };
+		77EEF8BE927986F2FCD8DF68A9CDC1B9 /* vantiq_sdk_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = vantiq_sdk_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7981C48DAF0AF25A7002102B70120114 /* Pods-vantiq-sdk-ios_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-vantiq-sdk-ios_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		7B43832B785FBCFC8C9254EEF69F139E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C3D7B736F1013A479D78CDFC15BDDC6 /* Pods-vantiq-sdk-ios_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-vantiq-sdk-ios_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		7E8572C391CE334530C5AE65D40EEFDF /* Pods-vantiq-sdk-ios_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-vantiq-sdk-ios_Example.release.xcconfig"; sourceTree = "<group>"; };
+		897B35CBEB0B3D8A6C848E2D1185A44E /* Pods-vantiq-sdk-ios_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-vantiq-sdk-ios_Tests-umbrella.h"; sourceTree = "<group>"; };
+		A24C7C4A700EE995251FBDFF9BA54AAD /* Vantiq.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Vantiq.h; sourceTree = "<group>"; };
+		B84421566B8898798DA06049B573F378 /* Pods-vantiq-sdk-ios_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-vantiq-sdk-ios_Example-umbrella.h"; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BADBEB0FB2911A467DFBFC07060AB19E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0B0B19FD0615CADFD5FC0190A62980E /* Pods-vantiq-sdk-ios_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-vantiq-sdk-ios_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C6C6E07847E984769CEEBB6CEE4CDBC2 /* Pods-vantiq-sdk-ios_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-vantiq-sdk-ios_Tests-resources.sh"; sourceTree = "<group>"; };
+		C98AF2739C1C4F9535E026FB177586E6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3EFDD37F49A415F754302A4A41DFFBA /* Pods-vantiq-sdk-ios_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-vantiq-sdk-ios_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		D9E516BD516E2D8F5F28BE6F26682256 /* Vantiq.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Vantiq.m; sourceTree = "<group>"; };
+		DB8E0B8E5640FD7DAD82D25702675B9F /* Pods-vantiq-sdk-ios_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-vantiq-sdk-ios_Tests.modulemap"; sourceTree = "<group>"; };
+		E410B45742299DA661A9B024CF7A6D64 /* Pods-vantiq-sdk-ios_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-vantiq-sdk-ios_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		E740C127D401D22ECC575BE922CDB390 /* Pods_vantiq_sdk_ios_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vantiq_sdk_ios_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F12C7610B0BA88BC15119CFE84C22072 /* Pods-vantiq-sdk-ios_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-vantiq-sdk-ios_Example-frameworks.sh"; sourceTree = "<group>"; };
+		F6C761359766A793AA55F148D4A08F69 /* vantiq-sdk-ios-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "vantiq-sdk-ios-dummy.m"; sourceTree = "<group>"; };
+		FC2C57E78CE6DA0AF41436D13F54B898 /* Pods_vantiq_sdk_ios_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vantiq_sdk_ios_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ABE3FBB604330CAE8E21F9F126451E7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EECBB9F44115C59A450C865DBD3DA94D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D04F824226EFD619B145E6AA3D12F4A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA83A820BBD59A05D276868AF174F9DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1492AF615EE36A2863EED0687E247B86 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF36553EF61B50696BB7463D7FF3B7BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				915BB99B4E27EBE6962410F8093A06AB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10E2D4DF063E27E45F5FA1E7D0B510E0 /* vantiq-sdk-ios */ = {
+			isa = PBXGroup;
+			children = (
+				6BB3ECA478C2FBF2B3BF114ECCCF4620 /* Pod */,
+				4ABD2607AF1850D041260020460B4664 /* Support Files */,
+			);
+			name = "vantiq-sdk-ios";
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		1876E3F812C692202A4B8B7A5CDAAA42 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				10E2D4DF063E27E45F5FA1E7D0B510E0 /* vantiq-sdk-ios */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		42070BF031AD8136C314A7D7983EC0E4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A24C7C4A700EE995251FBDFF9BA54AAD /* Vantiq.h */,
+				D9E516BD516E2D8F5F28BE6F26682256 /* Vantiq.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		4AA7D22ECD0538EDB599DA723AEC9641 /* Pods-vantiq-sdk-ios_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				BADBEB0FB2911A467DFBFC07060AB19E /* Info.plist */,
+				DB8E0B8E5640FD7DAD82D25702675B9F /* Pods-vantiq-sdk-ios_Tests.modulemap */,
+				C0B0B19FD0615CADFD5FC0190A62980E /* Pods-vantiq-sdk-ios_Tests-acknowledgements.markdown */,
+				D3EFDD37F49A415F754302A4A41DFFBA /* Pods-vantiq-sdk-ios_Tests-acknowledgements.plist */,
+				227D8EF64FAC1538DAB1372A64166BD1 /* Pods-vantiq-sdk-ios_Tests-dummy.m */,
+				E410B45742299DA661A9B024CF7A6D64 /* Pods-vantiq-sdk-ios_Tests-frameworks.sh */,
+				C6C6E07847E984769CEEBB6CEE4CDBC2 /* Pods-vantiq-sdk-ios_Tests-resources.sh */,
+				897B35CBEB0B3D8A6C848E2D1185A44E /* Pods-vantiq-sdk-ios_Tests-umbrella.h */,
+				197EA53C012EC683F05564A0609A4765 /* Pods-vantiq-sdk-ios_Tests.debug.xcconfig */,
+				7C3D7B736F1013A479D78CDFC15BDDC6 /* Pods-vantiq-sdk-ios_Tests.release.xcconfig */,
+			);
+			name = "Pods-vantiq-sdk-ios_Tests";
+			path = "Target Support Files/Pods-vantiq-sdk-ios_Tests";
+			sourceTree = "<group>";
+		};
+		4ABD2607AF1850D041260020460B4664 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7B43832B785FBCFC8C9254EEF69F139E /* Info.plist */,
+				4D250F011FC512B4C64874E03FEEE5D2 /* vantiq-sdk-ios.modulemap */,
+				02324A9F539C38B6E16B76C543AB75F1 /* vantiq-sdk-ios.xcconfig */,
+				F6C761359766A793AA55F148D4A08F69 /* vantiq-sdk-ios-dummy.m */,
+				58CAA25EFF80D35CD8BA5BEA825DA1EE /* vantiq-sdk-ios-prefix.pch */,
+				14115272E0EE4015EE0A5C4A62781856 /* vantiq-sdk-ios-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/vantiq-sdk-ios";
+			sourceTree = "<group>";
+		};
+		4CA597648C6CFFB0CD5096FA72F16B43 /* Pods-vantiq-sdk-ios_Example */ = {
+			isa = PBXGroup;
+			children = (
+				C98AF2739C1C4F9535E026FB177586E6 /* Info.plist */,
+				0B4473FDD53CF875211173250C301749 /* Pods-vantiq-sdk-ios_Example.modulemap */,
+				3B6E32B70E3CE42F71E12D77A1833D2A /* Pods-vantiq-sdk-ios_Example-acknowledgements.markdown */,
+				7981C48DAF0AF25A7002102B70120114 /* Pods-vantiq-sdk-ios_Example-acknowledgements.plist */,
+				648B0DA8D3A6A3AA8F116B4EFBF9446D /* Pods-vantiq-sdk-ios_Example-dummy.m */,
+				F12C7610B0BA88BC15119CFE84C22072 /* Pods-vantiq-sdk-ios_Example-frameworks.sh */,
+				54C8BFBA2875DD29DDD2CD4098E3EF3A /* Pods-vantiq-sdk-ios_Example-resources.sh */,
+				B84421566B8898798DA06049B573F378 /* Pods-vantiq-sdk-ios_Example-umbrella.h */,
+				18332C49AC003D56C1DBE8F4BCDB9359 /* Pods-vantiq-sdk-ios_Example.debug.xcconfig */,
+				7E8572C391CE334530C5AE65D40EEFDF /* Pods-vantiq-sdk-ios_Example.release.xcconfig */,
+			);
+			name = "Pods-vantiq-sdk-ios_Example";
+			path = "Target Support Files/Pods-vantiq-sdk-ios_Example";
+			sourceTree = "<group>";
+		};
+		6BB3ECA478C2FBF2B3BF114ECCCF4620 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				42070BF031AD8136C314A7D7983EC0E4 /* Classes */,
+			);
+			path = Pod;
+			sourceTree = "<group>";
+		};
+		723EBB7BF42EF9C255A6B3242F637A5F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FC2C57E78CE6DA0AF41436D13F54B898 /* Pods_vantiq_sdk_ios_Example.framework */,
+				E740C127D401D22ECC575BE922CDB390 /* Pods_vantiq_sdk_ios_Tests.framework */,
+				541DD37AAC2234A040951BAAE9B01F7D /* vantiq-sdk-ios.bundle */,
+				77EEF8BE927986F2FCD8DF68A9CDC1B9 /* vantiq_sdk_ios.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				1876E3F812C692202A4B8B7A5CDAAA42 /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				723EBB7BF42EF9C255A6B3242F637A5F /* Products */,
+				9C2BAC615F3B915EB984BD7E764F454B /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		9C2BAC615F3B915EB984BD7E764F454B /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4CA597648C6CFFB0CD5096FA72F16B43 /* Pods-vantiq-sdk-ios_Example */,
+				4AA7D22ECD0538EDB599DA723AEC9641 /* Pods-vantiq-sdk-ios_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		01F80194936CA390E8E5094E8EA46013 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9983EDC1DB5871BEED1C2D6B273158DE /* Pods-vantiq-sdk-ios_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF04FB2FDDA3435994881BE213C48E8E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A979AE79E7B46A72D0C072B0359F232 /* Pods-vantiq-sdk-ios_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E44687E4965594854636120CEE9D2FBE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD8801DCBFA4A703CB04D9415A408BBD /* vantiq-sdk-ios-umbrella.h in Headers */,
+				E58A979C7760197D94CF29E0BF25441D /* Vantiq.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		177C27DAFF3462E77CED46EFDF61646F /* Pods-vantiq-sdk-ios_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27BF793638DDBAE237CB0C52B39D98BB /* Build configuration list for PBXNativeTarget "Pods-vantiq-sdk-ios_Example" */;
+			buildPhases = (
+				30D9430E9BCEA24948D3A17EFD5B9920 /* Sources */,
+				DA83A820BBD59A05D276868AF174F9DF /* Frameworks */,
+				AF04FB2FDDA3435994881BE213C48E8E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F68E5097B6143ECBDADA932C9800D6A8 /* PBXTargetDependency */,
+			);
+			name = "Pods-vantiq-sdk-ios_Example";
+			productName = "Pods-vantiq-sdk-ios_Example";
+			productReference = FC2C57E78CE6DA0AF41436D13F54B898 /* Pods_vantiq_sdk_ios_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		22B47B101EC6DE4BAAF632D476B4721D /* vantiq-sdk-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09B931713DAC15B8B3E7D665D60DD5D7 /* Build configuration list for PBXNativeTarget "vantiq-sdk-ios" */;
+			buildPhases = (
+				362FF7CEF7E1A81FE50504FFF86B0B09 /* Sources */,
+				DF36553EF61B50696BB7463D7FF3B7BB /* Frameworks */,
+				8B2BF3E1DCCCD2A663B58263E2A6BC19 /* Resources */,
+				E44687E4965594854636120CEE9D2FBE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				39C759AEBA6E1B32970489D972F5AF63 /* PBXTargetDependency */,
+			);
+			name = "vantiq-sdk-ios";
+			productName = "vantiq-sdk-ios";
+			productReference = 77EEF8BE927986F2FCD8DF68A9CDC1B9 /* vantiq_sdk_ios.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3CE5A6CC285D6B8632F9887FFFBFC665 /* Pods-vantiq-sdk-ios_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B41004158F556364E9109198FC9B2DB2 /* Build configuration list for PBXNativeTarget "Pods-vantiq-sdk-ios_Tests" */;
+			buildPhases = (
+				F5CB0C5B527998DAB76B634B462E6554 /* Sources */,
+				ABE3FBB604330CAE8E21F9F126451E7B /* Frameworks */,
+				01F80194936CA390E8E5094E8EA46013 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E6FC49BE5E355622A80909A36A61D0CF /* PBXTargetDependency */,
+			);
+			name = "Pods-vantiq-sdk-ios_Tests";
+			productName = "Pods-vantiq-sdk-ios_Tests";
+			productReference = E740C127D401D22ECC575BE922CDB390 /* Pods_vantiq_sdk_ios_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3F6B1EEF133E975512946BAF3E4442C0 /* vantiq-sdk-ios-vantiq-sdk-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 296090CE7EDA2EF92D835EF108EEFEAD /* Build configuration list for PBXNativeTarget "vantiq-sdk-ios-vantiq-sdk-ios" */;
+			buildPhases = (
+				AAA05C7DB75F995AEB0DFA803D17E8A7 /* Sources */,
+				D04F824226EFD619B145E6AA3D12F4A3 /* Frameworks */,
+				CF56090014334255578F884084A9351A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "vantiq-sdk-ios-vantiq-sdk-ios";
+			productName = "vantiq-sdk-ios-vantiq-sdk-ios";
+			productReference = 541DD37AAC2234A040951BAAE9B01F7D /* vantiq-sdk-ios.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 723EBB7BF42EF9C255A6B3242F637A5F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				177C27DAFF3462E77CED46EFDF61646F /* Pods-vantiq-sdk-ios_Example */,
+				3CE5A6CC285D6B8632F9887FFFBFC665 /* Pods-vantiq-sdk-ios_Tests */,
+				22B47B101EC6DE4BAAF632D476B4721D /* vantiq-sdk-ios */,
+				3F6B1EEF133E975512946BAF3E4442C0 /* vantiq-sdk-ios-vantiq-sdk-ios */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8B2BF3E1DCCCD2A663B58263E2A6BC19 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4909A6FD19E838C3DB342DACFB7B1D68 /* vantiq-sdk-ios.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF56090014334255578F884084A9351A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		30D9430E9BCEA24948D3A17EFD5B9920 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD9D86755E513CF61BE71A269D12A5FE /* Pods-vantiq-sdk-ios_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		362FF7CEF7E1A81FE50504FFF86B0B09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				273A7623CC17128E16E67E80C4149B15 /* vantiq-sdk-ios-dummy.m in Sources */,
+				551595F7FDAA363D0E30C53AFD3BDD4C /* Vantiq.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAA05C7DB75F995AEB0DFA803D17E8A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5CB0C5B527998DAB76B634B462E6554 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C2C544FDD1FC972675C7EE9DD2CD80D /* Pods-vantiq-sdk-ios_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		39C759AEBA6E1B32970489D972F5AF63 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "vantiq-sdk-ios-vantiq-sdk-ios";
+			target = 3F6B1EEF133E975512946BAF3E4442C0 /* vantiq-sdk-ios-vantiq-sdk-ios */;
+			targetProxy = F62C52B6EE9CC3B7BDB77ECB7E932C3F /* PBXContainerItemProxy */;
+		};
+		E6FC49BE5E355622A80909A36A61D0CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "vantiq-sdk-ios";
+			target = 22B47B101EC6DE4BAAF632D476B4721D /* vantiq-sdk-ios */;
+			targetProxy = 9BDBC8C19ECB9B1864ED8209EAEB1809 /* PBXContainerItemProxy */;
+		};
+		F68E5097B6143ECBDADA932C9800D6A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "vantiq-sdk-ios";
+			target = 22B47B101EC6DE4BAAF632D476B4721D /* vantiq-sdk-ios */;
+			targetProxy = F3FBCB0031FF57481F970D40D49F96F7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2B389FAB51F6EEA43F72CA7BDC8E8E28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		32421BE7C357C8D870DD67ADE1DF07AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E8572C391CE334530C5AE65D40EEFDF /* Pods-vantiq-sdk-ios_Example.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-vantiq-sdk-ios_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-vantiq-sdk-ios_Example/Pods-vantiq-sdk-ios_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_vantiq_sdk_ios_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		58BBDE57901A603A70A398593AC2C075 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02324A9F539C38B6E16B76C543AB75F1 /* vantiq-sdk-ios.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = "vantiq-sdk-ios";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		5A0C6FE968931D888F00C9EC18DDF5BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		69609FE8E202722C82B44348843392A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02324A9F539C38B6E16B76C543AB75F1 /* vantiq-sdk-ios.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = "vantiq-sdk-ios";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		6ADBECDA4B4622E3AC3F1C6E41EF76B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18332C49AC003D56C1DBE8F4BCDB9359 /* Pods-vantiq-sdk-ios_Example.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-vantiq-sdk-ios_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-vantiq-sdk-ios_Example/Pods-vantiq-sdk-ios_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_vantiq_sdk_ios_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D18DD0B41C27472CC954D89157501C91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 197EA53C012EC683F05564A0609A4765 /* Pods-vantiq-sdk-ios_Tests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-vantiq-sdk-ios_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-vantiq-sdk-ios_Tests/Pods-vantiq-sdk-ios_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_vantiq_sdk_ios_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D989A073EA3EF2FE3BC7BC51BFAE3640 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C3D7B736F1013A479D78CDFC15BDDC6 /* Pods-vantiq-sdk-ios_Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-vantiq-sdk-ios_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-vantiq-sdk-ios_Tests/Pods-vantiq-sdk-ios_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_vantiq_sdk_ios_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DC25FEC8A7477670384ECD3429B3120D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02324A9F539C38B6E16B76C543AB75F1 /* vantiq-sdk-ios.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/vantiq-sdk-ios/vantiq-sdk-ios-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/vantiq-sdk-ios/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/vantiq-sdk-ios/vantiq-sdk-ios.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = vantiq_sdk_ios;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E73C7553638AAE87337DECDE30C15391 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02324A9F539C38B6E16B76C543AB75F1 /* vantiq-sdk-ios.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/vantiq-sdk-ios/vantiq-sdk-ios-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/vantiq-sdk-ios/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/vantiq-sdk-ios/vantiq-sdk-ios.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = vantiq_sdk_ios;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		09B931713DAC15B8B3E7D665D60DD5D7 /* Build configuration list for PBXNativeTarget "vantiq-sdk-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC25FEC8A7477670384ECD3429B3120D /* Debug */,
+				E73C7553638AAE87337DECDE30C15391 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27BF793638DDBAE237CB0C52B39D98BB /* Build configuration list for PBXNativeTarget "Pods-vantiq-sdk-ios_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6ADBECDA4B4622E3AC3F1C6E41EF76B7 /* Debug */,
+				32421BE7C357C8D870DD67ADE1DF07AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		296090CE7EDA2EF92D835EF108EEFEAD /* Build configuration list for PBXNativeTarget "vantiq-sdk-ios-vantiq-sdk-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58BBDE57901A603A70A398593AC2C075 /* Debug */,
+				69609FE8E202722C82B44348843392A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B389FAB51F6EEA43F72CA7BDC8E8E28 /* Debug */,
+				5A0C6FE968931D888F00C9EC18DDF5BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B41004158F556364E9109198FC9B2DB2 /* Build configuration list for PBXNativeTarget "Pods-vantiq-sdk-ios_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D18DD0B41C27472CC954D89157501C91 /* Debug */,
+				D989A073EA3EF2FE3BC7BC51BFAE3640 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

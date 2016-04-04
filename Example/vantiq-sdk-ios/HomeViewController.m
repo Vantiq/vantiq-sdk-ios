@@ -8,10 +8,10 @@
 
 #import "HomeViewController.h"
 #import "DecodeError.h"
-#import "VIQ.h"
+#import "Vantiq.h"
 #import <Foundation/Foundation.h>
 
-extern VIQ *v;
+extern Vantiq *v;
 
 @interface HomeViewController() {
     NSMutableString *results;
@@ -57,7 +57,7 @@ extern VIQ *v;
 }
 
 /************************************
- *  the next eight methods are helpers for each of the methods in the VIQ API
+ *  the next eight methods are helpers for each of the methods in the Vantiq API
  *  they call the API, recognize errors, either in transport or HTTP, or, if
  *  there are no errors, form a results string that indicates success
  */

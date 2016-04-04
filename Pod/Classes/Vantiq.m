@@ -1,20 +1,20 @@
 //
-//  VIQ.m
-//  VIQ
+//  Vantiq.m
+//  Vantiq
 //
 //  Created by Swan on 3/25/16.
 //  Copyright © 2016 Vantiq, Inc. All rights reserved.
 //
 
-#import "VIQ.h"
+#import "Vantiq.h"
 
-@interface VIQ()
+@interface Vantiq()
 @property (strong, nonatomic) NSString *apiServer;
 @property (readwrite, nonatomic) NSString *accessToken;
 @property unsigned long apiVersion;
 @end
 
-@implementation VIQ
+@implementation Vantiq
 
 - (id)initWithServer:(NSString *)server apiVersion:(unsigned long)version {
     if (self = [super init]) {
@@ -25,7 +25,7 @@
 }
 
 - (id)initWithServer:(NSString *)server {
-    return [self initWithServer:server apiVersion:VIQAPIVersion];
+    return [self initWithServer:server apiVersion:VantiqAPIVersion];
 }
 
 - (void)authenticate:(NSString *)username password:(NSString *)password
@@ -58,11 +58,11 @@
                             _accessToken = [jsonObject objectForKey:@"accessToken"];
                         } else {
                             // error if we can't find the dictionary keys
-                            jsonError = [NSError errorWithDomain:VIQErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
+                            jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
                         }
                     } else {
                         // error if return isn't a dictionary
-                        jsonError = [NSError errorWithDomain:VIQErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
+                        jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
                     }
                 }
             }
@@ -116,7 +116,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
                 if (!jsonError) {
                     if (![jsonObject isKindOfClass:[NSDictionary class]]) {
                         // error if return isn't a dictionary
-                        jsonError = [NSError errorWithDomain:VIQErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
+                        jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
                     }
                 }
             }
@@ -149,7 +149,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
                 if (!jsonError) {
                     if (![jsonObject isKindOfClass:[NSDictionary class]]) {
                         // error if return isn't a dictionary
-                        jsonError = [NSError errorWithDomain:VIQErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
+                        jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
                     }
                 }
             }
@@ -182,7 +182,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
                 if (!jsonError) {
                     if (![jsonObject isKindOfClass:[NSDictionary class]]) {
                         // error if return isn't a dictionary
-                        jsonError = [NSError errorWithDomain:VIQErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
+                        jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
                     }
                 }
             }
@@ -261,7 +261,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
                 if (!jsonError) {
                     if (![jsonObject isKindOfClass:[NSDictionary class]]) {
                         // error if return isn't a dictionary
-                        jsonError = [NSError errorWithDomain:VIQErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
+                        jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
                     }
                 }
             }
@@ -374,7 +374,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
                 if (!jsonError) {
                     if (![jsonObject isKindOfClass:[NSArray class]]) {
                         // error if return isn't a dictionary
-                        jsonError = [NSError errorWithDomain:VIQErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
+                        jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
                     }
                 }
             }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/VIQ.html">
+	<File path="Classes/Vantiq.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/VIQ</TokenIdentifier>
-			<Abstract type="html">The VIQ class declares the interface for authentication and subsequent interaction with a Vantiq server.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/Vantiq</TokenIdentifier>
+			<Abstract type="html">The Vantiq class declares the interface for authentication and subsequent interaction with a Vantiq server.</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
             
 			
 			<NodeRef refid="1"/>
@@ -13,9 +13,9 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/setAccessToken:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/setAccessToken:</TokenIdentifier>
 			<Abstract type="html">Access token to be used for direct Vantiq server operations.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 			<Declaration>@property (readonly, nonatomic) NSString *accessToken</Declaration>
 			
@@ -25,9 +25,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/accessToken</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/accessToken</TokenIdentifier>
 			<Abstract type="html">Access token to be used for direct Vantiq server operations.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 			<Declaration>@property (readonly, nonatomic) NSString *accessToken</Declaration>
 			
@@ -37,9 +37,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/VIQ/accessToken</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/Vantiq/accessToken</TokenIdentifier>
 			<Abstract type="html">Access token to be used for direct Vantiq server operations.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 			<Declaration>@property (readonly, nonatomic) NSString *accessToken</Declaration>
 			
@@ -49,9 +49,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/initWithServer:apiVersion:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/initWithServer:apiVersion:</TokenIdentifier>
 			<Abstract type="html">Constructor for use with all other Vantiq server operations.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 			<Declaration>- (id)initWithServer:(NSString *)server apiVersion:(unsigned long)version</Declaration>
 			<Parameters>
@@ -69,14 +69,14 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/initWithServer:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/initWithServer:</TokenIdentifier>
 			<Abstract type="html">Constructor for use with all other Vantiq server operations. This constructor
 will use the most recent version of the Vantiq API. If an earlier version of the
 API is required, use the initWithServer:server apiVersion:version contructor.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instm/VIQ/initWithServer:apiVersion:</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/instm/Vantiq/initWithServer:apiVersion:</TokenIdentifier>
 		
 	</RelatedTokens>
 	
@@ -93,10 +93,10 @@ API is required, use the initWithServer:server apiVersion:version contructor.</A
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/authenticate:password:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/authenticate:password:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The authenticate method connects to the Vantiq server with the given authentication
 credentials used to authorize the user. The username and password credentials are not stored.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 			<Declaration>- (void)authenticate:(NSString *)username password:(NSString *)password completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
@@ -117,10 +117,10 @@ credentials used to authorize the user. The username and password credentials ar
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/select:props:where:sort:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/select:props:where:sort:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The select method issues a query to select all matching records for a given type.
 The select may query both user-defined types as well as system types, such as procedures and types.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 			<Declaration>- (void)select:(NSString *)type props:(NSArray *)props where:(NSString *)where sort:(NSString *)sort completionHandler:(void ( ^ ) ( NSArray *data , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
@@ -147,13 +147,13 @@ The select may query both user-defined types as well as system types, such as pr
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/select:props:where:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/select:props:where:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The select method issues a query to select all matching records for a given type.
 The select may query both user-defined types as well as system types, such as procedures and types.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instm/VIQ/select:props:where:sort:completionHandler:</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/instm/Vantiq/select:props:where:sort:completionHandler:</TokenIdentifier>
 		
 	</RelatedTokens>
 	
@@ -179,13 +179,13 @@ The select may query both user-defined types as well as system types, such as pr
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/select:props:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/select:props:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The select method issues a query to select all matching records for a given type.
 The select may query both user-defined types as well as system types, such as procedures and types.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instm/VIQ/select:props:where:sort:completionHandler:</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/instm/Vantiq/select:props:where:sort:completionHandler:</TokenIdentifier>
 		
 	</RelatedTokens>
 	
@@ -208,13 +208,13 @@ The select may query both user-defined types as well as system types, such as pr
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/select:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/select:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The select method issues a query to select all matching records for a given type.
 The select may query both user-defined types as well as system types, such as procedures and types.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instm/VIQ/select:props:where:sort:completionHandler:</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/instm/Vantiq/select:props:where:sort:completionHandler:</TokenIdentifier>
 		
 	</RelatedTokens>
 	
@@ -234,12 +234,12 @@ The select may query both user-defined types as well as system types, such as pr
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/selectOne:id:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/selectOne:id:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The selectOne method issues a query to select a single record for a given type and unique identifier.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instm/VIQ/select:props:where:sort:completionHandler:</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/instm/Vantiq/select:props:where:sort:completionHandler:</TokenIdentifier>
 		
 	</RelatedTokens>
 	
@@ -262,9 +262,9 @@ The select may query both user-defined types as well as system types, such as pr
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/count:where:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/count:where:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The count method is similar to the select method except it returns only the number of records rather than returning the records themselves.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 			<Declaration>- (void)count:(NSString *)type where:(NSString *)where completionHandler:(void ( ^ ) ( int count , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
@@ -285,12 +285,12 @@ The select may query both user-defined types as well as system types, such as pr
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/count:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/count:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The count method is similar to the select method except it returns only the number of records rather than returning the records themselves.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instm/VIQ/count:where:completionHandler:</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/instm/Vantiq/count:where:completionHandler:</TokenIdentifier>
 		
 	</RelatedTokens>
 	
@@ -310,9 +310,9 @@ The select may query both user-defined types as well as system types, such as pr
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/insert:object:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/insert:object:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The insert method creates a new record of a given type.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 			<Declaration>- (void)insert:(NSString *)type object:(NSString *)object completionHandler:(void ( ^ ) ( NSDictionary *data , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
@@ -333,9 +333,9 @@ The select may query both user-defined types as well as system types, such as pr
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/update:id:object:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/update:id:object:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The update method updates an existing record of a given type. This method supports partial updates meaning that only the properties provided are updated. Any properties not specified are not changed in the underlying record.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 			<Declaration>- (void)update:(NSString *)type id:(NSString *)ID object:(NSString *)object completionHandler:(void ( ^ ) ( NSDictionary *data , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
@@ -359,9 +359,9 @@ The select may query both user-defined types as well as system types, such as pr
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/upsert:object:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/upsert:object:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The upsert method either creates or updates a record in the database depending if the record already exists. The method tests for existence by looking at the natural keys defined on the type.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 			<Declaration>- (void)upsert:(NSString *)type object:(NSString *)object completionHandler:(void ( ^ ) ( NSDictionary *data , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
@@ -382,9 +382,9 @@ The select may query both user-defined types as well as system types, such as pr
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/delete:where:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/delete:where:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The delete method removes records from the system for a given type. Deletes always require a constraint indicating which records to remove.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 			<Declaration>- (void)delete:(NSString *)type where:(NSString *)where completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
@@ -405,12 +405,12 @@ The select may query both user-defined types as well as system types, such as pr
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/deleteOne:id:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/deleteOne:id:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The deleteOne method issues a query to delete a single record for a given type and unique identifier.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instm/VIQ/delete:where:completionHandler:</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/instm/Vantiq/delete:where:completionHandler:</TokenIdentifier>
 		
 	</RelatedTokens>
 	
@@ -433,9 +433,9 @@ The select may query both user-defined types as well as system types, such as pr
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/publish:message:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/publish:message:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The publish method publishes a message onto a given topic. Messages published onto topics can trigger rules to facilitate identifying situations.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 			<Declaration>- (void)publish:(NSString *)topic message:(NSString *)message completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
@@ -456,9 +456,9 @@ The select may query both user-defined types as well as system types, such as pr
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/execute:params:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/execute:params:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The execute method executes a procedure on the Vantiq server. Procedures can take parameters (i.e. arguments) and produce a result.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 			<Declaration>- (void)execute:(NSString *)procedure params:(NSString *)params completionHandler:(void ( ^ ) ( NSDictionary *data , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
@@ -479,12 +479,12 @@ The select may query both user-defined types as well as system types, such as pr
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/VIQ/execute:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/execute:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The execute method executes a procedure on the Vantiq server. Procedures can take parameters (i.e. arguments) and produce a result.</Abstract>
-			<DeclaredIn>VIQ.h</DeclaredIn>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 	<RelatedTokens>
-		<TokenIdentifier>//apple_ref/occ/instm/VIQ/execute:params:completionHandler:</TokenIdentifier>
+		<TokenIdentifier>//apple_ref/occ/instm/Vantiq/execute:params:completionHandler:</TokenIdentifier>
 		
 	</RelatedTokens>
 	

@@ -26,23 +26,23 @@
 	<Library>
 		
 		<Node id="1" type="file" documentType="reference">
-            <Name>VIQ</Name>
-            <Path>Classes/VIQ.html</Path>
+            <Name>Vantiq</Name>
+            <Path>Classes/Vantiq.html</Path>
             
                 <Subnodes>
                 <Node type="section">
-                    <Path>Classes/VIQ.html</Path>
+                    <Path>Classes/Vantiq.html</Path>
                     <Name>Overview</Name>
                     <Anchor>overview</Anchor>
                 </Node>
                 <Node type="section">
-                    <Path>Classes/VIQ.html</Path>
+                    <Path>Classes/Vantiq.html</Path>
                     <Name>Tasks</Name>
                     <Anchor>tasks</Anchor>
                 </Node>
                 
                 <Node type="section">
-                    <Path>Classes/VIQ.html</Path>
+                    <Path>Classes/Vantiq.html</Path>
                     <Name>Properties</Name>
                     <Anchor>properties</Anchor>
                 </Node>
@@ -50,7 +50,7 @@
                 
                 
                 <Node type="section">
-                    <Path>Classes/VIQ.html</Path>
+                    <Path>Classes/Vantiq.html</Path>
                     <Name>Instance Methods</Name>
                     <Anchor>instance_methods</Anchor>
                 </Node>

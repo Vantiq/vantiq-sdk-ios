@@ -9,10 +9,10 @@
 #import "ViewController.h"
 #import "DecodeError.h"
 #import "DisplayAlert.h"
-#import "VIQ.h"
+#import "Vantiq.h"
 
-// our one globally-available VIQ endpoint
-VIQ *v;
+// our one globally-available Vantiq endpoint
+Vantiq *v;
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *username;
@@ -27,7 +27,7 @@ VIQ *v;
 }
 
 - (IBAction)loginTapped:(id)sender {
-    v = [[VIQ alloc] initWithServer:@"https://dev.vantiq.com"];
+    v = [[Vantiq alloc] initWithServer:@"https://dev.vantiq.com"];
     [v authenticate:_username.text password:_password.text completionHandler:^(NSHTTPURLResponse *response, NSError *error) {
         NSString *resultStr;
         if ([DecodeError formError:response error:error
