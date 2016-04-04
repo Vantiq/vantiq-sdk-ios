@@ -75,6 +75,11 @@ will use the most recent version of the Vantiq API. If an earlier version of the
 API is required, use the initWithServer:server apiVersion:version contructor.</Abstract>
 			<DeclaredIn>VIQ.h</DeclaredIn>
 			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instm/VIQ/initWithServer:apiVersion:</TokenIdentifier>
+		
+	</RelatedTokens>
+	
 			<Declaration>- (id)initWithServer:(NSString *)server</Declaration>
 			<Parameters>
 				<Parameter>
@@ -106,7 +111,7 @@ credentials used to authorize the user. The username and password credentials ar
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
-			
+			<ReturnValue><Abstract type="html">response: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/authenticate:password:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
@@ -136,7 +141,7 @@ The select may query both user-defined types as well as system types, such as pr
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
-			
+			<ReturnValue><Abstract type="html">data: array of NSDictionary objects of matching recordsresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/select:props:where:sort:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
@@ -147,6 +152,11 @@ The select may query both user-defined types as well as system types, such as pr
 The select may query both user-defined types as well as system types, such as procedures and types.</Abstract>
 			<DeclaredIn>VIQ.h</DeclaredIn>
 			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instm/VIQ/select:props:where:sort:completionHandler:</TokenIdentifier>
+		
+	</RelatedTokens>
+	
 			<Declaration>- (void)select:(NSString *)type props:(NSArray *)props where:(NSString *)where completionHandler:(void ( ^ ) ( NSArray *data , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
 				<Parameter>
@@ -163,7 +173,7 @@ The select may query both user-defined types as well as system types, such as pr
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
-			
+			<ReturnValue><Abstract type="html">data: array of NSDictionary objects of matching recordsresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/select:props:where:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
@@ -174,6 +184,11 @@ The select may query both user-defined types as well as system types, such as pr
 The select may query both user-defined types as well as system types, such as procedures and types.</Abstract>
 			<DeclaredIn>VIQ.h</DeclaredIn>
 			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instm/VIQ/select:props:where:sort:completionHandler:</TokenIdentifier>
+		
+	</RelatedTokens>
+	
 			<Declaration>- (void)select:(NSString *)type props:(NSArray *)props completionHandler:(void ( ^ ) ( NSArray *data , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
 				<Parameter>
@@ -187,7 +202,7 @@ The select may query both user-defined types as well as system types, such as pr
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
-			
+			<ReturnValue><Abstract type="html">data: array of NSDictionary objects of matching recordsresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/select:props:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
@@ -198,6 +213,11 @@ The select may query both user-defined types as well as system types, such as pr
 The select may query both user-defined types as well as system types, such as procedures and types.</Abstract>
 			<DeclaredIn>VIQ.h</DeclaredIn>
 			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instm/VIQ/select:props:where:sort:completionHandler:</TokenIdentifier>
+		
+	</RelatedTokens>
+	
 			<Declaration>- (void)select:(NSString *)type completionHandler:(void ( ^ ) ( NSArray *data , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
 				<Parameter>
@@ -208,7 +228,7 @@ The select may query both user-defined types as well as system types, such as pr
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
-			
+			<ReturnValue><Abstract type="html">data: array of NSDictionary objects of matching recordsresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/select:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
@@ -218,6 +238,11 @@ The select may query both user-defined types as well as system types, such as pr
 			<Abstract type="html">The selectOne method issues a query to select a single record for a given type and unique identifier.</Abstract>
 			<DeclaredIn>VIQ.h</DeclaredIn>
 			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instm/VIQ/select:props:where:sort:completionHandler:</TokenIdentifier>
+		
+	</RelatedTokens>
+	
 			<Declaration>- (void)selectOne:(NSString *)type id:(NSString *)ID completionHandler:(void ( ^ ) ( NSArray *data , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
 				<Parameter>
@@ -231,7 +256,7 @@ The select may query both user-defined types as well as system types, such as pr
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
-			
+			<ReturnValue><Abstract type="html">data: array of NSDictionary objects of matching recordsresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/selectOne:id:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
@@ -254,7 +279,7 @@ The select may query both user-defined types as well as system types, such as pr
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
-			
+			<ReturnValue><Abstract type="html">count: number of matching recordsresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/count:where:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
@@ -264,6 +289,11 @@ The select may query both user-defined types as well as system types, such as pr
 			<Abstract type="html">The count method is similar to the select method except it returns only the number of records rather than returning the records themselves.</Abstract>
 			<DeclaredIn>VIQ.h</DeclaredIn>
 			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instm/VIQ/count:where:completionHandler:</TokenIdentifier>
+		
+	</RelatedTokens>
+	
 			<Declaration>- (void)count:(NSString *)type completionHandler:(void ( ^ ) ( int count , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
 				<Parameter>
@@ -274,7 +304,7 @@ The select may query both user-defined types as well as system types, such as pr
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
-			
+			<ReturnValue><Abstract type="html">count: number of matching recordsresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/count:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
@@ -297,7 +327,7 @@ The select may query both user-defined types as well as system types, such as pr
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
-			
+			<ReturnValue><Abstract type="html">data: copy of the inserted dataresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/insert:object:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
@@ -323,7 +353,7 @@ The select may query both user-defined types as well as system types, such as pr
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
-			
+			<ReturnValue><Abstract type="html">data: copy of the updated dataresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/update:id:object:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
@@ -346,7 +376,7 @@ The select may query both user-defined types as well as system types, such as pr
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
-			
+			<ReturnValue><Abstract type="html">data: copy of the upserted dataresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/upsert:object:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
@@ -369,7 +399,7 @@ The select may query both user-defined types as well as system types, such as pr
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
-			
+			<ReturnValue><Abstract type="html">response: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/delete:where:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
@@ -379,6 +409,11 @@ The select may query both user-defined types as well as system types, such as pr
 			<Abstract type="html">The deleteOne method issues a query to delete a single record for a given type and unique identifier.</Abstract>
 			<DeclaredIn>VIQ.h</DeclaredIn>
 			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instm/VIQ/delete:where:completionHandler:</TokenIdentifier>
+		
+	</RelatedTokens>
+	
 			<Declaration>- (void)deleteOne:(NSString *)type id:(NSString *)ID completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
 				<Parameter>
@@ -392,7 +427,7 @@ The select may query both user-defined types as well as system types, such as pr
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
-			
+			<ReturnValue><Abstract type="html">response: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/deleteOne:id:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
@@ -415,7 +450,7 @@ The select may query both user-defined types as well as system types, such as pr
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
-			
+			<ReturnValue><Abstract type="html">response: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/publish:message:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
@@ -438,7 +473,7 @@ The select may query both user-defined types as well as system types, such as pr
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
-			
+			<ReturnValue><Abstract type="html">data: result of method execution, if anyresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/execute:params:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
@@ -448,6 +483,11 @@ The select may query both user-defined types as well as system types, such as pr
 			<Abstract type="html">The execute method executes a procedure on the Vantiq server. Procedures can take parameters (i.e. arguments) and produce a result.</Abstract>
 			<DeclaredIn>VIQ.h</DeclaredIn>
 			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instm/VIQ/execute:params:completionHandler:</TokenIdentifier>
+		
+	</RelatedTokens>
+	
 			<Declaration>- (void)execute:(NSString *)procedure completionHandler:(void ( ^ ) ( NSDictionary *data , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
 				<Parameter>
@@ -458,7 +498,7 @@ The select may query both user-defined types as well as system types, such as pr
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
-			
+			<ReturnValue><Abstract type="html">data: result of method execution, if anyresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/execute:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>

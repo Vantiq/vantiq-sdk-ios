@@ -312,6 +312,15 @@ API is required, use the initWithServer:server apiVersion:version contructor.</p
 			
 
 			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/initWithServer:apiVersion:">- initWithServer:apiVersion:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
 
 			
 			<div class="method-subsection declared-in-section">
@@ -368,6 +377,11 @@ credentials used to authorize the user. The username and password credentials ar
 			
 
 			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
 
 			
 
@@ -375,12 +389,10 @@ credentials used to authorize the user. The username and password credentials ar
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>The authenticate method connects to the Vantiq server with the given authentication
-credentials used to authorize the user. The username and password credentials are not stored.</p>
-
-<p>Please also note this method invokes a callback block associated with a network-
+credentials used to authorize the user. The username and password credentials are not stored.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
-its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
-to ensure UI operations are completed on the main thread.</p>
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
+to ensure UI operations are completed on the main thread.</p></div>
 			</div>
 			
 
@@ -453,6 +465,11 @@ The select may query both user-defined types as well as system types, such as pr
 			
 
 			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>data: array of NSDictionary objects of matching records</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
 
 			
 
@@ -460,12 +477,10 @@ The select may query both user-defined types as well as system types, such as pr
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>The select method issues a query to select all matching records for a given type.
-The select may query both user-defined types as well as system types, such as procedures and types.</p>
-
-<p>Please also note this method invokes a callback block associated with a network-
+The select may query both user-defined types as well as system types, such as procedures and types.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
-its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
-to ensure UI operations are completed on the main thread.</p>
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
+to ensure UI operations are completed on the main thread.</p></div>
 			</div>
 			
 
@@ -533,6 +548,11 @@ The select may query both user-defined types as well as system types, such as pr
 			
 
 			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>data: array of NSDictionary objects of matching records</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
 
 			
 
@@ -540,20 +560,27 @@ The select may query both user-defined types as well as system types, such as pr
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>The select method issues a query to select all matching records for a given type.
-The select may query both user-defined types as well as system types, such as procedures and types.</p>
-
-<p>Please also note this method invokes a callback block associated with a network-
+The select may query both user-defined types as well as system types, such as procedures and types.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
-its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
-errors returned by the select operation. The callback data returned is an array of NSDictionary objects.</p>
+errors returned by the select operation. The callback data returned is an array of NSDictionary objects.</p></div>
 			</div>
 			
 
 			
 
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/select:props:where:sort:completionHandler:">- select:props:where:sort:completionHandler:</a></p></code></li>
+					
+				</ul>
+			</div>
 			
 
 			
@@ -611,6 +638,11 @@ The select may query both user-defined types as well as system types, such as pr
 			
 
 			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>data: array of NSDictionary objects of matching records</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
 
 			
 
@@ -618,20 +650,27 @@ The select may query both user-defined types as well as system types, such as pr
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>The select method issues a query to select all matching records for a given type.
-The select may query both user-defined types as well as system types, such as procedures and types.</p>
-
-<p>Please also note this method invokes a callback block associated with a network-
+The select may query both user-defined types as well as system types, such as procedures and types.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
-its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
-errors returned by the select operation. The callback data returned is an array of NSDictionary objects.</p>
+errors returned by the select operation. The callback data returned is an array of NSDictionary objects.</p></div>
 			</div>
 			
 
 			
 
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/select:props:where:sort:completionHandler:">- select:props:where:sort:completionHandler:</a></p></code></li>
+					
+				</ul>
+			</div>
 			
 
 			
@@ -684,6 +723,11 @@ The select may query both user-defined types as well as system types, such as pr
 			
 
 			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>data: array of NSDictionary objects of matching records</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
 
 			
 
@@ -691,20 +735,27 @@ The select may query both user-defined types as well as system types, such as pr
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>The select method issues a query to select all matching records for a given type.
-The select may query both user-defined types as well as system types, such as procedures and types.</p>
-
-<p>Please also note this method invokes a callback block associated with a network-
+The select may query both user-defined types as well as system types, such as procedures and types.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
-its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
-errors returned by the select operation. The callback data returned is an array of NSDictionary objects.</p>
+errors returned by the select operation. The callback data returned is an array of NSDictionary objects.</p></div>
 			</div>
 			
 
 			
 
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/select:props:where:sort:completionHandler:">- select:props:where:sort:completionHandler:</a></p></code></li>
+					
+				</ul>
+			</div>
 			
 
 			
@@ -761,26 +812,38 @@ errors returned by the select operation. The callback data returned is an array 
 			
 
 			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>data: array of NSDictionary objects of matching records</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
 
 			
 
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The selectOne method issues a query to select a single record for a given type and unique identifier.</p>
-
-<p>Please also note this method invokes a callback block associated with a network-
+				<p>The selectOne method issues a query to select a single record for a given type and unique identifier.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
-its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
-errors returned by the selectOne operation. The callback data returned is an array of NSDictionary objects.</p>
+errors returned by the selectOne operation. The callback data returned is an array of NSDictionary objects.</p></div>
 			</div>
 			
 
 			
 
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/select:props:where:sort:completionHandler:">- select:props:where:sort:completionHandler:</a></p></code></li>
+					
+				</ul>
+			</div>
 			
 
 			
@@ -837,21 +900,24 @@ errors returned by the selectOne operation. The callback data returned is an arr
 			
 
 			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>count: number of matching records</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
 
 			
 
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The count method is similar to the select method except it returns only the number of records rather than returning the records themselves.</p>
-
-<p>Please also note this method invokes a callback block associated with a network-
+				<p>The count method is similar to the select method except it returns only the number of records rather than returning the records themselves.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
-its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
-errors returned by the count operation. The callback count returned is a count of the items requested.</p>
+errors returned by the count operation. The callback count returned is a count of the items requested.</p></div>
 			</div>
 			
 
@@ -908,26 +974,38 @@ errors returned by the count operation. The callback count returned is a count o
 			
 
 			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>count: number of matching records</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
 
 			
 
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The count method is similar to the select method except it returns only the number of records rather than returning the records themselves.</p>
-
-<p>Please also note this method invokes a callback block associated with a network-
+				<p>The count method is similar to the select method except it returns only the number of records rather than returning the records themselves.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
-its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
-errors returned by the count operation. The callback count returned is a count of the items requested.</p>
+errors returned by the count operation. The callback count returned is a count of the items requested.</p></div>
 			</div>
 			
 
 			
 
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/count:where:completionHandler:">- count:where:completionHandler:</a></p></code></li>
+					
+				</ul>
+			</div>
 			
 
 			
@@ -984,21 +1062,24 @@ errors returned by the count operation. The callback count returned is a count o
 			
 
 			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>data: copy of the inserted data</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
 
 			
 
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The insert method creates a new record of a given type.</p>
-
-<p>Please also note this method invokes a callback block associated with a network-
+				<p>The insert method creates a new record of a given type.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
-its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
-errors returned by the insert operation. The callback data returned is a copy of the inserted data.</p>
+errors returned by the insert operation. The callback data returned is a copy of the inserted data.</p></div>
 			</div>
 			
 
@@ -1065,21 +1146,24 @@ errors returned by the insert operation. The callback data returned is a copy of
 			
 
 			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>data: copy of the updated data</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
 
 			
 
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The update method updates an existing record of a given type. This method supports partial updates meaning that only the properties provided are updated. Any properties not specified are not changed in the underlying record.</p>
-
-<p>Please also note this method invokes a callback block associated with a network-
+				<p>The update method updates an existing record of a given type. This method supports partial updates meaning that only the properties provided are updated. Any properties not specified are not changed in the underlying record.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
-its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
-errors returned by the insert operation. The callback data returned is a copy of the updated data.</p>
+errors returned by the insert operation. The callback data returned is a copy of the updated data.</p></div>
 			</div>
 			
 
@@ -1141,21 +1225,24 @@ errors returned by the insert operation. The callback data returned is a copy of
 			
 
 			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>data: copy of the upserted data</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
 
 			
 
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The upsert method either creates or updates a record in the database depending if the record already exists. The method tests for existence by looking at the natural keys defined on the type.</p>
-
-<p>Please also note this method invokes a callback block associated with a network-
+				<p>The upsert method either creates or updates a record in the database depending if the record already exists. The method tests for existence by looking at the natural keys defined on the type.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
-its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
-errors returned by the insert operation. The callback data returned is a copy of the upserted data.</p>
+errors returned by the insert operation. The callback data returned is a copy of the upserted data.</p></div>
 			</div>
 			
 
@@ -1217,21 +1304,24 @@ errors returned by the insert operation. The callback data returned is a copy of
 			
 
 			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
 
 			
 
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The delete method removes records from the system for a given type. Deletes always require a constraint indicating which records to remove.</p>
-
-<p>Please also note this method invokes a callback block associated with a network-
+				<p>The delete method removes records from the system for a given type. Deletes always require a constraint indicating which records to remove.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
-its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
-errors returned by the deleteOne operation.</p>
+errors returned by the deleteOne operation.</p></div>
 			</div>
 			
 
@@ -1293,26 +1383,38 @@ errors returned by the deleteOne operation.</p>
 			
 
 			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
 
 			
 
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The deleteOne method issues a query to delete a single record for a given type and unique identifier.</p>
-
-<p>Please also note this method invokes a callback block associated with a network-
+				<p>The deleteOne method issues a query to delete a single record for a given type and unique identifier.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
-its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
-errors returned by the delete operation.</p>
+errors returned by the delete operation.</p></div>
 			</div>
 			
 
 			
 
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/delete:where:completionHandler:">- delete:where:completionHandler:</a></p></code></li>
+					
+				</ul>
+			</div>
 			
 
 			
@@ -1369,6 +1471,11 @@ errors returned by the delete operation.</p>
 			
 
 			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
 
 			
 
@@ -1377,15 +1484,13 @@ errors returned by the delete operation.</p>
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>The publish method publishes a message onto a given topic. Messages published onto topics can trigger rules to facilitate identifying situations.</p>
 
-<p>Topics are slash-delimited strings, such as &lsquo;/test/topic&rsquo;. Vantiq system-defined topics begin with /type, /property, /system, and /source.</p>
-
-<p>Please also note this method invokes a callback block associated with a network-
+<p>Topics are slash-delimited strings, such as &lsquo;/test/topic&rsquo;. Vantiq system-defined topics begin with /type, /property, /system, and /source.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
-its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
-errors returned by the publish operation.</p>
+errors returned by the publish operation.</p></div>
 			</div>
 			
 
@@ -1447,21 +1552,24 @@ errors returned by the publish operation.</p>
 			
 
 			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>data: result of method execution, if any</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
 
 			
 
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The execute method executes a procedure on the Vantiq server. Procedures can take parameters (i.e. arguments) and produce a result.</p>
-
-<p>Please also note this method invokes a callback block associated with a network-
+				<p>The execute method executes a procedure on the Vantiq server. Procedures can take parameters (i.e. arguments) and produce a result.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
-its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
-errors returned by the execute operation. The callback data returns the results of the procedure, if any.</p>
+errors returned by the execute operation. The callback data returns the results of the procedure, if any.</p></div>
 			</div>
 			
 
@@ -1518,26 +1626,38 @@ errors returned by the execute operation. The callback data returns the results 
 			
 
 			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>data: result of method execution, if any</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
 
 			
 
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The execute method executes a procedure on the Vantiq server. Procedures can take parameters (i.e. arguments) and produce a result.</p>
-
-<p>Please also note this method invokes a callback block associated with a network-
+				<p>The execute method executes a procedure on the Vantiq server. Procedures can take parameters (i.e. arguments) and produce a result.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
-its code must be wrapped by a call to dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
-errors returned by the execute operation. The callback data returns the results of the procedure, if any.</p>
+errors returned by the execute operation. The callback data returns the results of the procedure, if any.</p></div>
 			</div>
 			
 
 			
 
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/execute:params:completionHandler:">- execute:params:completionHandler:</a></p></code></li>
+					
+				</ul>
+			</div>
 			
 
 			
@@ -1564,7 +1684,7 @@ errors returned by the execute operation. The callback data returns the results 
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 VantIQ, Inc. All rights reserved. Updated: 2016-04-01</p>
+						<p class="copyright">Copyright &copy; 2016 VantIQ, Inc. All rights reserved. Updated: 2016-04-04</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
