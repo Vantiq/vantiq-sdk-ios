@@ -42,7 +42,7 @@ An Xcode Documentation Set (docset) is built by executing the _builddoc.sh_ shel
 
 ## API
 
-HTML-format documentation for the SDK methods may be found in the Pod/help/html directory.
+[HTML-format documentation](https://rawgit.com/Vantiq/vantiq-sdk-ios/master/Pod/help/html/index.html) for the SDK methods may be found in the Pod/help/html directory.
 
 ## Author
 
