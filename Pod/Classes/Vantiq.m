@@ -41,7 +41,7 @@
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         if (error) {
             handler(httpResponse, error);
@@ -102,7 +102,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     [request setHTTPBody:[object dataUsingEncoding:NSASCIIStringEncoding]];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         if (error) {
             handler(0, httpResponse, error);
@@ -135,7 +135,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
 
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         id jsonObject = NULL;
         if (error) {
@@ -168,7 +168,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     [request setHTTPBody:[object dataUsingEncoding:NSASCIIStringEncoding]];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         id jsonObject = NULL;
         if (error) {
@@ -209,7 +209,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         handler(httpResponse, error);
     }];
@@ -230,7 +230,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         handler(httpResponse, error);
     }];
@@ -247,7 +247,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     }
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         id jsonObject = NULL;
         if (error) {
@@ -294,7 +294,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         if (error) {
             handler(0, httpResponse, error);
@@ -359,7 +359,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         id jsonObject = NULL;
         if (error) {
