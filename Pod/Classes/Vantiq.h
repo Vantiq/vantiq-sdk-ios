@@ -10,7 +10,7 @@
 
 #define VantiqAPIVersion               1
 #define errorCodeIncompleteJSON     1
-#define VantiqErrorDomain              @"com.vantiq.Vantiq"
+#define VantiqErrorDomain              @"io.vantiq.Vantiq"
 
 /**
 The Vantiq class declares the interface for authentication and subsequent interaction with a Vantiq server.
