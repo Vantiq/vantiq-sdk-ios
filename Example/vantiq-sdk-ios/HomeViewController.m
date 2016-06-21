@@ -8,7 +8,9 @@
 
 #import "HomeViewController.h"
 #import "DecodeError.h"
-#import "Vantiq.h"
+#import "DisplayAlert.h"
+#import "AppDelegate.h"
+#import <vantiq_sdk_ios/Vantiq.h>
 #import <Foundation/Foundation.h>
 
 extern Vantiq *v;
@@ -40,6 +42,19 @@ extern Vantiq *v;
     [super viewDidLoad];
     results = [NSMutableString new];
     _queueCount = [NSNumber new];
+    
+    // register for Push Notifications, the first parameter is the Firebase Server Key, the second is
+    // the Firebase token which is retrieved in the AppDelegate
+    [v registerForPushNotifications:((AppDelegate *)[UIApplication sharedApplication].delegate).APNSDeviceToken
+        completionHandler:^(NSDictionary *data, NSHTTPURLResponse *response, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                NSString *resultStr;
+                if ([DecodeError formError:response error:error
+                    diagnosis:NSLocalizedString(@"com.vantiq.demo.PushNotificationErrorExplain", @"") resultStr:&resultStr]) {
+                    [DisplayAlert display:self title:NSLocalizedString(@"com.vantiq.demo.PushNotificationError", @"") message:resultStr];
+                }
+            });
+    }];
 }
 
 /*

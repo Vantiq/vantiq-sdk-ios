@@ -93,6 +93,30 @@ API is required, use the initWithServer:server apiVersion:version contructor.</A
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/verify:</TokenIdentifier>
+			<Abstract type="html">The verify method attempts to validate an existing Vantiq server token. If the token has expired
+or a token has never been issued, the error parameter in the callback will be non-null and the
+app should then call authenticate (see below) in order to reauthenticate the user.</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
+			
+	<RelatedTokens>
+		<TokenIdentifier>//apple_ref/occ/instm/Vantiq/authenticate:password:completionHandler:</TokenIdentifier>
+		
+	</RelatedTokens>
+	
+			<Declaration>- (void)verify:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>handler</Name>
+					<Abstract type="html">The handler block to execute.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">response: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
+			<Anchor>//api/name/verify:</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/authenticate:password:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The authenticate method connects to the Vantiq server with the given authentication
 credentials used to authorize the user. The username and password credentials are not stored.</Abstract>
@@ -500,6 +524,29 @@ The select may query both user-defined types as well as system types, such as pr
 			</Parameters>
 			<ReturnValue><Abstract type="html">data: result of method execution, if anyresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/execute:completionHandler:</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/registerForPushNotifications:completionHandler:</TokenIdentifier>
+			<Abstract type="html">The registerForPushNotifications method registers an app to receive Apple Push Notifications. Please note that
+you must enable the iOS app for Push Notifications and for the remote-notifications Background Mode, in addition
+to assigning a bundle identifier in both the app and in the app definition and provisioning profiles at the
+Apple Developer site.</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
+			
+			<Declaration>- (void)registerForPushNotifications:(NSString *)APNSDeviceToken completionHandler:(void ( ^ ) ( NSDictionary *data , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>APNSDeviceToken</Name>
+					<Abstract type="html">The APNS Device Token returned by the registerForRemoteNotifications method.</Abstract>
+				</Parameter><Parameter>
+					<Name>handler</Name>
+					<Abstract type="html">The handler block to execute.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">data: result of method execution, if anyresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
+			<Anchor>//api/name/registerForPushNotifications:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		

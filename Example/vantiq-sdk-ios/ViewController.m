@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "DecodeError.h"
 #import "DisplayAlert.h"
-#import "Vantiq.h"
+#import <vantiq_sdk_ios/Vantiq.h>
 
 // our one globally-available Vantiq endpoint
 Vantiq *v;
@@ -24,10 +24,17 @@ Vantiq *v;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    v = [[Vantiq alloc] initWithServer:@"http://10.1.10.230:8080"];    //https://dev.vantiq.com"];
+    [v verify:^(NSHTTPURLResponse *response, NSError *error) {
+        NSString *resultStr;
+        if (![DecodeError formError:response error:error diagnosis:@"" resultStr:&resultStr]) {
+            // the user already has a valid token so no need to log in
+            [self performSegueWithIdentifier:@"Home" sender:self];
+        }
+    }];
 }
 
 - (IBAction)loginTapped:(id)sender {
-    v = [[Vantiq alloc] initWithServer:@"https://dev.vantiq.com"];
     [v authenticate:_username.text password:_password.text completionHandler:^(NSHTTPURLResponse *response, NSError *error) {
         NSString *resultStr;
         if ([DecodeError formError:response error:error

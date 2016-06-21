@@ -1,10 +1,6 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'vantiq-sdk-ios_Example', :exclusive => true do
-  pod 'vantiq-sdk-ios', :path => '../'
-end
-
 target 'vantiq-sdk-ios_Tests', :exclusive => true do
   pod 'vantiq-sdk-ios', :path => '../'
 

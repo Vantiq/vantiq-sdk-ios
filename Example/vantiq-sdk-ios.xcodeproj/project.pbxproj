@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F20AC997866FC9531F8E734 /* Pods_vantiq_sdk_ios_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38C6D18F5BE1ACE5C27A66E0 /* Pods_vantiq_sdk_ios_Tests.framework */; };
 		5604928F1CAC8A340016B689 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5604928D1CAC8A340016B689 /* Main.storyboard */; };
 		560492921CAC8A4B0016B689 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560492901CAC8A4B0016B689 /* LaunchScreen.storyboard */; };
 		560492A11CAC8B1E0016B689 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 560492941CAC8B1E0016B689 /* AppDelegate.m */; };
@@ -20,16 +19,17 @@
 		560492A81CAC8B1E0016B689 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5604929E1CAC8B1E0016B689 /* Images.xcassets */; };
 		560492A91CAC8B1E0016B689 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560492A01CAC8B1E0016B689 /* ViewController.m */; };
 		560492AB1CAC93830016B689 /* Vantiq-151x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 560492AA1CAC93830016B689 /* Vantiq-151x40.png */; };
+		5659700E1D19EE720043CAA1 /* vantiq_sdk_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5659700C1D19EC290043CAA1 /* vantiq_sdk_ios.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		56AE2ECF1D19EFB5001492AD /* vantiq_sdk_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5659700C1D19EC290043CAA1 /* vantiq_sdk_ios.framework */; };
+		56AE2ED01D19EFB5001492AD /* vantiq_sdk_ios.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5659700C1D19EC290043CAA1 /* vantiq_sdk_ios.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
-		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		F41F4665E8A9739493782C2A /* Pods_vantiq_sdk_ios_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F63A2E49317C97D1CE9631D1 /* Pods_vantiq_sdk_ios_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,10 +42,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		56AE2ED11D19EFB5001492AD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				56AE2ED01D19EFB5001492AD /* vantiq_sdk_ios.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		38C6D18F5BE1ACE5C27A66E0 /* Pods_vantiq_sdk_ios_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vantiq_sdk_ios_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		10B68A8AAE19389A84790F61 /* Pods-vantiq-sdk-ios_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vantiq-sdk-ios_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-vantiq-sdk-ios_Tests/Pods-vantiq-sdk-ios_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		39A3568209D0D4D99A94AC1A /* Pods-vantiq-sdk-ios_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vantiq-sdk-ios_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vantiq-sdk-ios_Tests/Pods-vantiq-sdk-ios_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		3F1A2F41136EF1FA47BB954A /* vantiq-sdk-ios.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = "vantiq-sdk-ios.podspec"; path = "../vantiq-sdk-ios.podspec"; sourceTree = "<group>"; };
-		55A7A506CD114EF1C0DFDFAF /* Pods-vantiq-sdk-ios_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vantiq-sdk-ios_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-vantiq-sdk-ios_Example/Pods-vantiq-sdk-ios_Example.release.xcconfig"; sourceTree = "<group>"; };
 		5604928E1CAC8A340016B689 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		560492911CAC8A4B0016B689 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		560492931CAC8B1E0016B689 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -63,6 +77,7 @@
 		5604929F1CAC8B1E0016B689 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		560492A01CAC8B1E0016B689 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		560492AA1CAC93830016B689 /* Vantiq-151x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vantiq-151x40.png"; path = "vantiq-sdk-ios/Images/Vantiq-151x40.png"; sourceTree = "<group>"; };
+		5659700C1D19EC290043CAA1 /* vantiq_sdk_ios.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = vantiq_sdk_ios.framework; path = "../../../Library/Developer/Xcode/DerivedData/vantiq-sdk-ios-ankaiqrdfivbbffexidiucgqoxpz/Build/Products/Debug-iphoneos/vantiq_sdk_ios.framework"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* vantiq-sdk-ios_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vantiq-sdk-ios_Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -71,17 +86,12 @@
 		6003F599195388D20070C39A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6003F59B195388D20070C39A /* vantiq-sdk-ios-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vantiq-sdk-ios-Prefix.pch"; sourceTree = "<group>"; };
 		6003F5AE195388D20070C39A /* vantiq-sdk-ios_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "vantiq-sdk-ios_Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		68B7B2687019351100E39148 /* Pods-vantiq-sdk-ios_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vantiq-sdk-ios_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vantiq-sdk-ios_Example/Pods-vantiq-sdk-ios_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		B3E90303F1CEB695A81E44E7 /* Pods-vantiq-sdk-ios_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vantiq-sdk-ios_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vantiq-sdk-ios_Tests/Pods-vantiq-sdk-ios_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		C2B3F57FBE03B234A3F4ABDA /* Pods-vantiq-sdk-ios_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vantiq-sdk-ios_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-vantiq-sdk-ios_Tests/Pods-vantiq-sdk-ios_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C870C083249B7EE9630790A0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		E2F88D5B8BC0B46EC30AEDCD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		F63A2E49317C97D1CE9631D1 /* Pods_vantiq_sdk_ios_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vantiq_sdk_ios_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,10 +99,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56AE2ECF1D19EFB5001492AD /* vantiq_sdk_ios.framework in Frameworks */,
+				5659700E1D19EE720043CAA1 /* vantiq_sdk_ios.framework in Frameworks */,
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				F41F4665E8A9739493782C2A /* Pods_vantiq_sdk_ios_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,10 +111,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				1F20AC997866FC9531F8E734 /* Pods_vantiq_sdk_ios_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,7 +128,7 @@
 				6003F5B5195388D20070C39A /* Tests */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
-				8F9D4441207F7DD727A30A06 /* Pods */,
+				79CA2643588585F78E3DAD80 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,12 +144,10 @@
 		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5659700C1D19EC290043CAA1 /* vantiq_sdk_ios.framework */,
 				6003F58D195388D20070C39A /* Foundation.framework */,
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
-				6003F5AF195388D20070C39A /* XCTest.framework */,
-				F63A2E49317C97D1CE9631D1 /* Pods_vantiq_sdk_ios_Example.framework */,
-				38C6D18F5BE1ACE5C27A66E0 /* Pods_vantiq_sdk_ios_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -209,13 +216,11 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		8F9D4441207F7DD727A30A06 /* Pods */ = {
+		79CA2643588585F78E3DAD80 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				68B7B2687019351100E39148 /* Pods-vantiq-sdk-ios_Example.debug.xcconfig */,
-				55A7A506CD114EF1C0DFDFAF /* Pods-vantiq-sdk-ios_Example.release.xcconfig */,
-				B3E90303F1CEB695A81E44E7 /* Pods-vantiq-sdk-ios_Tests.debug.xcconfig */,
-				C2B3F57FBE03B234A3F4ABDA /* Pods-vantiq-sdk-ios_Tests.release.xcconfig */,
+				39A3568209D0D4D99A94AC1A /* Pods-vantiq-sdk-ios_Tests.debug.xcconfig */,
+				10B68A8AAE19389A84790F61 /* Pods-vantiq-sdk-ios_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -227,12 +232,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "vantiq-sdk-ios_Example" */;
 			buildPhases = (
-				5013B547873C3E873DA927B0 /* Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				75BA0B40F6B05E8A802D859C /* Embed Pods Frameworks */,
-				10546A0EC6445B9CE11E2132 /* Copy Pods Resources */,
+				56AE2ED11D19EFB5001492AD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -247,12 +250,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "vantiq-sdk-ios_Tests" */;
 			buildPhases = (
-				162547DC5F6015CAC7ACF7A2 /* Check Pods Manifest.lock */,
+				B04C280E4EA48775B01387A7 /* Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				0106E6C4658C3E65BCF739EB /* Embed Pods Frameworks */,
-				0A2155DA110C6E22506F6B51 /* Copy Pods Resources */,
+				A89D66BF23722C9BAB2EEDD1 /* Embed Pods Frameworks */,
+				8EA5ADC71795FBFA9A4DC673 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -274,6 +277,17 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Michael Swan";
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = M9N2VL2G6Z;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -324,22 +338,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0106E6C4658C3E65BCF739EB /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-vantiq-sdk-ios_Tests/Pods-vantiq-sdk-ios_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		0A2155DA110C6E22506F6B51 /* Copy Pods Resources */ = {
+		8EA5ADC71795FBFA9A4DC673 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -354,52 +353,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-vantiq-sdk-ios_Tests/Pods-vantiq-sdk-ios_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		10546A0EC6445B9CE11E2132 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-vantiq-sdk-ios_Example/Pods-vantiq-sdk-ios_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		162547DC5F6015CAC7ACF7A2 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		5013B547873C3E873DA927B0 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		75BA0B40F6B05E8A802D859C /* Embed Pods Frameworks */ = {
+		A89D66BF23722C9BAB2EEDD1 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -411,7 +365,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-vantiq-sdk-ios_Example/Pods-vantiq-sdk-ios_Example-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-vantiq-sdk-ios_Tests/Pods-vantiq-sdk-ios_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B04C280E4EA48775B01387A7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -492,6 +461,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_TESTABILITY = YES;
@@ -511,6 +481,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "ac55f7de-0f4d-42b3-9857-a7d0aabfa18f";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -532,6 +503,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -543,6 +515,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PROVISIONING_PROFILE = "ac55f7de-0f4d-42b3-9857-a7d0aabfa18f";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -551,41 +524,55 @@
 		};
 		6003F5C0195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68B7B2687019351100E39148 /* Pods-vantiq-sdk-ios_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vantiq-sdk-ios/vantiq-sdk-ios-Prefix.pch";
 				INFOPLIST_FILE = "vantiq-sdk-ios/vantiq-sdk-ios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.feedfriendly.vantiq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "61d36ca4-ffd8-4f6d-9918-971340fc537a";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		6003F5C1195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 55A7A506CD114EF1C0DFDFAF /* Pods-vantiq-sdk-ios_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vantiq-sdk-ios/vantiq-sdk-ios-Prefix.pch";
 				INFOPLIST_FILE = "vantiq-sdk-ios/vantiq-sdk-ios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.feedfriendly.vantiq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "61d36ca4-ffd8-4f6d-9918-971340fc537a";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3E90303F1CEB695A81E44E7 /* Pods-vantiq-sdk-ios_Tests.debug.xcconfig */;
+			baseConfigurationReference = 39A3568209D0D4D99A94AC1A /* Pods-vantiq-sdk-ios_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -609,7 +596,7 @@
 		};
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C2B3F57FBE03B234A3F4ABDA /* Pods-vantiq-sdk-ios_Tests.release.xcconfig */;
+			baseConfigurationReference = 10B68A8AAE19389A84790F61 /* Pods-vantiq-sdk-ios_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

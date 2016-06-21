@@ -88,6 +88,8 @@
 		
 		<option value="//api/name/publish:message:completionHandler:">- publish:message:completionHandler:</option>
 		
+		<option value="//api/name/registerForPushNotifications:completionHandler:">- registerForPushNotifications:completionHandler:</option>
+		
 		<option value="//api/name/select:completionHandler:">- select:completionHandler:</option>
 		
 		<option value="//api/name/select:props:completionHandler:">- select:props:completionHandler:</option>
@@ -101,6 +103,8 @@
 		<option value="//api/name/update:id:object:completionHandler:">- update:id:object:completionHandler:</option>
 		
 		<option value="//api/name/upsert:object:completionHandler:">- upsert:object:completionHandler:</option>
+		
+		<option value="//api/name/verify:">- verify:</option>
 		
 	</optgroup>
 	
@@ -317,6 +321,85 @@ API is required, use the initWithServer:server apiVersion:version contructor.</p
 				<ul>
 					
 					<li><code><p><a href="#//api/name/initWithServer:apiVersion:">- initWithServer:apiVersion:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Vantiq.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/verify:" title="verify:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/verify:">&ndash;&nbsp;verify:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The verify method attempts to validate an existing Vantiq server token. If the token has expired
+or a token has never been issued, the error parameter in the callback will be non-null and the
+app should then call authenticate (see below) in order to reauthenticate the user.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)verify:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>The handler block to execute.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The verify method attempts to validate an existing Vantiq server token. If the token has expired
+or a token has never been issued, the error parameter in the callback will be non-null and the
+app should then call authenticate (see below) in order to reauthenticate the user.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
+to ensure UI operations are completed on the main thread.</p></div>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/authenticate:password:completionHandler:">- authenticate:password:completionHandler:</a></p></code></li>
 					
 				</ul>
 			</div>
@@ -1669,6 +1752,86 @@ errors returned by the execute operation. The callback data returns the results 
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/registerForPushNotifications:completionHandler:" title="registerForPushNotifications:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/registerForPushNotifications:completionHandler:">&ndash;&nbsp;registerForPushNotifications:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The registerForPushNotifications method registers an app to receive Apple Push Notifications. Please note that
+you must enable the iOS app for Push Notifications and for the remote-notifications Background Mode, in addition
+to assigning a bundle identifier in both the app and in the app definition and provisioning profiles at the
+<a href="https://developer.apple.com">Apple Developer</a> site.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)registerForPushNotifications:(NSString *)<em>APNSDeviceToken</em> completionHandler:(void ( ^ ) ( NSDictionary *data , NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>APNSDeviceToken</code></th>
+						<td><p>The APNS Device Token returned by the registerForRemoteNotifications method.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>The handler block to execute.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>data: result of method execution, if any</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The registerForPushNotifications method registers an app to receive Apple Push Notifications. Please note that
+you must enable the iOS app for Push Notifications and for the remote-notifications Background Mode, in addition
+to assigning a bundle identifier in both the app and in the app definition and provisioning profiles at the
+<a href="https://developer.apple.com">Apple Developer</a> site.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
+to ensure UI operations are completed on the main thread.</p>
+
+<p>It is important to check the response and error callback return values to verify there were no
+errors returned by the execute operation. The callback data returns the results of the procedure, if any.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Vantiq.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -1684,7 +1847,7 @@ errors returned by the execute operation. The callback data returns the results 
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 VantIQ, Inc. All rights reserved. Updated: 2016-04-05</p>
+						<p class="copyright">Copyright &copy; 2016 VantIQ, Inc. All rights reserved. Updated: 2016-06-21</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

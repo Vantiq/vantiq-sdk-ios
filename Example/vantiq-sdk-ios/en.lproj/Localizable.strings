@@ -19,5 +19,7 @@
 "com.vantiq.demo.DeleteOneErrorExplain"="deleteOne failed: error status = %@.";
 "com.vantiq.demo.PublishErrorExplain"="publish failed: error status = %@.";
 "com.vantiq.demo.ExecuteErrorExplain"="execute failed: error status = %@.";
+"com.vantiq.demo.PushNotificationError"="Registration Error";
+"com.vantiq.demo.PushNotificationErrorExplain"="Failed to register for push notifications: error status = %@.";
 
 "com.vantiq.demo.OK"="OK";

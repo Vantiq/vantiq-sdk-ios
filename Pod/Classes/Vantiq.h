@@ -10,6 +10,7 @@
 
 #define VantiqAPIVersion               1
 #define errorCodeIncompleteJSON     1
+#define errorNoAccessToken          2
 #define VantiqErrorDomain              @"com.vantiq.Vantiq"
 
 /**
@@ -38,6 +39,25 @@ API is required, use the initWithServer:server apiVersion:version contructor.
 @param server       Server URL, e.g. https://dev.vantiq.com
  */
 - (id)initWithServer:(NSString *)server;
+
+/**
+The verify method attempts to validate an existing Vantiq server token. If the token has expired
+or a token has never been issued, the error parameter in the callback will be non-null and the
+app should then call authenticate (see below) in order to reauthenticate the user.
+ 
+@warning Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to _dispatch_async(dispatch_get_main_queue(), ^ {...});_
+to ensure UI operations are completed on the main thread.
+ 
+@see authenticate:password:completionHandler:
+ 
+@param handler    The handler block to execute.
+ 
+@return response: [iOS HTTP operation response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/)
+@return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
+*/
+- (void)verify:(void (^)(NSHTTPURLResponse *response, NSError *error))handler;
 
 /**
 The authenticate method connects to the Vantiq server with the given authentication
@@ -393,5 +413,30 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
 @return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
  */
 - (void)execute:(NSString *)procedure
+    completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error))handler;
+
+/**
+ The registerForPushNotifications method registers an app to receive Apple Push Notifications. Please note that
+ you must enable the iOS app for Push Notifications and for the remote-notifications Background Mode, in addition
+ to assigning a bundle identifier in both the app and in the app definition and provisioning profiles at the
+ [Apple Developer](https://developer.apple.com) site.
+ 
+ 
+ @warning Please also note this method invokes a callback block associated with a network-
+ related block. Because this block is called from asynchronous network operations,
+ its code must be wrapped by a call to _dispatch_async(dispatch_get_main_queue(), ^ {...});_
+ to ensure UI operations are completed on the main thread.
+ 
+ It is important to check the response and error callback return values to verify there were no
+ errors returned by the execute operation. The callback data returns the results of the procedure, if any.
+
+ @param APNSDeviceToken The APNS Device Token returned by the registerForRemoteNotifications method.
+ @param handler The handler block to execute.
+ 
+ @return data: result of method execution, if any
+ @return response: [iOS HTTP operation response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/)
+ @return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
+ */
+- (void)registerForPushNotifications:(NSString *)APNSDeviceToken
     completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error))handler;
 @end

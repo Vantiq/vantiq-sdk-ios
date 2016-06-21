@@ -8,7 +8,9 @@
 
 #import "Vantiq.h"
 
-@interface Vantiq()
+@interface Vantiq() {
+    NSString    *_userName;
+}
 @property (strong, nonatomic) NSString *apiServer;
 @property (readwrite, nonatomic) NSString *accessToken;
 @property unsigned long apiVersion;
@@ -26,6 +28,19 @@
 
 - (id)initWithServer:(NSString *)server {
     return [self initWithServer:server apiVersion:VantiqAPIVersion];
+}
+
+- (void)verify:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
+    _accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"com.vantiq.vantiq.accessToken"];
+    _userName = [[NSUserDefaults standardUserDefaults] stringForKey:@"com.vantiq.vantiq.userName"];
+    if (_accessToken) {
+        [self select:@"types" props:NULL where:@"{\"name\":\"ArsType\"}" completionHandler:^(NSArray *data, NSHTTPURLResponse *response, NSError *error) {
+            handler(response, error);
+        }];
+    } else {
+        NSError *noTokenErr = [NSError errorWithDomain:VantiqErrorDomain code:errorNoAccessToken userInfo:nil];
+        handler(NULL, noTokenErr);
+    }
 }
 
 - (void)authenticate:(NSString *)username password:(NSString *)password
@@ -56,6 +71,12 @@
                     if ([jsonObject isKindOfClass:[NSDictionary class]]) {
                         if ([jsonObject objectForKey:@"accessToken"]) {
                             _accessToken = [jsonObject objectForKey:@"accessToken"];
+                            _userName = username;
+
+                            // squirrel away the access token so we can verify it in subsequent app starts
+                            [[NSUserDefaults standardUserDefaults] setObject:_accessToken forKey:@"com.vantiq.vantiq.accessToken"];
+                            [[NSUserDefaults standardUserDefaults] setObject:_userName forKey:@"com.vantiq.vantiq.userName"];
+                            [[NSUserDefaults standardUserDefaults] synchronize];
                         } else {
                             // error if we can't find the dictionary keys
                             jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
@@ -399,6 +420,27 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     completionHandler:(void (^)(NSArray *data, NSHTTPURLResponse *response, NSError *error))handler {
     NSString *whereClause = [NSString stringWithFormat:@"{\"_id\":\"%@\"}", ID];
     [self select:type props:NULL where:whereClause sort:NULL completionHandler:handler];
+}
+
+- (void)registerForPushNotifications:(NSString *)APNSDeviceToken
+    completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error))handler {
+    
+    NSString *appUUID = [[NSUserDefaults standardUserDefaults] stringForKey:@"com.vantiq.vantiq.appUUID"];
+    if (!appUUID) {
+        // create an UUID associated with this app and save it for future use
+        CFUUIDRef aUUID = CFUUIDCreate(NULL);
+        CFStringRef string = CFUUIDCreateString(NULL, aUUID);
+        CFRelease(aUUID);
+        appUUID = (NSString*)CFBridgingRelease(string);
+        [[NSUserDefaults standardUserDefaults] setObject:appUUID forKey:@"com.vantiq.vantiq.appUUID"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    NSString *props = [NSString stringWithFormat:@"{\"appId\":\"%@\", \"appName\":\"%@\", \"deviceId\":\"%@\", \"deviceName\":\"%@\", \"platform\":0,  \"token\":\"%@\", \"username\":\"%@\"}",
+        [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"],
+        [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"],
+        appUUID, [[UIDevice currentDevice] name], APNSDeviceToken, _userName];
+    [self upsert:@"ArsPushTarget" object:props completionHandler:handler];
 }
 
 @end
