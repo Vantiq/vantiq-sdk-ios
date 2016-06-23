@@ -539,7 +539,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = com.feedfriendly.vantiq;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vantiq.vantiq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "61d36ca4-ffd8-4f6d-9918-971340fc537a";
 				WRAPPER_EXTENSION = app;
@@ -563,7 +563,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = com.feedfriendly.vantiq;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vantiq.vantiq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "61d36ca4-ffd8-4f6d-9918-971340fc537a";
 				WRAPPER_EXTENSION = app;
