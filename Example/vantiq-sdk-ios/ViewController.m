@@ -24,7 +24,7 @@ Vantiq *v;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    v = [[Vantiq alloc] initWithServer:@"http://10.1.10.230:8080"];    //https://dev.vantiq.com"];
+    v = [[Vantiq alloc] initWithServer:@"https://dev.vantiq.com"];
     [v verify:^(NSHTTPURLResponse *response, NSError *error) {
         NSString *resultStr;
         if (![DecodeError formError:response error:error diagnosis:@"" resultStr:&resultStr]) {
