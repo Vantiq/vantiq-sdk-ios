@@ -19,9 +19,7 @@
 		560492A81CAC8B1E0016B689 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5604929E1CAC8B1E0016B689 /* Images.xcassets */; };
 		560492A91CAC8B1E0016B689 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560492A01CAC8B1E0016B689 /* ViewController.m */; };
 		560492AB1CAC93830016B689 /* Vantiq-151x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 560492AA1CAC93830016B689 /* Vantiq-151x40.png */; };
-		5659700E1D19EE720043CAA1 /* vantiq_sdk_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5659700C1D19EC290043CAA1 /* vantiq_sdk_ios.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		56AE2ECF1D19EFB5001492AD /* vantiq_sdk_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5659700C1D19EC290043CAA1 /* vantiq_sdk_ios.framework */; };
-		56AE2ED01D19EFB5001492AD /* vantiq_sdk_ios.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5659700C1D19EC290043CAA1 /* vantiq_sdk_ios.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -49,7 +47,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				56AE2ED01D19EFB5001492AD /* vantiq_sdk_ios.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,7 +74,7 @@
 		5604929F1CAC8B1E0016B689 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		560492A01CAC8B1E0016B689 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		560492AA1CAC93830016B689 /* Vantiq-151x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vantiq-151x40.png"; path = "vantiq-sdk-ios/Images/Vantiq-151x40.png"; sourceTree = "<group>"; };
-		5659700C1D19EC290043CAA1 /* vantiq_sdk_ios.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = vantiq_sdk_ios.framework; path = "../../../Library/Developer/Xcode/DerivedData/vantiq-sdk-ios-ankaiqrdfivbbffexidiucgqoxpz/Build/Products/Debug-iphoneos/vantiq_sdk_ios.framework"; sourceTree = "<group>"; };
+		5659700C1D19EC290043CAA1 /* vantiq_sdk_ios.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = vantiq_sdk_ios.framework; path = "/Users/swan/Library/Developer/Xcode/DerivedData/vantiq-sdk-ios-ankaiqrdfivbbffexidiucgqoxpz/Build/Products/Debug-iphoneos/vantiq_sdk_ios.framework"; sourceTree = "<absolute>"; };
 		6003F58A195388D20070C39A /* vantiq-sdk-ios_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vantiq-sdk-ios_Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -100,7 +97,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				56AE2ECF1D19EFB5001492AD /* vantiq_sdk_ios.framework in Frameworks */,
-				5659700E1D19EE720043CAA1 /* vantiq_sdk_ios.framework in Frameworks */,
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
@@ -144,7 +140,6 @@
 		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5659700C1D19EC290043CAA1 /* vantiq_sdk_ios.framework */,
 				6003F58D195388D20070C39A /* Foundation.framework */,
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
