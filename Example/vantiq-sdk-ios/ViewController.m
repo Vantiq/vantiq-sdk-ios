@@ -10,6 +10,7 @@
 #import "DecodeError.h"
 #import "DisplayAlert.h"
 #import <vantiq_sdk_ios/Vantiq.h>
+#import "HomeViewController.h"
 
 // our one globally-available Vantiq endpoint
 Vantiq *v;
@@ -24,7 +25,7 @@ Vantiq *v;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    v = [[Vantiq alloc] initWithServer:@"https://dev.vantiq.com"];
+    v = [[Vantiq alloc] initWithServer:@"https://test.vantiq.com"];
     [v verify:^(NSHTTPURLResponse *response, NSError *error) {
         NSString *resultStr;
         if (![DecodeError formError:response error:error diagnosis:@"" resultStr:&resultStr]) {
@@ -45,6 +46,9 @@ Vantiq *v;
             });
         } else {
             dispatch_async(dispatch_get_main_queue(), ^ {
+                // Set username for later
+                [[NSUserDefaults standardUserDefaults] setObject:_username.text forKey:@"username"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
                 // clear our password field
                 _password.text = @"";
                 // transition to the home view
@@ -54,15 +58,15 @@ Vantiq *v;
     }];
 }
 
-- (IBAction)textChanged:(id)sender {
-    _loginButton.enabled = ![_username.text isEqualToString:@""] && ![_password.text isEqualToString:@""];
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"Home"]){
+        HomeViewController *controller = (HomeViewController *)segue.destinationViewController;
+        controller.username = _username.text;
+    }
 }
 
-/*
- *  prepareForSegue
- *      - called whenever we start a segue to a new modal view
- */
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (IBAction)textChanged:(id)sender {
+    _loginButton.enabled = ![_username.text isEqualToString:@""] && ![_password.text isEqualToString:@""];
 }
 
 @end
