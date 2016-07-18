@@ -142,6 +142,12 @@ static NSString * const kRWTStoredItemsKey = @"storedItems";
     }
 }
 
+
+/**
+ * Called when a phone stops detecting pings from a beacon
+ * Here we make sure we remove a location from the location list if we were already 
+ * displaying it
+ */
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
     if ([region isKindOfClass:[CLBeaconRegion class]]) {
         CLBeaconRegion *beaconRegion = (CLBeaconRegion *)region;
@@ -154,59 +160,79 @@ static NSString * const kRWTStoredItemsKey = @"storedItems";
         if (!minor) {
             minor = @"0";
         }
-        Location * l = [[Location alloc] initWithProximityUUID:[beaconRegion.proximityUUID UUIDString] major:major minor:minor name:nil];
+        Location * l = [[Location alloc] initWithProximityUUID:[beaconRegion.proximityUUID UUIDString] major:major minor:minor name:nil mobile: false];
         if ([displayedLocations containsObject:l]) {
+            Location * realL = [self.knownLocations objectForKey:l];
             CLBeaconRegion * realRegion = [[self.knownRegions objectForKey:[beaconRegion.proximityUUID UUIDString]] objectForKey:l];
-            //[self.tableView beginUpdates];
-            //NSUInteger objectIndex = [tableData indexOfObject:realRegion];
             [self.tableData removeObject:realRegion];
             [self.tableView reloadData];
             [self.displayedLocations removeObject: l];
             NSLog(@"Stopped Ranging beacon: %@", region);
+            if ([self.currentRegion isEqual:realRegion] && realL.mobile ) {
+                NSDictionary *msg = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     [self.currentRegion.proximityUUID UUIDString], @"beaconId",
+                                     self.username, @"username",
+                                     self.getCurrentIsoDate, @"timestamp",
+                                     [self.currentRegion.minor stringValue], @"minor",
+                                     [self.currentRegion.major stringValue], @"major",
+                                     nil];
+                NSString * jsonString = [self dictionaryToJSONString:msg];
+                
+                [v publish:@"/user/location" message: jsonString completionHandler:^(NSHTTPURLResponse *response, NSError *error) {
+                    dispatch_async(dispatch_get_main_queue(), ^ {
+                        NSString *resultStr;
+                        if (![DecodeError formError:response error:error
+                                          diagnosis:NSLocalizedString(@"com.vantiq.demo.PublishErrorExplain", @"") resultStr:&resultStr]) {
+                            resultStr = [NSString stringWithFormat:@"publish(%@) successful.", @"/user/location"];
+                            self.currentRegion = nil;
+                            [self.locationManager stopUpdatingLocation];
+                        }
+                        NSLog(@"Got publish result: %@", resultStr);
+                    });
+                }];
+                self.currentRegion = nil;
+                
+            }
         }
-        //[self.locationManager stopRangingBeaconsInRegion:beaconRegion];
-        /*if ([displayedLocations containsObject:beaconIdentity]) {
-            [knownLocations removeObject:beaconIdentity];
-            [self.tableView beginUpdates];
-            [tableData removeObject:region];
-            [knownLocations addObject:beaconIdentity];
-            NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:([tableData count] - 1) inSection: 0]];
-            [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationTop];
-            //[self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
-            [self.tableView endUpdates];
-        }*/
-        //}
     }
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(NSString*)getCurrentIsoDate
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
     [dateFormatter setLocale:enUSPOSIXLocale];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
-    
     NSDate *now = [NSDate date];
     NSString *iso8601String = [dateFormatter stringFromDate:now];
+    return iso8601String;
+}
+
+/**
+ * Delegate for a row in the location table being tapped
+ * This triggers a publish to a topic that denotes a checkin or checkout from a location
+ * That publish should trigger a rule in the Vantiq system
+ */
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
 
     NSLog([NSString stringWithFormat:@"%d", (int)indexPath.row]);
     CLBeaconRegion *br = [self.tableData objectAtIndex:indexPath.row];
     NSDictionary *msg = [NSDictionary dictionaryWithObjectsAndKeys:
                         [br.proximityUUID UUIDString], @"beaconId",
                         self.username, @"username",
-                        iso8601String, @"timestamp",
+                         self.getCurrentIsoDate, @"timestamp",
+                         [br.minor stringValue], @"minor",
+                         [br.major stringValue], @"major",
                         nil];
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:msg
-                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
-                                                         error:&error];
-    NSString * jsonString = nil;
-    if (! jsonData) {
-        NSLog(@"Got an error: %@", error);
-    } else {
-        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    }
-    if (jsonString) {
+    Location * l = [[Location alloc] init];
+    l.proximityUUID = [br.proximityUUID UUIDString];
+    l.major = [br.major stringValue];
+    l.minor = [br.minor stringValue];
+    Location * knownL = [self.knownLocations objectForKey:l];
+    NSString * jsonString = [self dictionaryToJSONString:msg];
+    if (jsonString && knownL) {
         
         [v publish:@"/user/location" message:jsonString completionHandler:^(NSHTTPURLResponse *response, NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^ {
@@ -218,13 +244,16 @@ static NSString * const kRWTStoredItemsKey = @"storedItems";
                         self.currentRegion = nil;
                     } else {
                         self.currentRegion = br;
+                        if (knownL.mobile) {
+                            [self.locationManager startUpdatingLocation];
+                            NSLog(@"Beginning to monitor location");
+                        }
                     }
                     [self.tableView reloadData];
                 }
                 NSLog(@"Got publish result: %@", resultStr);
             });
         }];
-     
     }
 }
 
@@ -239,6 +268,19 @@ static NSString * const kRWTStoredItemsKey = @"storedItems";
     }
 }
 
+- (NSString *)dictionaryToJSONString:(NSDictionary *)dict {
+    NSError* error;
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+    if (jsonData) {
+        return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    return nil;
+}
+
+/**
+ * When application is in the foreground this method is called when a beacon is detected and can
+ * be used to detect the distance between the phone and beacon
+ */
 - (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region {
     if ([beacons count] > 0) {
         for (CLBeacon *beacon in beacons) {
@@ -248,22 +290,19 @@ static NSString * const kRWTStoredItemsKey = @"storedItems";
             l.proximityUUID = [beacon.proximityUUID UUIDString];
             l.major = [beacon.major stringValue];
             l.minor = [beacon.minor stringValue];
-            // If we see a beacon that is part of the knownLocations Dictionary, we should display the name of the location in the table view
+            // If we see a beacon that is part of the knownLocations Dictionary
+            // we should display the name of the location in the table view
             if ([knownLocations objectForKey:l] && ![displayedLocations containsObject:l]) {
-                NSString * bName = [knownLocations objectForKey:l];
-                [self.tableView beginUpdates];
+                Location * knownL = (Location*)[knownLocations objectForKey:l];
+                //[self.tableView beginUpdates];
                 CLBeaconRegion *br = [[CLBeaconRegion alloc] initWithProximityUUID:beacon.proximityUUID
                                                        major:[beacon.major intValue]
                                                        minor:[beacon.minor intValue]
-                                                       identifier:bName];
+                                                       identifier:knownL.name];
                 [tableData addObject:br];
-                //[knownLocations addObject:beaconIdentity];
-                NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:([tableData count] - 1) inSection: 0]];
-                [self.tableView insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationTop];
-                //[self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
-                [self.tableView endUpdates];
-                [self.displayedLocations addObject:l];
-                [[self.knownRegions objectForKey:[beacon.proximityUUID UUIDString]] setObject:br forKey:l];
+                [self.tableView reloadData];
+                [self.displayedLocations addObject:knownL];
+                [[self.knownRegions objectForKey:[beacon.proximityUUID UUIDString]] setObject:br forKey:knownL];
             }
         }
     } else if ([displayedLocations count] > 0) { // Ranged no beacons, so remove all beacons from the list. This only works when app is open in foreground
@@ -273,6 +312,38 @@ static NSString * const kRWTStoredItemsKey = @"storedItems";
         [self.tableView reloadData];
     }
 }
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    NSLog(@"Did update location");
+    CLLocation *newLocation = locations[[locations count] -1];
+    CLLocation *currentLocation = newLocation;
+    NSString *longitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
+    NSString *latitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
+    NSLog(@"Getting Location Data With Longitude: %@ Latitude: %@", longitude, latitude);
+    
+    NSDictionary *lMsg = [NSDictionary dictionaryWithObjectsAndKeys:
+                         //[self.currentRegion.proximityUUID UUIDString], @"beaconId",
+                         self.username, @"username",
+                         self.getCurrentIsoDate, @"timestamp",
+                         //[self.currentRegion.minor stringValue], @"minor",
+                         //[self.currentRegion.major stringValue], @"major",
+                         [NSNumber numberWithDouble:currentLocation.coordinate.longitude], @"lon",
+                         [NSNumber numberWithDouble:currentLocation.coordinate.latitude], @"lat",
+                         nil];
+    [v publish:@"/user/mobile" message:[self dictionaryToJSONString:lMsg] completionHandler:^(NSHTTPURLResponse *response, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            NSString *resultStr;
+            if (![DecodeError formError:response error:error
+                              diagnosis:NSLocalizedString(@"com.vantiq.demo.PublishErrorExplain", @"") resultStr:&resultStr]) {
+                resultStr = [NSString stringWithFormat:@"publish(%@) successful.", @"/user/mobile"];
+            }
+            NSLog(@"Location Publish Result: %@", resultStr);
+        });
+    }];
+}
+
+
+
 
 - (void)setColorForProximity:(CLProximity)proximity {
     switch (proximity) {
@@ -324,6 +395,7 @@ static NSString * const kRWTStoredItemsKey = @"storedItems";
  *  they call the API, recognize errors, either in transport or HTTP, or, if
  *  there are no errors, form a results string that indicates success
  */
+/*
 - (void)runSelectTest:(NSString *)type props:(NSArray *)props where:(NSString *)where sort:(NSString *)sort {
     [v select:type props:props where:where sort:sort completionHandler:^(NSArray *data, NSHTTPURLResponse *response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^ {
@@ -462,13 +534,14 @@ static NSString * const kRWTStoredItemsKey = @"storedItems";
             AddToResults();
         });
     }];
-}
+}*/
 
 /*
  *  runTests
  *      - run the actual tests on a separate thread so we can remain responsive
  *          to the user and update our progress text as each test completes
  */
+/*
 - (void)runActualTests {
     [self runSelectTest:@"types" props:@[] where:NULL sort:NULL];
     [NSThread sleepForTimeInterval:.3];
@@ -517,6 +590,7 @@ static NSString * const kRWTStoredItemsKey = @"storedItems";
     [NSThread sleepForTimeInterval:.3];
     [self runDeleteTest:@"TestType" where:@"{\"intValue\":43}"];
 }
+*/
 
 /*
  *  runTestsTapped
@@ -538,11 +612,14 @@ static NSString * const kRWTStoredItemsKey = @"storedItems";
     self.locationManager = nil;
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = 2.0f;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-        //[self.locationManager requestAlwaysAuthorization];
+        [self.locationManager requestAlwaysAuthorization];
         [self.locationManager requestWhenInUseAuthorization];
     }
     NSString * queryString = [NSString stringWithFormat:@"{\"username\": \"%@\"}", self.username];
+    // Get the current location in the system for the user
     [v select:@"UserLocation" props:nil where:queryString sort:nil completionHandler:^(NSArray *data, NSHTTPURLResponse *response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^ {
             NSString * currentlLocationId;
@@ -557,6 +634,7 @@ static NSString * const kRWTStoredItemsKey = @"storedItems";
             }
             
             NSString * type = @"Location";
+            // Get all of the locations associated with the user and start looking for the corresponding beacons
             [v select:type props:nil where:nil sort:nil completionHandler:^(NSArray *data, NSHTTPURLResponse *response, NSError *error) {
                 dispatch_async(dispatch_get_main_queue(), ^ {
                     NSString *resultStr;
@@ -576,12 +654,13 @@ static NSString * const kRWTStoredItemsKey = @"storedItems";
                         l.proximityUUID = beaconIDString;
                         l.major = (NSString*)[item objectForKey:@"major"];
                         l.minor = (NSString*)[item objectForKey:@"minor"];
+                        l.mobile = (Boolean) [item objectForKey:@"mobile"];
                         l.name = [item objectForKey:@"name"];
                         if (![self.knownRegions objectForKey:beaconIDString]) {
                             [self.knownRegions setObject: [NSMutableDictionary dictionary] forKey: beaconIDString];
                         }
                         if (![self.knownLocations objectForKey:l]) {
-                            [self.knownLocations setObject:[item objectForKey:@"name"] forKey:l];
+                            [self.knownLocations setObject:l forKey:l];
                         }
                         CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:beaconUUID
                                                         // We don't specify major and minor vals here because ios limits you to monitoring 20 beacon regions

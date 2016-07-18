@@ -15,12 +15,13 @@
 
 @synthesize proximityUUID,major,minor;
 
--(id) initWithProximityUUID:(NSString*)proximityUUID_ major:(NSString *) major_ minor:(NSString*) minor_ name:(NSString*) name_ {
+-(id) initWithProximityUUID:(NSString*)proximityUUID_ major:(NSString *) major_ minor:(NSString*) minor_ name:(NSString*) name_ mobile:(Boolean) mobile_{
     self = [super init];
     if (self) {
         self.name = name_;
         self.major = major_;
         self.minor = minor_;
+        self.mobile = mobile_;
         self.proximityUUID = proximityUUID_;
     }
     return self;
@@ -32,6 +33,7 @@
         self.name = (NSString*) beaconRegion.identifier;
         self.major = (NSString*) beaconRegion.major;
         self.minor = (NSString*) beaconRegion.minor;
+        self.mobile = false;
         self.proximityUUID = (NSString*) beaconRegion.proximityUUID;
     }
     return self;
@@ -66,6 +68,7 @@
         [copy setMajor:(NSString*)self.major];
         [copy setMinor:(NSString*)self.minor];
         [copy setName:(NSString*)self.name];
+        [copy setMobile:(Boolean)self.mobile];
     }
     
     return copy;

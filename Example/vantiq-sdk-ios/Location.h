@@ -17,8 +17,9 @@
 @property NSString * major;
 @property NSString * minor;
 @property NSString * name;
+@property Boolean mobile;
 
--(id) initWithProximityUUID:(NSString*)proximityUUID_ major:(NSString *) major_ minor:(NSString*) minor_ name:(NSString*) name_;
+-(id) initWithProximityUUID:(NSString*)proximityUUID_ major:(NSString *) major_ minor:(NSString*) minor_ name:(NSString*) name_ mobile:(Boolean) mobile_;
 
 -(id) initWithBeacon:(CLBeaconRegion*) beaconRegion;
 
