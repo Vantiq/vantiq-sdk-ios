@@ -110,6 +110,7 @@
     [request setTimeoutInterval:15.0];
     [request setURL:[NSURL URLWithString:urlString]];
     [request setHTTPMethod:method];
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     [request setValue:[NSString stringWithFormat:@"Bearer %@", _accessToken] forHTTPHeaderField:@"Authorization"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     return request;
