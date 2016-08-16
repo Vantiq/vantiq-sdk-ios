@@ -10,7 +10,7 @@
 #import "DecodeError.h"
 #import "DisplayAlert.h"
 #import "AppDelegate.h"
-#import <vantiq_sdk_ios/Vantiq.h>
+#import "Vantiq.h"
 #import <Foundation/Foundation.h>
 
 extern Vantiq *v;

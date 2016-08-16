@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "DecodeError.h"
 #import "DisplayAlert.h"
-#import <vantiq_sdk_ios/Vantiq.h>
+#import "Vantiq.h"
 
 // our one globally-available Vantiq endpoint
 Vantiq *v;

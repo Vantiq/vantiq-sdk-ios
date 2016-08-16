@@ -19,6 +19,7 @@
 		560492A81CAC8B1E0016B689 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5604929E1CAC8B1E0016B689 /* Images.xcassets */; };
 		560492A91CAC8B1E0016B689 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560492A01CAC8B1E0016B689 /* ViewController.m */; };
 		560492AB1CAC93830016B689 /* Vantiq-151x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 560492AA1CAC93830016B689 /* Vantiq-151x40.png */; };
+		5697D47C1D63BE48003803D2 /* Vantiq.m in Sources */ = {isa = PBXBuildFile; fileRef = 5697D47B1D63BE48003803D2 /* Vantiq.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -73,6 +74,7 @@
 		5604929F1CAC8B1E0016B689 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		560492A01CAC8B1E0016B689 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		560492AA1CAC93830016B689 /* Vantiq-151x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vantiq-151x40.png"; path = "vantiq-sdk-ios/Images/Vantiq-151x40.png"; sourceTree = "<group>"; };
+		5697D47B1D63BE48003803D2 /* Vantiq.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Vantiq.m; path = ../Pod/Classes/Vantiq.m; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* vantiq-sdk-ios_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vantiq-sdk-ios_Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -115,6 +117,7 @@
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
+				5697D47B1D63BE48003803D2 /* Vantiq.m */,
 				560492AA1CAC93830016B689 /* Vantiq-151x40.png */,
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Example for vantiq-sdk-ios */,
@@ -381,6 +384,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5697D47C1D63BE48003803D2 /* Vantiq.m in Sources */,
 				560492A91CAC8B1E0016B689 /* ViewController.m in Sources */,
 				560492A11CAC8B1E0016B689 /* AppDelegate.m in Sources */,
 				560492A31CAC8B1E0016B689 /* DecodeError.m in Sources */,
@@ -522,6 +526,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vantiq-sdk-ios/vantiq-sdk-ios-Prefix.pch";
+				HEADER_SEARCH_PATHS = ../Pod/Classes;
 				INFOPLIST_FILE = "vantiq-sdk-ios/vantiq-sdk-ios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -542,6 +547,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "vantiq-sdk-ios/vantiq-sdk-ios-Prefix.pch";
+				HEADER_SEARCH_PATHS = ../Pod/Classes;
 				INFOPLIST_FILE = "vantiq-sdk-ios/vantiq-sdk-ios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -570,6 +576,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vantiq-sdk-ios_Example.app/vantiq-sdk-ios_Example";
@@ -590,6 +597,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
 				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vantiq-sdk-ios_Example.app/vantiq-sdk-ios_Example";
