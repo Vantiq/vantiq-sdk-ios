@@ -8,11 +8,11 @@
 
 #import "Vantiq.h"
 
-@interface Vantiq() {
-    NSString    *_userName;
-}
+@interface Vantiq()
 @property (strong, nonatomic) NSString *apiServer;
 @property (readwrite, nonatomic) NSString *accessToken;
+@property (readwrite, nonatomic) NSString *userName;
+@property (readwrite, nonatomic) NSString *appUUID;
 @property unsigned long apiVersion;
 @end
 
@@ -27,6 +27,7 @@
 }
 
 - (id)initWithServer:(NSString *)server {
+    _appUUID = [[NSUserDefaults standardUserDefaults] stringForKey:@"com.vantiq.vantiq.appUUID"];
     return [self initWithServer:server apiVersion:VantiqAPIVersion];
 }
 
@@ -426,22 +427,65 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
 - (void)registerForPushNotifications:(NSString *)APNSDeviceToken
     completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error))handler {
     
-    NSString *appUUID = [[NSUserDefaults standardUserDefaults] stringForKey:@"com.vantiq.vantiq.appUUID"];
-    if (!appUUID) {
-        // create an UUID associated with this app and save it for future use
-        CFUUIDRef aUUID = CFUUIDCreate(NULL);
-        CFStringRef string = CFUUIDCreateString(NULL, aUUID);
-        CFRelease(aUUID);
-        appUUID = (NSString*)CFBridgingRelease(string);
-        [[NSUserDefaults standardUserDefaults] setObject:appUUID forKey:@"com.vantiq.vantiq.appUUID"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    
-    NSString *props = [NSString stringWithFormat:@"{\"appId\":\"%@\", \"appName\":\"%@\", \"deviceId\":\"%@\", \"deviceName\":\"%@\", \"platform\":0,  \"token\":\"%@\", \"username\":\"%@\"}",
-        [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"],
-        [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"],
-        appUUID, [[UIDevice currentDevice] name], APNSDeviceToken, _userName];
-    [self upsert:@"ArsPushTarget" object:props completionHandler:handler];
+    NSString *whereClause = [NSString stringWithFormat:@"{\"username\":\"%@\", \"deviceId\":\"%@\"}", _userName, _appUUID];
+    [self select:@"ArsPushTarget" props:@[] where:whereClause completionHandler:^(NSArray *tokenArray,
+        NSHTTPURLResponse *response, NSError *error) {
+        if (error) {
+            handler(nil, response, error);
+        } else {
+            BOOL needRegistration = true;
+            BOOL foundToken = false;
+            NSDictionary *tokenDict = nil;
+            if ((response.statusCode < 200) || (response.statusCode > 299)) {
+                handler(nil, response, error);
+            } else {
+                for (int i = 0; i < [tokenArray count]; i++) {
+                    tokenDict = tokenArray[i];
+                    if ([tokenDict isKindOfClass:[NSDictionary class]]) {
+                        if ([tokenDict objectForKey:@"token"]) {
+                            NSString *accessToken = [tokenDict objectForKey:@"token"];
+                            if ([APNSDeviceToken isEqualToString:accessToken]) {
+                                // the APNS token already is registered so we're done
+                                handler(nil, response, error);
+                                foundToken = true;
+                                needRegistration = false;
+                            }
+                        }
+                    } else {
+                        tokenDict = nil;
+                    }
+                }
+                if (tokenDict && !foundToken) {
+                    // we need to update an existing record with the new token value
+                    NSString *newToken = [NSString stringWithFormat:@"{\"token\":\"%@\"}", APNSDeviceToken];
+                    [self update:@"ArsPushTarget" id:[tokenDict objectForKey:@"_id"] object:newToken completionHandler:^(NSDictionary *data, NSHTTPURLResponse *response, NSError *error) {
+                        handler(nil, response, error);
+                    }];
+                    needRegistration = false;
+                }
+                if (needRegistration) {
+                    // register a completely new token
+                    _appUUID = [[NSUserDefaults standardUserDefaults] stringForKey:@"com.vantiq.vantiq.appUUID"];
+                    if (!_appUUID) {
+                        // create an UUID associated with this app and save it for future use
+                        CFUUIDRef aUUID = CFUUIDCreate(NULL);
+                        CFStringRef string = CFUUIDCreateString(NULL, aUUID);
+                        CFRelease(aUUID);
+                        _appUUID = (NSString*)CFBridgingRelease(string);
+                        [[NSUserDefaults standardUserDefaults] setObject:_appUUID forKey:@"com.vantiq.vantiq.appUUID"];
+                        [[NSUserDefaults standardUserDefaults] synchronize];
+                    }
+                    
+                    NSString *props = [NSString stringWithFormat:@"{\"appId\":\"%@\", \"appName\":\"%@\", \"deviceId\":\"%@\", \"deviceName\":\"%@\", \"platform\":0,  \"token\":\"%@\", \"username\":\"%@\"}",
+                        [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"],
+                        [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"],
+                        _appUUID, [[UIDevice currentDevice] name], APNSDeviceToken, _userName];
+                    [self upsert:@"ArsPushTarget" object:props completionHandler:handler];
+                }
+            }
+        }
+    }];
 }
+
 
 @end

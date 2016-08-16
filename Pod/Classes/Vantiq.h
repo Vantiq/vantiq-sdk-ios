@@ -21,6 +21,14 @@ The Vantiq class declares the interface for authentication and subsequent intera
 Access token to be used for direct Vantiq server operations.
  */
 @property (readonly, nonatomic) NSString *accessToken;
+/**
+User name of the last authenticated user
+ */
+@property (readonly, nonatomic) NSString *userName;
+/**
+Unique ID for this installation of the device running the Vantiq SDK
+ */
+@property (readonly, nonatomic) NSString *appUUID;
 
 /**
 Constructor for use with all other Vantiq server operations.
