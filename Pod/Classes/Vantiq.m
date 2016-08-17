@@ -20,6 +20,10 @@
 
 - (id)initWithServer:(NSString *)server apiVersion:(unsigned long)version {
     if (self = [super init]) {
+        while ([server hasSuffix:@"/"]) {
+            // remove any trailing '/' characters
+            server = [server substringToIndex:[server length] - 1];
+        }
         _apiServer = server;
         _apiVersion = version;
     }
