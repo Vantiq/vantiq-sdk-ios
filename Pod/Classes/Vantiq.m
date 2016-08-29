@@ -491,5 +491,79 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     }];
 }
 
+- (void)uploadDocument:(NSString *)filePath fileName:(NSString *)fileName filePrefix:(NSString *)filePrefix
+    contentType:(NSString *)contentType completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
+    //
+    //  This string is arbitrary; we just choose something to represent the boundary between the various multi-part
+    //  MIME "parts".
+    //
+    NSString* boundaryString = @"*****";
+    
+    //
+    //  These are all different components of the multi-part MIME protocol; we express them as NSDatas because we will be
+    //  composing the entire message in one NSMutableData below.
+    //
+    NSData* lineEnd = [@"\r\n" dataUsingEncoding:NSASCIIStringEncoding];
+    NSData* twoHyphens = [@"--" dataUsingEncoding:NSASCIIStringEncoding];
+    NSData* boundary = [boundaryString dataUsingEncoding:NSASCIIStringEncoding];
+    NSData* contentDisposition = [[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\";filename=\"%@%@\"",
+                                   fileName, filePrefix, fileName] dataUsingEncoding:NSASCIIStringEncoding];
+    NSData* contentBody = [[NSString stringWithFormat:@"Content-Type: %@", contentType] dataUsingEncoding:NSASCIIStringEncoding];
+    
+    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/documents", _apiServer, _apiVersion];
+    NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
+    
+    // overwrite our default content type
+    NSString* contentHeader = [NSString stringWithFormat:@"multipart/form-data;boundary=%@", boundaryString];
+    [request setValue:contentHeader forHTTPHeaderField:@"Content-Type"];
+    
+    // build an NSData object containing the entire multi-part mime buffer we want to send to the server
+    NSMutableData *outData = [NSMutableData new];
+    
+    [outData appendData:twoHyphens];
+    [outData appendData:boundary];
+    [outData appendData:lineEnd];
+    [outData appendData:contentDisposition];
+    [outData appendData:lineEnd];
+    [outData appendData:contentBody];
+    [outData appendData:lineEnd];
+    [outData appendData:lineEnd];
+    [outData appendData:[NSData dataWithContentsOfFile:filePath]];
+    [outData appendData:lineEnd];
+    [outData appendData:twoHyphens];
+    [outData appendData:boundary];
+    [outData appendData:twoHyphens];
+    [outData appendData:lineEnd];
+    [request setHTTPBody:outData];
+    
+    NSString *contentLength = [NSString stringWithFormat:@"%lu", (unsigned long)[outData length]];
+    [request setValue:contentLength forHTTPHeaderField:@"Content-Length"];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        if (error) {
+            handler(httpResponse, error);
+        } else {
+            NSError *jsonError = nil;
+            if (httpResponse.statusCode == 200) {
+                // we got a valid response, parse the JSON return
+                NSString *returnString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
+                id jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding]
+                                                                options:0 error:&jsonError];
+                if (!jsonError) {
+                    if ([jsonObject isKindOfClass:[NSDictionary class]]) {
+                    } else {
+                        // error if return isn't a dictionary
+                        jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
+                    }
+                }
+            }
+            handler(httpResponse, jsonError);
+        }
+    }];
+    [task resume];
+}
 
 @end

@@ -447,4 +447,30 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
  */
 - (void)registerForPushNotifications:(NSString *)APNSDeviceToken
     completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error))handler;
+
+/**
+ The uploadDocument method uploads the given file, specified by the full path and file name, with
+ any directory prefix and the given content type (MIME type). The upload process creates an
+ ArsDocument record which contains the contents of the file.
+ 
+ @warning Please also note this method invokes a callback block associated with a network-
+ related block. Because this block is called from asynchronous network operations,
+ its code must be wrapped by a call to _dispatch_async(dispatch_get_main_queue(), ^ {...});_
+ to ensure UI operations are completed on the main thread.
+ 
+ It is important to check the response and error callback return values to verify there were no
+ errors returned by the execute operation. The callback data returns the results of the procedure, if any.
+ 
+ @param filePath The full path to the document, for example in the NSDocumentDirectory appended with the file name
+ @param fileName The file name which also contains its file extension
+ @param filePrefix Any directory prefix to be added to the file path when it's uploaded
+ @param contentType The MIME type of the file contents
+ @param handler The handler block to execute
+ 
+ @return data: result of method execution, if any
+ @return response: [iOS HTTP operation response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/)
+ @return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
+*/
+- (void)uploadDocument:(NSString *)filePath fileName:(NSString *)fileName filePrefix:(NSString *)filePrefix
+    contentType:(NSString *)contentType completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler;
 @end
