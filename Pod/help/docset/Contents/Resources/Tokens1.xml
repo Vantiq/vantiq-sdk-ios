@@ -49,6 +49,78 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/setUserName:</TokenIdentifier>
+			<Abstract type="html">User name of the last authenticated user</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) NSString *userName</Declaration>
+			
+			
+			<Anchor>//api/name/userName</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/userName</TokenIdentifier>
+			<Abstract type="html">User name of the last authenticated user</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) NSString *userName</Declaration>
+			
+			
+			<Anchor>//api/name/userName</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/Vantiq/userName</TokenIdentifier>
+			<Abstract type="html">User name of the last authenticated user</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) NSString *userName</Declaration>
+			
+			
+			<Anchor>//api/name/userName</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/setAppUUID:</TokenIdentifier>
+			<Abstract type="html">Unique ID for this installation of the device running the Vantiq SDK</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) NSString *appUUID</Declaration>
+			
+			
+			<Anchor>//api/name/appUUID</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/appUUID</TokenIdentifier>
+			<Abstract type="html">Unique ID for this installation of the device running the Vantiq SDK</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) NSString *appUUID</Declaration>
+			
+			
+			<Anchor>//api/name/appUUID</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/Vantiq/appUUID</TokenIdentifier>
+			<Abstract type="html">Unique ID for this installation of the device running the Vantiq SDK</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) NSString *appUUID</Declaration>
+			
+			
+			<Anchor>//api/name/appUUID</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/initWithServer:apiVersion:</TokenIdentifier>
 			<Abstract type="html">Constructor for use with all other Vantiq server operations.</Abstract>
 			<DeclaredIn>Vantiq.h</DeclaredIn>
@@ -547,6 +619,37 @@ Apple Developer site.</Abstract>
 			</Parameters>
 			<ReturnValue><Abstract type="html">data: result of method execution, if anyresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/registerForPushNotifications:completionHandler:</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/uploadDocument:fileName:filePrefix:contentType:completionHandler:</TokenIdentifier>
+			<Abstract type="html">The uploadDocument method uploads the given file, specified by the full path and file name, with
+any directory prefix and the given content type (MIME type). The upload process creates an
+ArsDocument record which contains the contents of the file.</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
+			
+			<Declaration>- (void)uploadDocument:(NSString *)filePath fileName:(NSString *)fileName filePrefix:(NSString *)filePrefix contentType:(NSString *)contentType completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>filePath</Name>
+					<Abstract type="html">The full path to the document, for example in the NSDocumentDirectory appended with the file name</Abstract>
+				</Parameter><Parameter>
+					<Name>fileName</Name>
+					<Abstract type="html">The file name which also contains its file extension</Abstract>
+				</Parameter><Parameter>
+					<Name>filePrefix</Name>
+					<Abstract type="html">Any directory prefix to be added to the file path when it&apos;s uploaded</Abstract>
+				</Parameter><Parameter>
+					<Name>contentType</Name>
+					<Abstract type="html">The MIME type of the file contents</Abstract>
+				</Parameter><Parameter>
+					<Name>handler</Name>
+					<Abstract type="html">The handler block to execute</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">data: result of method execution, if anyresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
+			<Anchor>//api/name/uploadDocument:fileName:filePrefix:contentType:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
