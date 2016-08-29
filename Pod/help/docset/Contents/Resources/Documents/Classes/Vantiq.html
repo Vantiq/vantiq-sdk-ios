@@ -58,6 +58,10 @@
 		
 		<option value="//api/name/accessToken">accessToken</option>
 		
+		<option value="//api/name/appUUID">appUUID</option>
+		
+		<option value="//api/name/userName">userName</option>
+		
 	</optgroup>
 	
 
@@ -101,6 +105,8 @@
 		<option value="//api/name/selectOne:id:completionHandler:">- selectOne:id:completionHandler:</option>
 		
 		<option value="//api/name/update:id:object:completionHandler:">- update:id:object:completionHandler:</option>
+		
+		<option value="//api/name/uploadDocument:fileName:filePrefix:contentType:completionHandler:">- uploadDocument:fileName:filePrefix:contentType:completionHandler:</option>
 		
 		<option value="//api/name/upsert:object:completionHandler:">- upsert:object:completionHandler:</option>
 		
@@ -185,6 +191,98 @@
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Access token to be used for direct Vantiq server operations.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Vantiq.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/userName" title="userName"></a>
+	<h3 class="method-title"><code><a href="#//api/name/userName">&nbsp;&nbsp;userName</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>User name of the last authenticated user</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSString *userName</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>User name of the last authenticated user</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Vantiq.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/appUUID" title="appUUID"></a>
+	<h3 class="method-title"><code><a href="#//api/name/appUUID">&nbsp;&nbsp;appUUID</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Unique ID for this installation of the device running the Vantiq SDK</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSString *appUUID</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Unique ID for this installation of the device running the Vantiq SDK</p>
 			</div>
 			
 
@@ -1832,6 +1930,99 @@ errors returned by the execute operation. The callback data returns the results 
 			
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/uploadDocument:fileName:filePrefix:contentType:completionHandler:" title="uploadDocument:fileName:filePrefix:contentType:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/uploadDocument:fileName:filePrefix:contentType:completionHandler:">&ndash;&nbsp;uploadDocument:fileName:filePrefix:contentType:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The uploadDocument method uploads the given file, specified by the full path and file name, with
+any directory prefix and the given content type (MIME type). The upload process creates an
+ArsDocument record which contains the contents of the file.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)uploadDocument:(NSString *)<em>filePath</em> fileName:(NSString *)<em>fileName</em> filePrefix:(NSString *)<em>filePrefix</em> contentType:(NSString *)<em>contentType</em> completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>filePath</code></th>
+						<td><p>The full path to the document, for example in the NSDocumentDirectory appended with the file name</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fileName</code></th>
+						<td><p>The file name which also contains its file extension</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>filePrefix</code></th>
+						<td><p>Any directory prefix to be added to the file path when it&rsquo;s uploaded</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>contentType</code></th>
+						<td><p>The MIME type of the file contents</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>The handler block to execute</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>data: result of method execution, if any</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The uploadDocument method uploads the given file, specified by the full path and file name, with
+any directory prefix and the given content type (MIME type). The upload process creates an
+ArsDocument record which contains the contents of the file.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
+to ensure UI operations are completed on the main thread.</p>
+
+<p>It is important to check the response and error callback return values to verify there were no
+errors returned by the execute operation. The callback data returns the results of the procedure, if any.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Vantiq.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -1847,7 +2038,7 @@ errors returned by the execute operation. The callback data returns the results 
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 VantIQ, Inc. All rights reserved. Updated: 2016-06-21</p>
+						<p class="copyright">Copyright &copy; 2016 VantIQ, Inc. All rights reserved. Updated: 2016-08-29</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
