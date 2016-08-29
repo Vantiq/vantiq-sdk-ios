@@ -10,7 +10,6 @@
 
 @interface Vantiq()
 @property (strong, nonatomic) NSString *apiServer;
-@property (readwrite, nonatomic) NSString *accessToken;
 @property (readwrite, nonatomic) NSString *userName;
 @property (readwrite, nonatomic) NSString *appUUID;
 @property unsigned long apiVersion;
@@ -33,6 +32,11 @@
 - (id)initWithServer:(NSString *)server {
     _appUUID = [[NSUserDefaults standardUserDefaults] stringForKey:@"com.vantiq.vantiq.appUUID"];
     return [self initWithServer:server apiVersion:VantiqAPIVersion];
+}
+
+- (void)setAccessToken:(NSString *)accessToken {
+    _accessToken = accessToken;
+    [[NSUserDefaults standardUserDefaults] setObject:_accessToken forKey:@"com.vantiq.vantiq.accessToken"];
 }
 
 - (void)verify:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {

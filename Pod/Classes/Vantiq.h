@@ -20,7 +20,7 @@ The Vantiq class declares the interface for authentication and subsequent intera
 /**
 Access token to be used for direct Vantiq server operations.
  */
-@property (readonly, nonatomic) NSString *accessToken;
+@property (readwrite, nonatomic) NSString *accessToken;
 /**
 User name of the last authenticated user
  */
