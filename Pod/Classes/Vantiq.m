@@ -74,7 +74,7 @@
             if (httpResponse.statusCode == 200) {
                 // we got a valid response, parse the JSON return
                 NSString *returnString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
-                id jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding]
+                id jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]
                     options:0 error:&jsonError];
                 if (!jsonError) {
                     if ([jsonObject isKindOfClass:[NSDictionary class]]) {
@@ -104,7 +104,7 @@
 
 - (NSString *)formBasicAuth:(NSString *)clientId clientSecret:(NSString *)clientSecret {
     NSString *s = [NSString stringWithFormat:@"%@:%@", clientId, clientSecret];
-    NSString *encoded = [[s dataUsingEncoding:NSUTF8StringEncoding] base64EncodedStringWithOptions:0];
+    NSString *encoded = [[s dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES] base64EncodedStringWithOptions:0];
     return [NSString stringWithFormat:@"Basic %@", encoded];
 }
 
@@ -130,7 +130,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@/%@", _apiServer, _apiVersion, type, ID];
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"PUT"];
-    [request setHTTPBody:[object dataUsingEncoding:NSASCIIStringEncoding]];
+    [request setHTTPBody:[object dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -142,7 +142,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
             id jsonObject = NULL;
             if (httpResponse.statusCode == 200) {
                 NSString *returnString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
-                jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding]
+                jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]
                     options:0 error:&jsonError];
                 if (!jsonError) {
                     if (![jsonObject isKindOfClass:[NSDictionary class]]) {
@@ -162,7 +162,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@?upsert=true", _apiServer, _apiVersion, type];
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
-    [request setHTTPBody:[object dataUsingEncoding:NSASCIIStringEncoding]];
+    [request setHTTPBody:[object dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
 
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
@@ -175,7 +175,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
             NSError *jsonError = NULL;
             if (httpResponse.statusCode == 200) {
                 NSString *returnString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
-                jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding]
+                jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]
                 options:0 error:&jsonError];
                 if (!jsonError) {
                     if (![jsonObject isKindOfClass:[NSDictionary class]]) {
@@ -196,7 +196,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
 
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
     
-    [request setHTTPBody:[object dataUsingEncoding:NSASCIIStringEncoding]];
+    [request setHTTPBody:[object dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -208,7 +208,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
             NSError *jsonError = NULL;
             if (httpResponse.statusCode == 200) {
                 NSString *returnString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
-                jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding]
+                jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]
                 options:0 error:&jsonError];
                 if (!jsonError) {
                     if (![jsonObject isKindOfClass:[NSDictionary class]]) {
@@ -257,7 +257,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/topics/%@", _apiServer, _apiVersion, topic];
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
-    [request setHTTPBody:[message dataUsingEncoding:NSASCIIStringEncoding]];
+    [request setHTTPBody:[message dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
@@ -274,7 +274,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
     if (params) {
-        [request setHTTPBody:[params dataUsingEncoding:NSASCIIStringEncoding]];
+        [request setHTTPBody:[params dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
     }
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
@@ -287,7 +287,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
             NSError *jsonError = NULL;
             if (httpResponse.statusCode == 200) {
                 NSString *returnString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
-                jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding]
+                jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]
                     options:0 error:&jsonError];
                 if (!jsonError) {
                     if (![jsonObject isKindOfClass:[NSDictionary class]]) {
@@ -400,7 +400,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
             if (httpResponse.statusCode == 200) {
                 // we got a valid response, parse the JSON return
                 NSString *returnString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
-                jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding]
+                jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]
                     options:0 error:&jsonError];
                 if (!jsonError) {
                     if (![jsonObject isKindOfClass:[NSArray class]]) {
@@ -507,12 +507,12 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     //  These are all different components of the multi-part MIME protocol; we express them as NSDatas because we will be
     //  composing the entire message in one NSMutableData below.
     //
-    NSData* lineEnd = [@"\r\n" dataUsingEncoding:NSASCIIStringEncoding];
-    NSData* twoHyphens = [@"--" dataUsingEncoding:NSASCIIStringEncoding];
-    NSData* boundary = [boundaryString dataUsingEncoding:NSASCIIStringEncoding];
+    NSData* lineEnd = [@"\r\n" dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSData* twoHyphens = [@"--" dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSData* boundary = [boundaryString dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSData* contentDisposition = [[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\";filename=\"%@%@\"",
-                                   fileName, filePrefix, fileName] dataUsingEncoding:NSASCIIStringEncoding];
-    NSData* contentBody = [[NSString stringWithFormat:@"Content-Type: %@", contentType] dataUsingEncoding:NSASCIIStringEncoding];
+                                   fileName, filePrefix, fileName] dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSData* contentBody = [[NSString stringWithFormat:@"Content-Type: %@", contentType] dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     
     NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/documents", _apiServer, _apiVersion];
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
@@ -554,7 +554,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
             if (httpResponse.statusCode == 200) {
                 // we got a valid response, parse the JSON return
                 NSString *returnString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
-                id jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding]
+                id jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]
                                                                 options:0 error:&jsonError];
                 if (!jsonError) {
                     if ([jsonObject isKindOfClass:[NSDictionary class]]) {
