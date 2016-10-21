@@ -11,6 +11,8 @@
 @interface Vantiq()
 @property (strong, nonatomic) NSString *apiServer;
 @property (readwrite, nonatomic) NSString *userName;
+@property (readwrite, nonatomic) NSString *namespace;
+@property (readwrite, nonatomic) NSString *serverId;
 @property (readwrite, nonatomic) NSString *appUUID;
 @property unsigned long apiVersion;
 @end
@@ -25,6 +27,7 @@
         }
         _apiServer = server;
         _apiVersion = version;
+        _accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"com.vantiq.vantiq.accessToken"];
     }
     return self;
 }
@@ -39,11 +42,13 @@
     [[NSUserDefaults standardUserDefaults] setObject:_accessToken forKey:@"com.vantiq.vantiq.accessToken"];
 }
 
-- (void)verify:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
-    _accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"com.vantiq.vantiq.accessToken"];
+- (void)verify:(NSString *)accessToken completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
+    _accessToken = accessToken;
     _userName = [[NSUserDefaults standardUserDefaults] stringForKey:@"com.vantiq.vantiq.userName"];
+    _namespace = [[NSUserDefaults standardUserDefaults] stringForKey:@"com.vantiq.vantiq.namespace"];
+    _serverId = [[NSUserDefaults standardUserDefaults] stringForKey:@"com.vantiq.vantiq.serverId"];
     if (_accessToken) {
-        [self select:@"types" props:NULL where:@"{\"name\":\"ArsType\"}" completionHandler:^(NSArray *data, NSHTTPURLResponse *response, NSError *error) {
+        [self select:@"users" completionHandler:^(NSArray *data, NSHTTPURLResponse *response, NSError *error) {
             handler(response, error);
         }];
     } else {
@@ -81,22 +86,44 @@
                         if ([jsonObject objectForKey:@"accessToken"]) {
                             _accessToken = [jsonObject objectForKey:@"accessToken"];
                             _userName = username;
+                            _namespace = [jsonObject objectForKey:@"namespace"];
 
                             // squirrel away the access token so we can verify it in subsequent app starts
                             [[NSUserDefaults standardUserDefaults] setObject:_accessToken forKey:@"com.vantiq.vantiq.accessToken"];
                             [[NSUserDefaults standardUserDefaults] setObject:_userName forKey:@"com.vantiq.vantiq.userName"];
-                            [[NSUserDefaults standardUserDefaults] synchronize];
+                            [[NSUserDefaults standardUserDefaults] setObject:_namespace forKey:@"com.vantiq.vantiq.namespace"];
+                            
+                            // we also want to know the server's globally unique ID if we want to access multiple servers
+                            [self select:@"nodes" props:NULL where:@"{\"name\":\"self\"}"
+                                completionHandler:^(NSArray *data, NSHTTPURLResponse *httpResponse, NSError *error) {
+                                if (error) {
+                                    handler(httpResponse, error);
+                                } else {
+                                    NSError *jsonError = nil;
+                                    if (httpResponse.statusCode == 200) {
+                                        if (data.count >= 1) {
+                                            _serverId = [data[0] objectForKey:@"uuid"];
+                                            [[NSUserDefaults standardUserDefaults] setObject:_serverId forKey:@"com.vantiq.vantiq.serverId"];
+                                            [[NSUserDefaults standardUserDefaults] synchronize];
+                                        } else {
+                                            jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
+                                        }
+                                    }
+                                    handler(httpResponse, jsonError);
+                                }
+                            }];
                         } else {
                             // error if we can't find the dictionary keys
                             jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
+                            handler(httpResponse, jsonError);
                         }
                     } else {
                         // error if return isn't a dictionary
                         jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
+                        handler(httpResponse, jsonError);
                     }
                 }
             }
-            handler(httpResponse, jsonError);
         }
     }];
     [task resume];
@@ -435,7 +462,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
 - (void)registerForPushNotifications:(NSString *)APNSDeviceToken
     completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error))handler {
     
-    NSString *whereClause = [NSString stringWithFormat:@"{\"username\":\"%@\", \"deviceId\":\"%@\"}", _userName, _appUUID];
+    NSString *whereClause = [NSString stringWithFormat:@"{\"username\":\"%@\", \"deviceId\":\"%@\"}", [_userName lowercaseString], _appUUID];
     [self select:@"ArsPushTarget" props:@[] where:whereClause completionHandler:^(NSArray *tokenArray,
         NSHTTPURLResponse *response, NSError *error) {
         if (error) {
@@ -487,7 +514,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
                     NSString *props = [NSString stringWithFormat:@"{\"appId\":\"%@\", \"appName\":\"%@\", \"deviceId\":\"%@\", \"deviceName\":\"%@\", \"platform\":0,  \"token\":\"%@\", \"username\":\"%@\"}",
                         [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"],
                         [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"],
-                        _appUUID, [[UIDevice currentDevice] name], APNSDeviceToken, _userName];
+                        _appUUID, [[UIDevice currentDevice] name], APNSDeviceToken, [_userName lowercaseString]];
                     [self upsert:@"ArsPushTarget" object:props completionHandler:handler];
                 }
             }

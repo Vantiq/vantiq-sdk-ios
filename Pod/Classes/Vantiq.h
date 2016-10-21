@@ -26,6 +26,14 @@ User name of the last authenticated user
  */
 @property (readonly, nonatomic) NSString *userName;
 /**
+Namespace of the last authenticated user
+ */
+@property (readonly, nonatomic) NSString *namespace;
+/**
+Server ID of the last authenticated user
+ */
+@property (readonly, nonatomic) NSString *serverId;
+/**
 Unique ID for this installation of the device running the Vantiq SDK
  */
 @property (readonly, nonatomic) NSString *appUUID;
@@ -49,7 +57,7 @@ API is required, use the initWithServer:server apiVersion:version contructor.
 - (id)initWithServer:(NSString *)server;
 
 /**
-The verify method attempts to validate an existing Vantiq server token. If the token has expired
+The verify method attempts to validate the given Vantiq server token. If the token has expired
 or a token has never been issued, the error parameter in the callback will be non-null and the
 app should then call authenticate (see below) in order to reauthenticate the user.
  
@@ -60,12 +68,13 @@ to ensure UI operations are completed on the main thread.
  
 @see authenticate:password:completionHandler:
  
-@param handler    The handler block to execute.
+@param accessToken  The access token to verify
+@param handler      The handler block to execute.
  
 @return response: [iOS HTTP operation response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/)
 @return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
 */
-- (void)verify:(void (^)(NSHTTPURLResponse *response, NSError *error))handler;
+- (void)verify:(NSString *)accessToken completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler;
 
 /**
 The authenticate method connects to the Vantiq server with the given authentication
