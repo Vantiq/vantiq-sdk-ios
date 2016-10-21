@@ -17,7 +17,7 @@
 			<Abstract type="html">Access token to be used for direct Vantiq server operations.</Abstract>
 			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
-			<Declaration>@property (readonly, nonatomic) NSString *accessToken</Declaration>
+			<Declaration>@property (readwrite, nonatomic) NSString *accessToken</Declaration>
 			
 			
 			<Anchor>//api/name/accessToken</Anchor>
@@ -29,7 +29,7 @@
 			<Abstract type="html">Access token to be used for direct Vantiq server operations.</Abstract>
 			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
-			<Declaration>@property (readonly, nonatomic) NSString *accessToken</Declaration>
+			<Declaration>@property (readwrite, nonatomic) NSString *accessToken</Declaration>
 			
 			
 			<Anchor>//api/name/accessToken</Anchor>
@@ -41,7 +41,7 @@
 			<Abstract type="html">Access token to be used for direct Vantiq server operations.</Abstract>
 			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
-			<Declaration>@property (readonly, nonatomic) NSString *accessToken</Declaration>
+			<Declaration>@property (readwrite, nonatomic) NSString *accessToken</Declaration>
 			
 			
 			<Anchor>//api/name/accessToken</Anchor>
@@ -81,6 +81,78 @@
 			
 			
 			<Anchor>//api/name/userName</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/setNamespace:</TokenIdentifier>
+			<Abstract type="html">Namespace of the last authenticated user</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) NSString *namespace</Declaration>
+			
+			
+			<Anchor>//api/name/namespace</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/namespace</TokenIdentifier>
+			<Abstract type="html">Namespace of the last authenticated user</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) NSString *namespace</Declaration>
+			
+			
+			<Anchor>//api/name/namespace</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/Vantiq/namespace</TokenIdentifier>
+			<Abstract type="html">Namespace of the last authenticated user</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) NSString *namespace</Declaration>
+			
+			
+			<Anchor>//api/name/namespace</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/setServerId:</TokenIdentifier>
+			<Abstract type="html">Server ID of the last authenticated user</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) NSString *serverId</Declaration>
+			
+			
+			<Anchor>//api/name/serverId</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/serverId</TokenIdentifier>
+			<Abstract type="html">Server ID of the last authenticated user</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) NSString *serverId</Declaration>
+			
+			
+			<Anchor>//api/name/serverId</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/Vantiq/serverId</TokenIdentifier>
+			<Abstract type="html">Server ID of the last authenticated user</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
+			
+			<Declaration>@property (readonly, nonatomic) NSString *serverId</Declaration>
+			
+			
+			<Anchor>//api/name/serverId</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
@@ -165,8 +237,8 @@ API is required, use the initWithServer:server apiVersion:version contructor.</A
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/verify:</TokenIdentifier>
-			<Abstract type="html">The verify method attempts to validate an existing Vantiq server token. If the token has expired
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/verify:completionHandler:</TokenIdentifier>
+			<Abstract type="html">The verify method attempts to validate the given Vantiq server token. If the token has expired
 or a token has never been issued, the error parameter in the callback will be non-null and the
 app should then call authenticate (see below) in order to reauthenticate the user.</Abstract>
 			<DeclaredIn>Vantiq.h</DeclaredIn>
@@ -176,15 +248,18 @@ app should then call authenticate (see below) in order to reauthenticate the use
 		
 	</RelatedTokens>
 	
-			<Declaration>- (void)verify:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
+			<Declaration>- (void)verify:(NSString *)accessToken completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
 				<Parameter>
+					<Name>accessToken</Name>
+					<Abstract type="html">The access token to verify</Abstract>
+				</Parameter><Parameter>
 					<Name>handler</Name>
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
 			<ReturnValue><Abstract type="html">response: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
-			<Anchor>//api/name/verify:</Anchor>
+			<Anchor>//api/name/verify:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		

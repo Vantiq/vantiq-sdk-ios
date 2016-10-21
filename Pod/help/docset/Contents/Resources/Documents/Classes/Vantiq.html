@@ -60,6 +60,10 @@
 		
 		<option value="//api/name/appUUID">appUUID</option>
 		
+		<option value="//api/name/namespace">namespace</option>
+		
+		<option value="//api/name/serverId">serverId</option>
+		
 		<option value="//api/name/userName">userName</option>
 		
 	</optgroup>
@@ -110,7 +114,7 @@
 		
 		<option value="//api/name/upsert:object:completionHandler:">- upsert:object:completionHandler:</option>
 		
-		<option value="//api/name/verify:">- verify:</option>
+		<option value="//api/name/verify:completionHandler:">- verify:completionHandler:</option>
 		
 	</optgroup>
 	
@@ -178,7 +182,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSString *accessToken</code></div>
+			<div class="method-subsection method-declaration"><code>@property (readwrite, nonatomic) NSString *accessToken</code></div>
 
 		    
 			
@@ -237,6 +241,98 @@
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>User name of the last authenticated user</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Vantiq.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/namespace" title="namespace"></a>
+	<h3 class="method-title"><code><a href="#//api/name/namespace">&nbsp;&nbsp;namespace</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Namespace of the last authenticated user</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSString *namespace</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Namespace of the last authenticated user</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Vantiq.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/serverId" title="serverId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/serverId">&nbsp;&nbsp;serverId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Server ID of the last authenticated user</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSString *serverId</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Server ID of the last authenticated user</p>
 			</div>
 			
 
@@ -434,8 +530,8 @@ API is required, use the initWithServer:server apiVersion:version contructor.</p
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/verify:" title="verify:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/verify:">&ndash;&nbsp;verify:</a></code>
+	<a name="//api/name/verify:completionHandler:" title="verify:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/verify:completionHandler:">&ndash;&nbsp;verify:completionHandler:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -445,20 +541,25 @@ API is required, use the initWithServer:server apiVersion:version contructor.</p
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The verify method attempts to validate an existing Vantiq server token. If the token has expired
+				<p>The verify method attempts to validate the given Vantiq server token. If the token has expired
 or a token has never been issued, the error parameter in the callback will be non-null and the
 app should then call authenticate (see below) in order to reauthenticate the user.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)verify:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)verify:(NSString *)<em>accessToken</em> completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
 
 		    
 			
 			<div class="method-subsection arguments-section parameters">
 				<h4 class="method-subtitle parameter-title">Parameters</h4>
 				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>accessToken</code></th>
+						<td><p>The access token to verify</p></td>
+					</tr>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>handler</code></th>
@@ -481,7 +582,7 @@ app should then call authenticate (see below) in order to reauthenticate the use
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The verify method attempts to validate an existing Vantiq server token. If the token has expired
+				<p>The verify method attempts to validate the given Vantiq server token. If the token has expired
 or a token has never been issued, the error parameter in the callback will be non-null and the
 app should then call authenticate (see below) in order to reauthenticate the user.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
@@ -2038,7 +2139,7 @@ errors returned by the execute operation. The callback data returns the results 
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 VantIQ, Inc. All rights reserved. Updated: 2016-08-29</p>
+						<p class="copyright">Copyright &copy; 2016 VantIQ, Inc. All rights reserved. Updated: 2016-10-21</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
