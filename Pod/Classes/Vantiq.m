@@ -94,7 +94,7 @@
                             [[NSUserDefaults standardUserDefaults] setObject:_namespace forKey:@"com.vantiq.vantiq.namespace"];
                             
                             // we also want to know the server's globally unique ID if we want to access multiple servers
-                            [self select:@"nodes" props:NULL where:@"{\"name\":\"self\"}"
+                            [self select:@"nodes" props:NULL where:@"{\"type\":\"self\"}"
                                 completionHandler:^(NSArray *data, NSHTTPURLResponse *httpResponse, NSError *error) {
                                 if (error) {
                                     handler(httpResponse, error);
@@ -122,7 +122,13 @@
                         jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
                         handler(httpResponse, jsonError);
                     }
+                } else {
+                    // error if return isn't valid JSON
+                    jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
+                    handler(httpResponse, jsonError);
                 }
+            } else {
+                handler(httpResponse, error);
             }
         }
     }];
