@@ -256,6 +256,19 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     [task resume];
 }
 
+- (void)delete:(NSString *)type resourceId:(NSString *)resourceId completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
+    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@/%@", _apiServer, _apiVersion, type, resourceId];
+    
+    NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"DELETE"];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        handler(httpResponse, error);
+    }];
+    [task resume];
+}
 - (void)delete:(NSString *)type where:(NSString *)where completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
     NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@", _apiServer, _apiVersion, type];
     NSMutableString *murlArgs = [NSMutableString stringWithString:@"?count=true&where="];

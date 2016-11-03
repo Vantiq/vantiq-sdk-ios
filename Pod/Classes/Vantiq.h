@@ -323,7 +323,27 @@ The upsert method either creates or updates a record in the database depending i
     completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error))handler;
 
 /**
- The delete method removes records from the system for a given type. Deletes always require a constraint indicating which records to remove.
+ This delete method removes records from the system for a given type. Use this form of delete
+ for system types which require the name of the type in order to perform the delete.
+ 
+ @warning Please also note this method invokes a callback block associated with a network-
+ related block. Because this block is called from asynchronous network operations,
+ its code must be wrapped by a call to _dispatch_async(dispatch_get_main_queue(), ^ {...});_
+ to ensure UI operations are completed on the main thread.
+ 
+ It is important to check the response and error callback return values to verify there were no
+ errors returned by the deleteOne operation.
+ 
+ @param  type    The data type to query.
+ @param  resourceId   The resource identifier. This is a string and is mostly but not always associated with the type's 'name' property.
+ @param handler    The handler block to execute.
+ 
+ @return response: [iOS HTTP operation response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/)
+ @return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
+ */
+- (void)delete:(NSString *)type resourceId:(NSString *)resourceId completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler;
+/**
+ This delete method removes records from the system for a given type. Deletes always require a constraint indicating which records to remove.
  
  @warning Please also note this method invokes a callback block associated with a network-
  related block. Because this block is called from asynchronous network operations,
