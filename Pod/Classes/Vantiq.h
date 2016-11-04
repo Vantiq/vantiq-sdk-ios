@@ -24,7 +24,7 @@ Access token to be used for direct Vantiq server operations.
 /**
 User name of the last authenticated user
  */
-@property (readonly, nonatomic) NSString *userName;
+@property (readonly, nonatomic) NSString *username;
 /**
 Namespace of the last authenticated user
  */
@@ -69,12 +69,13 @@ to ensure UI operations are completed on the main thread.
 @see authenticate:password:completionHandler:
  
 @param accessToken  The access token to verify
+@param username     The username associated with the token
 @param handler      The handler block to execute.
  
 @return response: [iOS HTTP operation response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/)
 @return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
 */
-- (void)verify:(NSString *)accessToken completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler;
+- (void)verify:(NSString *)accessToken username:(NSString *)username completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler;
 
 /**
 The authenticate method connects to the Vantiq server with the given authentication

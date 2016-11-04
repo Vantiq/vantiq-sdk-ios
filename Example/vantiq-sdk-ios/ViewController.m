@@ -14,7 +14,9 @@
 // our one globally-available Vantiq endpoint
 Vantiq *v;
 
-@interface ViewController ()
+@interface ViewController () {
+    NSString *accessToken;
+}
 @property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -25,7 +27,9 @@ Vantiq *v;
 - (void)viewDidLoad {
     [super viewDidLoad];
     v = [[Vantiq alloc] initWithServer:@"https://dev.vantiq.com"];
-    [v verify:v.accessToken completionHandler:^(NSHTTPURLResponse *response, NSError *error) {
+    accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"com.vantiq.vantiq.accessToken"];
+    _username.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"com.vantiq.vantiq.username"];
+    [v verify:accessToken username:_username.text completionHandler:^(NSHTTPURLResponse *response, NSError *error) {
         NSString *resultStr;
         if (![DecodeError formError:response error:error diagnosis:@"" resultStr:&resultStr]) {
             // the user already has a valid token so no need to log in
@@ -45,6 +49,11 @@ Vantiq *v;
             });
         } else {
             dispatch_async(dispatch_get_main_queue(), ^ {
+                // remember our access token and username
+                accessToken = v.accessToken;
+                [[NSUserDefaults standardUserDefaults] setObject:accessToken forKey:@"com.vantiq.vantiq.accessToken"];
+                [[NSUserDefaults standardUserDefaults] setObject:_username.text forKey:@"com.vantiq.vantiq.username"];
+                
                 // clear our password field
                 _password.text = @"";
                 // transition to the home view
