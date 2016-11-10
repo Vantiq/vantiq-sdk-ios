@@ -424,12 +424,12 @@ The publish method publishes a message onto a given topic. Messages published on
  @param  params Parameters passed to the procedure. This is a JSON-formatted string.
  @param handler    The handler block to execute.
  
-@return data: result of method execution, if any
+@return data: result of method execution, if any, usually an NSDictionary or NSArray (use isKindOfClass to determine)
 @return response: [iOS HTTP operation response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/)
 @return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
  */
 - (void)execute:(NSString *)procedure params:(NSString *)params
-completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error))handler;
+completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler;
 /**
  The execute method executes a procedure on the Vantiq server. Procedures can take parameters (i.e. arguments) and produce a result.
  
@@ -446,12 +446,12 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
  @param  procedure    The procedure to execute. The parameters may be provided as an array where the arguments are given in order. Alternatively, the parameters may be provided as an object where the arguments are named.
  @param handler    The handler block to execute.
  
-@return data: result of method execution, if any
+@return data: result of method execution, if any, usually an NSDictionary or NSArray (use isKindOfClass to determine)
 @return response: [iOS HTTP operation response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/)
 @return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
  */
 - (void)execute:(NSString *)procedure
-    completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error))handler;
+    completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler;
 
 /**
  The registerForPushNotifications method registers an app to receive Apple Push Notifications. Please note that

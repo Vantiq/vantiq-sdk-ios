@@ -304,7 +304,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
 }
 
 - (void)execute:(NSString *)procedure params:(NSString *)params
-    completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error))handler {
+    completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler {
     NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/procedures/%@", _apiServer, _apiVersion, procedure];
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
@@ -324,12 +324,6 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
                 NSString *returnString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
                 jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]
                     options:0 error:&jsonError];
-                if (!jsonError) {
-                    if (![jsonObject isKindOfClass:[NSDictionary class]]) {
-                        // error if return isn't a dictionary
-                        jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
-                    }
-                }
             }
             handler(jsonObject, httpResponse, jsonError);
         }
@@ -338,7 +332,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
 }
 
 - (void)execute:(NSString *)procedure
-completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error))handler {
+completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler {
     [self execute:procedure params:NULL completionHandler:handler];
 }
 

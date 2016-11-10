@@ -64,7 +64,7 @@
 		
 		<option value="//api/name/serverId">serverId</option>
 		
-		<option value="//api/name/userName">userName</option>
+		<option value="//api/name/username">username</option>
 		
 	</optgroup>
 	
@@ -79,6 +79,8 @@
 		<option value="//api/name/count:completionHandler:">- count:completionHandler:</option>
 		
 		<option value="//api/name/count:where:completionHandler:">- count:where:completionHandler:</option>
+		
+		<option value="//api/name/delete:resourceId:completionHandler:">- delete:resourceId:completionHandler:</option>
 		
 		<option value="//api/name/delete:where:completionHandler:">- delete:where:completionHandler:</option>
 		
@@ -114,7 +116,7 @@
 		
 		<option value="//api/name/upsert:object:completionHandler:">- upsert:object:completionHandler:</option>
 		
-		<option value="//api/name/verify:completionHandler:">- verify:completionHandler:</option>
+		<option value="//api/name/verify:username:completionHandler:">- verify:username:completionHandler:</option>
 		
 	</optgroup>
 	
@@ -212,8 +214,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/userName" title="userName"></a>
-	<h3 class="method-title"><code><a href="#//api/name/userName">&nbsp;&nbsp;userName</a></code>
+	<a name="//api/name/username" title="username"></a>
+	<h3 class="method-title"><code><a href="#//api/name/username">&nbsp;&nbsp;username</a></code>
 </h3>
 
 	<div class="method-info">
@@ -228,7 +230,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSString *userName</code></div>
+			<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSString *username</code></div>
 
 		    
 			
@@ -530,8 +532,8 @@ API is required, use the initWithServer:server apiVersion:version contructor.</p
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/verify:completionHandler:" title="verify:completionHandler:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/verify:completionHandler:">&ndash;&nbsp;verify:completionHandler:</a></code>
+	<a name="//api/name/verify:username:completionHandler:" title="verify:username:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/verify:username:completionHandler:">&ndash;&nbsp;verify:username:completionHandler:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -548,7 +550,7 @@ app should then call authenticate (see below) in order to reauthenticate the use
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)verify:(NSString *)<em>accessToken</em> completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)verify:(NSString *)<em>accessToken</em> username:(NSString *)<em>username</em> completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
 
 		    
 			
@@ -559,6 +561,11 @@ app should then call authenticate (see below) in order to reauthenticate the use
 					<tr>
 						<th scope="row" class="argument-name"><code>accessToken</code></th>
 						<td><p>The access token to verify</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>username</code></th>
+						<td><p>The <a href="#//api/name/username">username</a> associated with the token</p></td>
 					</tr>
 				
 					<tr>
@@ -626,7 +633,7 @@ to ensure UI operations are completed on the main thread.</p></div>
 			
 			<div class="method-subsection brief-description">
 				<p>The authenticate method connects to the Vantiq server with the given authentication
-credentials used to authorize the user. The username and password credentials are not stored.</p>
+credentials used to authorize the user. The <a href="#//api/name/username">username</a> and password credentials are not stored.</p>
 			</div>
 			
 		    
@@ -641,12 +648,12 @@ credentials used to authorize the user. The username and password credentials ar
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>username</code></th>
-						<td><p>The username to provide access to the Vantiq server</p></td>
+						<td><p>The <a href="#//api/name/username">username</a> to provide access to the Vantiq server</p></td>
 					</tr>
 				
 					<tr>
 						<th scope="row" class="argument-name"><code>password</code></th>
-						<td><p>The password associated with the username</p></td>
+						<td><p>The password associated with the <a href="#//api/name/username">username</a></p></td>
 					</tr>
 				
 					<tr>
@@ -671,7 +678,7 @@ credentials used to authorize the user. The username and password credentials ar
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>The authenticate method connects to the Vantiq server with the given authentication
-credentials used to authorize the user. The username and password credentials are not stored.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
+credentials used to authorize the user. The <a href="#//api/name/username">username</a> and password credentials are not stored.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
 its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
 to ensure UI operations are completed on the main thread.</p></div>
@@ -1542,6 +1549,87 @@ errors returned by the insert operation. The callback data returned is a copy of
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/delete:resourceId:completionHandler:" title="delete:resourceId:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/delete:resourceId:completionHandler:">&ndash;&nbsp;delete:resourceId:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This delete method removes records from the system for a given type. Use this form of delete
+for system types which require the name of the type in order to perform the delete.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)delete:(NSString *)<em>type</em> resourceId:(NSString *)<em>resourceId</em> completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>type</code></th>
+						<td><p>The data type to query.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>resourceId</code></th>
+						<td><p>The resource identifier. This is a string and is mostly but not always associated with the type&rsquo;s &lsquo;name&rsquo; property.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>The handler block to execute.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This delete method removes records from the system for a given type. Use this form of delete
+for system types which require the name of the type in order to perform the delete.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
+to ensure UI operations are completed on the main thread.</p>
+
+<p>It is important to check the response and error callback return values to verify there were no
+errors returned by the deleteOne operation.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Vantiq.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/delete:where:completionHandler:" title="delete:where:completionHandler:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/delete:where:completionHandler:">&ndash;&nbsp;delete:where:completionHandler:</a></code>
 </h3>
@@ -1553,7 +1641,7 @@ errors returned by the insert operation. The callback data returned is a copy of
 			
 			
 			<div class="method-subsection brief-description">
-				<p>The delete method removes records from the system for a given type. Deletes always require a constraint indicating which records to remove.</p>
+				<p>This delete method removes records from the system for a given type. Deletes always require a constraint indicating which records to remove.</p>
 			</div>
 			
 		    
@@ -1597,7 +1685,7 @@ errors returned by the insert operation. The callback data returned is a copy of
 			
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
-				<p>The delete method removes records from the system for a given type. Deletes always require a constraint indicating which records to remove.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
+				<p>This delete method removes records from the system for a given type. Deletes always require a constraint indicating which records to remove.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
 its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
 to ensure UI operations are completed on the main thread.</p>
@@ -1806,7 +1894,7 @@ errors returned by the publish operation.</p></div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)execute:(NSString *)<em>procedure</em> params:(NSString *)<em>params</em> completionHandler:(void ( ^ ) ( NSDictionary *data , NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)execute:(NSString *)<em>procedure</em> params:(NSString *)<em>params</em> completionHandler:(void ( ^ ) ( id data , NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
 
 		    
 			
@@ -1836,7 +1924,7 @@ errors returned by the publish operation.</p></div>
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>data: result of method execution, if any</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+				<p>data: result of method execution, if any, usually an NSDictionary or NSArray (use isKindOfClass to determine)</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
 			</div>
 			
 
@@ -1885,7 +1973,7 @@ errors returned by the execute operation. The callback data returns the results 
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)execute:(NSString *)<em>procedure</em> completionHandler:(void ( ^ ) ( NSDictionary *data , NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)execute:(NSString *)<em>procedure</em> completionHandler:(void ( ^ ) ( id data , NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
 
 		    
 			
@@ -1910,7 +1998,7 @@ errors returned by the execute operation. The callback data returns the results 
 			
 			<div class="method-subsection return">
 				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>data: result of method execution, if any</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+				<p>data: result of method execution, if any, usually an NSDictionary or NSArray (use isKindOfClass to determine)</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
 			</div>
 			
 
@@ -2139,7 +2227,7 @@ errors returned by the execute operation. The callback data returns the results 
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 VantIQ, Inc. All rights reserved. Updated: 2016-10-21</p>
+						<p class="copyright">Copyright &copy; 2016 VantIQ, Inc. All rights reserved. Updated: 2016-11-10</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

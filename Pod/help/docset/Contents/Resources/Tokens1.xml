@@ -49,38 +49,38 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/setUserName:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/setUsername:</TokenIdentifier>
 			<Abstract type="html">User name of the last authenticated user</Abstract>
 			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
-			<Declaration>@property (readonly, nonatomic) NSString *userName</Declaration>
+			<Declaration>@property (readonly, nonatomic) NSString *username</Declaration>
 			
 			
-			<Anchor>//api/name/userName</Anchor>
+			<Anchor>//api/name/username</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/userName</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/username</TokenIdentifier>
 			<Abstract type="html">User name of the last authenticated user</Abstract>
 			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
-			<Declaration>@property (readonly, nonatomic) NSString *userName</Declaration>
+			<Declaration>@property (readonly, nonatomic) NSString *username</Declaration>
 			
 			
-			<Anchor>//api/name/userName</Anchor>
+			<Anchor>//api/name/username</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/Vantiq/userName</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/Vantiq/username</TokenIdentifier>
 			<Abstract type="html">User name of the last authenticated user</Abstract>
 			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
-			<Declaration>@property (readonly, nonatomic) NSString *userName</Declaration>
+			<Declaration>@property (readonly, nonatomic) NSString *username</Declaration>
 			
 			
-			<Anchor>//api/name/userName</Anchor>
+			<Anchor>//api/name/username</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
@@ -237,7 +237,7 @@ API is required, use the initWithServer:server apiVersion:version contructor.</A
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/verify:completionHandler:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/verify:username:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The verify method attempts to validate the given Vantiq server token. If the token has expired
 or a token has never been issued, the error parameter in the callback will be non-null and the
 app should then call authenticate (see below) in order to reauthenticate the user.</Abstract>
@@ -248,18 +248,21 @@ app should then call authenticate (see below) in order to reauthenticate the use
 		
 	</RelatedTokens>
 	
-			<Declaration>- (void)verify:(NSString *)accessToken completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
+			<Declaration>- (void)verify:(NSString *)accessToken username:(NSString *)username completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>accessToken</Name>
 					<Abstract type="html">The access token to verify</Abstract>
+				</Parameter><Parameter>
+					<Name>username</Name>
+					<Abstract type="html">The username associated with the token</Abstract>
 				</Parameter><Parameter>
 					<Name>handler</Name>
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
 			<ReturnValue><Abstract type="html">response: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
-			<Anchor>//api/name/verify:completionHandler:</Anchor>
+			<Anchor>//api/name/verify:username:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
@@ -553,8 +556,32 @@ The select may query both user-defined types as well as system types, such as pr
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/delete:resourceId:completionHandler:</TokenIdentifier>
+			<Abstract type="html">This delete method removes records from the system for a given type. Use this form of delete
+for system types which require the name of the type in order to perform the delete.</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
+			
+			<Declaration>- (void)delete:(NSString *)type resourceId:(NSString *)resourceId completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>type</Name>
+					<Abstract type="html">The data type to query.</Abstract>
+				</Parameter><Parameter>
+					<Name>resourceId</Name>
+					<Abstract type="html">The resource identifier. This is a string and is mostly but not always associated with the type&apos;s &apos;name&apos; property.</Abstract>
+				</Parameter><Parameter>
+					<Name>handler</Name>
+					<Abstract type="html">The handler block to execute.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">response: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
+			<Anchor>//api/name/delete:resourceId:completionHandler:</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/delete:where:completionHandler:</TokenIdentifier>
-			<Abstract type="html">The delete method removes records from the system for a given type. Deletes always require a constraint indicating which records to remove.</Abstract>
+			<Abstract type="html">This delete method removes records from the system for a given type. Deletes always require a constraint indicating which records to remove.</Abstract>
 			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 			<Declaration>- (void)delete:(NSString *)type where:(NSString *)where completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
@@ -631,7 +658,7 @@ The select may query both user-defined types as well as system types, such as pr
 			<Abstract type="html">The execute method executes a procedure on the Vantiq server. Procedures can take parameters (i.e. arguments) and produce a result.</Abstract>
 			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
-			<Declaration>- (void)execute:(NSString *)procedure params:(NSString *)params completionHandler:(void ( ^ ) ( NSDictionary *data , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
+			<Declaration>- (void)execute:(NSString *)procedure params:(NSString *)params completionHandler:(void ( ^ ) ( id data , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>procedure</Name>
@@ -644,7 +671,7 @@ The select may query both user-defined types as well as system types, such as pr
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
-			<ReturnValue><Abstract type="html">data: result of method execution, if anyresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
+			<ReturnValue><Abstract type="html">data: result of method execution, if any, usually an NSDictionary or NSArray (use isKindOfClass to determine)response: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/execute:params:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
@@ -659,7 +686,7 @@ The select may query both user-defined types as well as system types, such as pr
 		
 	</RelatedTokens>
 	
-			<Declaration>- (void)execute:(NSString *)procedure completionHandler:(void ( ^ ) ( NSDictionary *data , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
+			<Declaration>- (void)execute:(NSString *)procedure completionHandler:(void ( ^ ) ( id data , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>procedure</Name>
@@ -669,7 +696,7 @@ The select may query both user-defined types as well as system types, such as pr
 					<Abstract type="html">The handler block to execute.</Abstract>
 				</Parameter>
 			</Parameters>
-			<ReturnValue><Abstract type="html">data: result of method execution, if anyresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
+			<ReturnValue><Abstract type="html">data: result of method execution, if any, usually an NSDictionary or NSArray (use isKindOfClass to determine)response: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/execute:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
