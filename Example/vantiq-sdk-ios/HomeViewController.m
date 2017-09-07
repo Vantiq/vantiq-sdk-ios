@@ -239,9 +239,9 @@ extern Vantiq *v;
     [self runCountTest:@"types" where:@"{\"ars_version\":{\"$gt\":5}}"];
     
     [NSThread sleepForTimeInterval:.3];
-    [self runInsertTest:@"TestType" object:@"{\"intValue\":42}"];
+    [self runInsertTest:@"TestType" object:@"{\"intValue\":42,\"uniqueString\":\"42\"}"];
     [NSThread sleepForTimeInterval:.3];
-    [self runInsertTest:@"TestType" object:@"{\"intValue\":43,\"stringValue\":\"A String.\"}"];
+    [self runInsertTest:@"TestType" object:@"{\"intValue\":43,\"uniqueString\":\"43\",\"stringValue\":\"A String.\"}"];
     
     [NSThread sleepForTimeInterval:.3];
     [self runUpsertTest:@"TestType" object:@"{\"intValue\":44,\"uniqueString\":\"A Unique String.\"}"];

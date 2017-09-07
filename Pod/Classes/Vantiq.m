@@ -309,7 +309,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
     if (params) {
-        [request setHTTPBody:[params dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
+        [request setHTTPBody:[params dataUsingEncoding:NSUTF16LittleEndianStringEncoding allowLossyConversion:YES]];
     }
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
