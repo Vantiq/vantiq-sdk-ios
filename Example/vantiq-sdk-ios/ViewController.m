@@ -26,7 +26,8 @@ Vantiq *v;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    v = [[Vantiq alloc] initWithServer:@"https://dev.vantiq.com"];
+    //v = [[Vantiq alloc] initWithServer:@"https://dev.vantiq.com"];
+    v = [[Vantiq alloc] initWithServer:@"http://localhost:8080"];
     accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"com.vantiq.vantiq.accessToken"];
     _username.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"com.vantiq.vantiq.username"];
     [v verify:accessToken username:_username.text completionHandler:^(NSHTTPURLResponse *response, NSError *error) {
