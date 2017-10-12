@@ -152,7 +152,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@/%@", _apiServer, _apiVersion, type, ID];
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"PUT"];
-    [request setHTTPBody:[object dataUsingEncoding:NSUTF16LittleEndianStringEncoding allowLossyConversion:YES]];
+    [request setHTTPBody:[object dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -184,7 +184,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@?upsert=true", _apiServer, _apiVersion, type];
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
-    [request setHTTPBody:[object dataUsingEncoding:NSUTF16LittleEndianStringEncoding allowLossyConversion:YES]];
+    [request setHTTPBody:[object dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
 
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
@@ -218,7 +218,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
 
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
     
-    [request setHTTPBody:[object dataUsingEncoding:NSUTF16LittleEndianStringEncoding allowLossyConversion:YES]];
+    [request setHTTPBody:[object dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -292,7 +292,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/topics/%@", _apiServer, _apiVersion, topic];
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
-    [request setHTTPBody:[message dataUsingEncoding:NSUTF16LittleEndianStringEncoding allowLossyConversion:YES]];
+    [request setHTTPBody:[message dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
@@ -309,7 +309,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
     if (params) {
-        [request setHTTPBody:[params dataUsingEncoding:NSUTF16LittleEndianStringEncoding allowLossyConversion:YES]];
+        [request setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
     }
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
