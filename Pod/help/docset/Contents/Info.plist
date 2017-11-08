@@ -27,8 +27,8 @@
 	<key>DocSetPublisherIdentifier</key>
 	<string>com.vantiq.documentation</string>
 	<key>DocSetPublisherName</key>
-	<string>VantIQ, Inc.</string>
+	<string>VANTIQ, Inc.</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2016 VantIQ, Inc.. All rights reserved.</string>
+	<string>Copyright © 2017 VANTIQ, Inc.. All rights reserved.</string>
 </dict>
 </plist>

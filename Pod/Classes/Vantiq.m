@@ -44,7 +44,7 @@
     _accessToken = accessToken;
     _username = username;
     if (_accessToken) {
-        [self select:@"users" completionHandler:^(NSArray *data, NSHTTPURLResponse *response, NSError *error) {
+        [self select:@"system.users" completionHandler:^(NSArray *data, NSHTTPURLResponse *response, NSError *error) {
             handler(response, error);
         }];
     } else {
@@ -85,7 +85,7 @@
                             _namespace = [jsonObject objectForKey:@"namespace"];
                             
                             // we also want to know the server's globally unique ID if we want to access multiple servers
-                            [self select:@"nodes" props:NULL where:@"{\"type\":\"self\"}"
+                            [self select:@"system.nodes" props:NULL where:@"{\"type\":\"self\"}"
                                 completionHandler:^(NSArray *data, NSHTTPURLResponse *httpResponse, NSError *error) {
                                 if (error) {
                                     handler(httpResponse, error);
@@ -147,12 +147,27 @@
     return request;
 }
 
+/*
+ *  buildURLResourceType
+ *      - given the name of a resource type, form a type string based on that type
+ *      - for resource types that have a 'system.' prefix, use the base Vantiq URL, otherwise assume
+ *          the type is a custom type and build the type accordingly
+ */
+- (NSString *)buildURLResourceType:(NSString *)type {
+    NSArray *components = [type componentsSeparatedByString:@"."];
+    if (([components count] == 2) && [components[0] isEqualToString:@"system"]) {
+        return components[1];
+    }
+    return [NSString stringWithFormat:@"custom/%@", type];
+}
+
 - (void)update:(NSString *)type id:(NSString *)ID object:(NSString *)object
 completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error))handler {
-    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@/%@", _apiServer, _apiVersion, type, ID];
+    NSString *urlString = [NSString stringWithFormat:@"%@/api/v%lu/resources/%@/%@",
+        _apiServer, _apiVersion, [self buildURLResourceType:type], ID];
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"PUT"];
-    [request setHTTPBody:[object dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
+    [request setHTTPBody:[object dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -181,10 +196,11 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
 
 - (void)upsert:(NSString *)type object:(NSString *)object
     completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error))handler {
-    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@?upsert=true", _apiServer, _apiVersion, type];
+    NSString *urlString = [NSString stringWithFormat:@"%@/api/v%lu/resources/%@?upsert=true",
+        _apiServer, _apiVersion, [self buildURLResourceType:type]];
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
-    [request setHTTPBody:[object dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
+    [request setHTTPBody:[object dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
 
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
@@ -214,11 +230,12 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
 
 - (void)insert:(NSString *)type object:(NSString *)object
     completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error))handler {
-    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@", _apiServer, _apiVersion, type];
+    NSString *urlString = [NSString stringWithFormat:@"%@/api/v%lu/resources/%@",
+        _apiServer, _apiVersion, [self buildURLResourceType:type]];
 
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
     
-    [request setHTTPBody:[object dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
+    [request setHTTPBody:[object dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -246,7 +263,8 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
 }
 
 - (void)delete:(NSString *)type resourceId:(NSString *)resourceId completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
-    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@/%@", _apiServer, _apiVersion, type, resourceId];
+    NSString *urlString = [NSString stringWithFormat:@"%@/api/v%lu/resources/%@/%@",
+        _apiServer, _apiVersion, [self buildURLResourceType:type], resourceId];
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"DELETE"];
     
@@ -259,7 +277,8 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     [task resume];
 }
 - (void)delete:(NSString *)type where:(NSString *)where completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
-    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@", _apiServer, _apiVersion, type];
+    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@",
+        _apiServer, _apiVersion, [self buildURLResourceType:type]];
     NSMutableString *murlArgs = [NSMutableString stringWithString:@"?count=true&where="];
     
     // add where clause
@@ -292,7 +311,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/topics/%@", _apiServer, _apiVersion, topic];
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
-    [request setHTTPBody:[message dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES]];
+    [request setHTTPBody:[message dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
@@ -309,7 +328,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
     if (params) {
-        [request setHTTPBody:[params dataUsingEncoding:NSUTF16LittleEndianStringEncoding allowLossyConversion:YES]];
+        [request setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
     }
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
@@ -337,7 +356,8 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
 }
 
 - (void)count:(NSString *)type where:(NSString *)where completionHandler:(void (^)(int count, NSHTTPURLResponse *response, NSError *error))handler {
-    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@", _apiServer, _apiVersion, type];
+    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@",
+        _apiServer, _apiVersion, [self buildURLResourceType:type]];
     NSMutableString *murlArgs = [NSMutableString stringWithString:@"?count=true&where="];
 
     // add where clause
@@ -375,7 +395,8 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
 
 - (void)select:(NSString *)type props:(NSArray *)props where:(NSString *)where
     sort:(NSString *)sort completionHandler:(void (^)(NSArray *data, NSHTTPURLResponse *response, NSError *error))handler {
-    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@", _apiServer, _apiVersion, type];
+    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@",
+        _apiServer, _apiVersion, [self buildURLResourceType:type]];
     NSMutableString *murlArgs = [NSMutableString stringWithString:@"?where="];
     NSString *urlArgs;
     
@@ -465,7 +486,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
     completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error))handler {
     
     NSString *whereClause = [NSString stringWithFormat:@"{\"username\":\"%@\", \"deviceId\":\"%@\"}", [_username lowercaseString], _appUUID];
-    [self select:@"ArsPushTarget" props:@[] where:whereClause completionHandler:^(NSArray *tokenArray,
+    [self select:@"system.ArsPushTarget" props:@[] where:whereClause completionHandler:^(NSArray *tokenArray,
         NSHTTPURLResponse *response, NSError *error) {
         if (error) {
             handler(nil, response, error);
@@ -495,7 +516,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
                 if (tokenDict && !foundToken) {
                     // we need to update an existing record with the new token value
                     NSString *newToken = [NSString stringWithFormat:@"{\"token\":\"%@\"}", APNSDeviceToken];
-                    [self update:@"ArsPushTarget" id:[tokenDict objectForKey:@"_id"] object:newToken completionHandler:^(NSDictionary *data, NSHTTPURLResponse *response, NSError *error) {
+                    [self update:@"system.ArsPushTarget" id:[tokenDict objectForKey:@"_id"] object:newToken completionHandler:^(NSDictionary *data, NSHTTPURLResponse *response, NSError *error) {
                         handler(nil, response, error);
                     }];
                     needRegistration = false;
@@ -517,7 +538,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
                         [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"],
                         [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"],
                         _appUUID, [[UIDevice currentDevice] name], APNSDeviceToken, [_username lowercaseString]];
-                    [self upsert:@"ArsPushTarget" object:props completionHandler:handler];
+                    [self upsert:@"system.ArsPushTarget" object:props completionHandler:handler];
                 }
             }
         }

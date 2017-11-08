@@ -223,20 +223,20 @@ extern Vantiq *v;
  *          to the user and update our progress text as each test completes
  */
 - (void)runActualTests {
-    [self runSelectTest:@"types" props:@[] where:NULL sort:NULL];
+    [self runSelectTest:@"system.types" props:@[] where:NULL sort:NULL];
     [NSThread sleepForTimeInterval:.3];
-    [self runSelectTest:@"ArsType" props:@[@"name", @"naturalKey"] where:NULL sort:NULL];
+    [self runSelectTest:@"system.types" props:@[@"name", @"naturalKey"] where:NULL sort:NULL];
     [NSThread sleepForTimeInterval:.3];
-    [self runSelectTest:@"ArsType" props:@[@"name", @"naturalKey"] where:@"{\"name\":\"ArsRuleSnapshot\"}" sort:NULL];
+    [self runSelectTest:@"system.types" props:@[@"name", @"naturalKey"] where:@"{\"name\":\"ArsRuleSnapshot\"}" sort:NULL];
     [NSThread sleepForTimeInterval:.3];
-    [self runSelectTest:@"ArsType" props:@[@"name", @"_id"] where:NULL sort:@"{\"name\":-1}"];
+    [self runSelectTest:@"system.types" props:@[@"name", @"_id"] where:NULL sort:@"{\"name\":-1}"];
     
     [NSThread sleepForTimeInterval:.3];
-    [self runCountTest:@"types" where:NULL];
+    [self runCountTest:@"system.types" where:NULL];
     [NSThread sleepForTimeInterval:.3];
-    [self runCountTest:@"types" where:@"{\"name\":\"ArsRuleSnapshot\"}"];
+    [self runCountTest:@"system.types" where:@"{\"name\":\"ArsRuleSnapshot\"}"];
     [NSThread sleepForTimeInterval:.3];
-    [self runCountTest:@"types" where:@"{\"ars_version\":{\"$gt\":5}}"];
+    [self runCountTest:@"system.types" where:@"{\"ars_version\":{\"$gt\":5}}"];
     
     [NSThread sleepForTimeInterval:.3];
     [self runInsertTest:@"TestType" object:@"{\"intValue\":42,\"uniqueString\":\"42\"}"];
