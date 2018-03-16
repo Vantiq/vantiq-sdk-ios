@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "OauthWebController.h"
 #import "DecodeError.h"
 #import "DisplayAlert.h"
 #import "Vantiq.h"
@@ -14,8 +15,11 @@
 // our one globally-available Vantiq endpoint
 Vantiq *v;
 
+#define VANTIQ_SERVER_URL   @"https://dev.vantiq.com"
+
 @interface ViewController () {
     NSString *accessToken;
+    NSString *OAuthURL;
 }
 @property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextField *password;
@@ -26,19 +30,40 @@ Vantiq *v;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //v = [[Vantiq alloc] initWithServer:@"https://dev.vantiq.com"];
-    v = [[Vantiq alloc] initWithServer:@"http://localhost:8080"];
+    v = [[Vantiq alloc] initWithServer:VANTIQ_SERVER_URL];
     accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"com.vantiq.vantiq.accessToken"];
     _username.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"com.vantiq.vantiq.username"];
     [v verify:accessToken username:_username.text completionHandler:^(NSHTTPURLResponse *response, NSError *error) {
         NSString *resultStr;
         if (![DecodeError formError:response error:error diagnosis:@"" resultStr:&resultStr]) {
             // the user already has a valid token so no need to log in
-            [self performSegueWithIdentifier:@"Home" sender:self];
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                [self performSegueWithIdentifier:@"Home" sender:self];
+            });
+        } else {
+            // find out what kind of authentication we need to use
+            [v authenticate:@"" password:@"" completionHandler:^(NSHTTPURLResponse *response, NSError *error) {
+                if (response) {
+                    NSDictionary *headerFields = response.allHeaderFields;
+                    if (headerFields) {
+                        // look in a well-known header for the OAuth URL, if any
+                        OAuthURL = [headerFields objectForKey:@"Www-Authenticate"];
+                        if (OAuthURL && ![OAuthURL isEqualToString:@"Vantiq"]) {
+                            dispatch_async(dispatch_get_main_queue(), ^ {
+                                [self performSegueWithIdentifier:@"OauthWeb" sender:self];
+                            });
+                        }
+                    }
+                }
+            }];
         }
     }];
 }
 
+/*
+ *  loginTapped
+ *      - this implements the old-style (non-OAuth) username/password authentication
+ */
 - (IBAction)loginTapped:(id)sender {
     [v authenticate:_username.text password:_password.text completionHandler:^(NSHTTPURLResponse *response, NSError *error) {
         NSString *resultStr;
@@ -73,6 +98,10 @@ Vantiq *v;
  *      - called whenever we start a segue to a new modal view
  */
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"OauthWeb"]) {
+        OauthWebController *destViewController = [segue destinationViewController];
+        destViewController.OAuthURL = OAuthURL;
+    }
 }
 
 @end

@@ -55,7 +55,7 @@
 
 - (void)authenticate:(NSString *)username password:(NSString *)password
     completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
-    NSString *urlString = [NSString stringWithFormat:@"%@/authenticate", _apiServer];
+    NSString *urlString = [NSString stringWithFormat:@"%@/authenticate?callbackUri=/iOS/callback", _apiServer];
     
     // form the HTTP GET request
     NSMutableURLRequest *request = [NSMutableURLRequest new];

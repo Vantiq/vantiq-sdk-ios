@@ -1,5 +1,5 @@
 PODS:
-  - vantiq-sdk-ios (1.0.0)
+  - vantiq-sdk-ios (1.3.2)
 
 DEPENDENCIES:
   - vantiq-sdk-ios (from `../`)
@@ -9,6 +9,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  vantiq-sdk-ios: eec4df1b00dfd5f906f393cb779476d93adf54bc
+  vantiq-sdk-ios: bbfd2e4a7e9f58771e96a31989665b71d021d598
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 207747657a2b6e1249ec790cc19a5272b93413b2
+
+COCOAPODS: 1.3.1
