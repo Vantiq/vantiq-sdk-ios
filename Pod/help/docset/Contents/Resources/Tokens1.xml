@@ -291,6 +291,25 @@ credentials used to authorize the user. The username and password credentials ar
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/retrieveServerId:</TokenIdentifier>
+			<Abstract type="html">The retrieveServerId method retrieves a unique VANTIQ server ID once the user has been
+authenticated, setting the serverId property in the process. This ID can be used to determine
+the uniqueness of a server if one server has multiple IP addresses/URL endpoints</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
+			
+			<Declaration>- (void)retrieveServerId:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>handler</Name>
+					<Abstract type="html">The handler block to execute.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">response: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
+			<Anchor>//api/name/retrieveServerId:</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/select:props:where:sort:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The select method issues a query to select all matching records for a given type.
 The select may query both user-defined types as well as system types, such as procedures and types.</Abstract>

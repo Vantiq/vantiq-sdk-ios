@@ -85,21 +85,8 @@
                             _namespace = [jsonObject objectForKey:@"namespace"];
                             
                             // we also want to know the server's globally unique ID if we want to access multiple servers
-                            [self select:@"system.nodes" props:NULL where:@"{\"type\":\"self\"}"
-                                completionHandler:^(NSArray *data, NSHTTPURLResponse *httpResponse, NSError *error) {
-                                if (error) {
-                                    handler(httpResponse, error);
-                                } else {
-                                    NSError *jsonError = nil;
-                                    if (httpResponse.statusCode == 200) {
-                                        if (data.count >= 1) {
-                                            _serverId = [data[0] objectForKey:@"uuid"];
-                                        } else {
-                                            jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
-                                        }
-                                    }
-                                    handler(httpResponse, jsonError);
-                                }
+                            [self retrieveServerId:^(NSHTTPURLResponse *response, NSError *error) {
+                                handler(httpResponse, error);
                             }];
                         } else {
                             // error if we can't find the dictionary keys
@@ -122,6 +109,25 @@
         }
     }];
     [task resume];
+}
+
+- (void)retrieveServerId:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
+    [self select:@"system.nodes" props:NULL where:@"{\"type\":\"self\"}"
+    completionHandler:^(NSArray *data, NSHTTPURLResponse *httpResponse, NSError *error) {
+        if (error) {
+            handler(httpResponse, error);
+        } else {
+            NSError *jsonError = nil;
+            if (httpResponse.statusCode == 200) {
+                if (data.count >= 1) {
+                    _serverId = [data[0] objectForKey:@"uuid"];
+                } else {
+                    jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
+                }
+            }
+            handler(httpResponse, jsonError);
+        }
+    }];
 }
 
 - (NSString *)formBasicAuth:(NSString *)clientId clientSecret:(NSString *)clientSecret {

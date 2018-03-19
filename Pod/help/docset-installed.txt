@@ -1,4 +1,4 @@
 Documentation set was installed to Xcode!
 
 Path: /Users/swan/Library/Developer/Shared/Documentation/DocSets/com.vantiq.VIQ.docset
-Time: 2017-11-08 20:29:06 +0000
+Time: 2018-03-19 21:03:57 +0000
