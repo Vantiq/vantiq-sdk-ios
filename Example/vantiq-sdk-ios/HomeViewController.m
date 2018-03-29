@@ -77,8 +77,8 @@ extern Vantiq *v;
  *  they call the API, recognize errors, either in transport or HTTP, or, if
  *  there are no errors, form a results string that indicates success
  */
-- (void)runSelectTest:(NSString *)type props:(NSArray *)props where:(NSString *)where sort:(NSString *)sort {
-    [v select:type props:props where:where sort:sort completionHandler:^(NSArray *data, NSHTTPURLResponse *response, NSError *error) {
+- (void)runSelectTest:(NSString *)type props:(NSArray *)props where:(NSString *)where sort:(NSString *)sort limit:(int)limit {
+    [v select:type props:props where:where sort:sort limit:limit completionHandler:^(NSArray *data, NSHTTPURLResponse *response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^ {
             NSString *resultStr;
             if (![DecodeError formError:response error:error
@@ -95,7 +95,7 @@ extern Vantiq *v;
         dispatch_async(dispatch_get_main_queue(), ^ {
             NSString *resultStr;
             if (![DecodeError formError:response error:error
-                              diagnosis:NSLocalizedString(@"com.vantiq.demo.SelectOneErrorExplain", @"") resultStr:&resultStr]) {
+                diagnosis:NSLocalizedString(@"com.vantiq.demo.SelectOneErrorExplain", @"") resultStr:&resultStr]) {
                 resultStr = [NSString stringWithFormat:@"selectOne(%@) successful.", type];
             }
             AddToResults();
@@ -223,13 +223,15 @@ extern Vantiq *v;
  *          to the user and update our progress text as each test completes
  */
 - (void)runActualTests {
-    [self runSelectTest:@"system.types" props:@[] where:NULL sort:NULL];
+    [self runSelectTest:@"system.types" props:@[] where:NULL sort:NULL limit:-1];
     [NSThread sleepForTimeInterval:.3];
-    [self runSelectTest:@"system.types" props:@[@"name", @"naturalKey"] where:NULL sort:NULL];
+    [self runSelectTest:@"system.types" props:@[@"name", @"naturalKey"] where:NULL sort:NULL limit:-1];
     [NSThread sleepForTimeInterval:.3];
-    [self runSelectTest:@"system.types" props:@[@"name", @"naturalKey"] where:@"{\"name\":\"ArsRuleSnapshot\"}" sort:NULL];
+    [self runSelectTest:@"system.types" props:@[@"name", @"naturalKey"] where:@"{\"name\":\"ArsRuleSnapshot\"}" sort:NULL limit:-1];
     [NSThread sleepForTimeInterval:.3];
-    [self runSelectTest:@"system.types" props:@[@"name", @"_id"] where:NULL sort:@"{\"name\":-1}"];
+    [self runSelectTest:@"system.types" props:@[@"name", @"_id"] where:NULL sort:@"{\"name\":-1}" limit:-1];
+    [NSThread sleepForTimeInterval:.3];
+    [self runSelectTest:@"system.types" props:@[] where:NULL sort:NULL limit:2];
     
     [NSThread sleepForTimeInterval:.3];
     [self runCountTest:@"system.types" where:NULL];
@@ -282,7 +284,7 @@ extern Vantiq *v;
 - (IBAction)runTestsTapped:(id)sender {
     _runTests.enabled = false;
     finishedQueuing = false;
-    _queueCount = [NSNumber numberWithInt:19];
+    _queueCount = [NSNumber numberWithInt:20];
     results = [NSMutableString stringWithString:@""];
     
     [self appendAndScroll:[NSString stringWithFormat:@"Starting %d tests...", [_queueCount intValue]]];

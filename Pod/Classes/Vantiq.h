@@ -114,23 +114,45 @@ to ensure UI operations are completed on the main thread.
 - (void)retrieveServerId:(void (^)(NSHTTPURLResponse *response, NSError *error))handler;
 
 /**
-The select method issues a query to select all matching records for a given type.
-The select may query both user-defined types as well as system types, such as procedures and types.
-
-@warning Please also note this method invokes a callback block associated with a network-
-related block. Because this block is called from asynchronous network operations,
-its code must be wrapped by a call to _dispatch_async(dispatch_get_main_queue(), ^ {...});_
-to ensure UI operations are completed on the main thread.
+ The select method issues a query to select all matching records for a given type.
+ The select may query both user-defined types as well as system types, such as procedures and types.
  
-@param  type    The data type to query. If querying for a Vantiq system type (e.g. types, sources), add a 'system.' prefix to the type (e.g. system.types, system.sources).
-@param  props   Specifies the desired properties to be returned in each record. An empty array or null value means all properties will be returned. The array contains NSStrings.
-@param  where   Specifies constraints to filter the data. Null means all records will be returned.
-@param  sort    Specifies the desired sort for the result set. This is a JSON-formatted string.
-@param handler    The handler block to execute.
+ @warning Please also note this method invokes a callback block associated with a network-
+ related block. Because this block is called from asynchronous network operations,
+ its code must be wrapped by a call to _dispatch_async(dispatch_get_main_queue(), ^ {...});_
+ to ensure UI operations are completed on the main thread.
  
-@return data: array of NSDictionary objects of matching records
-@return response: [iOS HTTP operation response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/)
-@return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
+ @param type    The data type to query. If querying for a Vantiq system type (e.g. types, sources), add a 'system.' prefix to the type (e.g. system.types, system.sources).
+ @param props   Specifies the desired properties to be returned in each record. An empty array or null value means all properties will be returned. The array contains NSStrings.
+ @param where   Specifies constraints to filter the data. Null means all records will be returned.
+ @param sort    Specifies the desired sort for the result set. This is a JSON-formatted string.
+ @param limit   Specifies a limit on the number of records returned. -1 means no limits. If zero or greater, the actual number of records present is returned in the 'X-Total-Count' HTTP header.
+ @param handler    The handler block to execute.
+ 
+ @return data: array of NSDictionary objects of matching records
+ @return response: [iOS HTTP operation response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/)
+ @return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
+ */
+- (void)select:(NSString *)type props:(NSArray *)props where:(NSString *)where
+    sort:(NSString *)sort limit:(int)limit completionHandler:(void (^)(NSArray *data, NSHTTPURLResponse *response, NSError *error))handler;
+/**
+ The select method issues a query to select all matching records for a given type.
+ The select may query both user-defined types as well as system types, such as procedures and types.
+ 
+ @warning Please also note this method invokes a callback block associated with a network-
+ related block. Because this block is called from asynchronous network operations,
+ its code must be wrapped by a call to _dispatch_async(dispatch_get_main_queue(), ^ {...});_
+ to ensure UI operations are completed on the main thread.
+ 
+ @param  type    The data type to query. If querying for a Vantiq system type (e.g. types, sources), add a 'system.' prefix to the type (e.g. system.types, system.sources).
+ @param  props   Specifies the desired properties to be returned in each record. An empty array or null value means all properties will be returned. The array contains NSStrings.
+ @param  where   Specifies constraints to filter the data. Null means all records will be returned.
+ @param  sort    Specifies the desired sort for the result set. This is a JSON-formatted string.
+ @param handler    The handler block to execute.
+ 
+ @return data: array of NSDictionary objects of matching records
+ @return response: [iOS HTTP operation response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/)
+ @return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
  */
 - (void)select:(NSString *)type props:(NSArray *)props where:(NSString *)where
     sort:(NSString *)sort completionHandler:(void (^)(NSArray *data, NSHTTPURLResponse *response, NSError *error))handler;

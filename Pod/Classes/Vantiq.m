@@ -400,7 +400,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
 }
 
 - (void)select:(NSString *)type props:(NSArray *)props where:(NSString *)where
-    sort:(NSString *)sort completionHandler:(void (^)(NSArray *data, NSHTTPURLResponse *response, NSError *error))handler {
+    sort:(NSString *)sort limit:(int)limit completionHandler:(void (^)(NSArray *data, NSHTTPURLResponse *response, NSError *error))handler {
     NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@",
         _apiServer, _apiVersion, [self buildURLResourceType:type]];
     NSMutableString *murlArgs = [NSMutableString stringWithString:@"?where="];
@@ -441,6 +441,13 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
         [urlString appendString:urlArgs];
     }
     
+    // add the limit clause
+    if (limit > 0) {
+        murlArgs = [NSMutableString stringWithString:[NSString stringWithFormat:@"&limit=%d&count=true", limit]];
+        urlArgs = [murlArgs stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        [urlString appendString:urlArgs];
+    }
+    
     // form the HTTP GET request
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"GET"];
     
@@ -469,6 +476,10 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
         }
     }];
     [task resume];
+}
+- (void)select:(NSString *)type props:(NSArray *)props where:(NSString *)where
+    sort:(NSString *)sort completionHandler:(void (^)(NSArray *data, NSHTTPURLResponse *response, NSError *error))handler {
+    [self select:type props:props where:where sort:sort limit:-1 completionHandler:handler];
 }
 - (void)select:(NSString *)type props:(NSArray *)props where:(NSString *)where
     completionHandler:(void (^)(NSArray *data, NSHTTPURLResponse *response, NSError *error))handler {
