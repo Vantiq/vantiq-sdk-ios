@@ -24,7 +24,7 @@ Access token to be used for direct Vantiq server operations.
 /**
 User name of the last authenticated user
  */
-@property (readonly, nonatomic) NSString *username;
+@property (readwrite, nonatomic) NSString *username;
 /**
 Namespace of the last authenticated user
  */

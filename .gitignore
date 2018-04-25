@@ -2,6 +2,7 @@
 .DS_Store
 
 # Xcode
+Example/vantiq-sdk-ios.xcworkspace/xcshareddata/
 build/
 *.pbxuser
 !default.pbxuser

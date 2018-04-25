@@ -10,7 +10,6 @@
 
 @interface Vantiq()
 @property (strong, nonatomic) NSString *apiServer;
-@property (readwrite, nonatomic) NSString *username;
 @property (readwrite, nonatomic) NSString *namespace;
 @property (readwrite, nonatomic) NSString *serverId;
 @property (readwrite, nonatomic) NSString *appUUID;
