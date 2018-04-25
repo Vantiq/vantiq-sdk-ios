@@ -17,5 +17,5 @@ script:
 #- set -o pipefail && xcodebuild test -workspace Example/vantiq-sdk-ios.xcworkspace -scheme vantiq-sdk-ios-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
 - set -o pipefail && xcodebuild -workspace Example/vantiq-sdk-ios.xcworkspace -scheme vantiq-sdk-ios-Example -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 5" build test > build.log
 - tail -n 100 build.log
-- pod lib lint
+- pod lib lint --allow-warnings
 
