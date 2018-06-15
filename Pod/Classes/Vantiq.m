@@ -426,11 +426,11 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
             }
             [murlArgs appendString:props[i]];
             [murlArgs appendString:@"\""];
-            [murlArgs appendString:@"]"];
-            // add the props to the URL string
-            urlArgs = [murlArgs stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-            [urlString appendString:urlArgs];
         }
+        [murlArgs appendString:@"]"];
+        // add the props to the URL string
+        urlArgs = [murlArgs stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        [urlString appendString:urlArgs];
     }
     
     // add the sort clause
