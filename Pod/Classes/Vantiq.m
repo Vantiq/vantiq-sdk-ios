@@ -63,8 +63,7 @@
     [request setHTTPMethod:@"GET"];
     [request setValue:[self formBasicAuth:username clientSecret:password] forHTTPHeaderField:@"Authorization"];
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+    NSURLSessionDataTask *task = [[self buildSession] dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         if (error) {
@@ -153,6 +152,16 @@
 }
 
 /*
+ *  buildSession
+ *      - we want sessions that have sensible/short timeouts to avoid indefinite callback wait times
+ */
+- (NSURLSession *)buildSession {
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    config.timeoutIntervalForRequest = config.timeoutIntervalForResource = 15.0;
+    return [NSURLSession sessionWithConfiguration:config];
+}
+
+/*
  *  buildURLResourceType
  *      - given the name of a resource type, form a type string based on that type
  *      - for resource types that have a 'system.' prefix, use the base Vantiq URL, otherwise assume
@@ -173,8 +182,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"PUT"];
     [request setHTTPBody:[object dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+    NSURLSessionDataTask *task = [[self buildSession] dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         if (error) {
@@ -207,8 +215,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
     [request setHTTPBody:[object dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
 
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+    NSURLSessionDataTask *task = [[self buildSession] dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         id jsonObject = NULL;
@@ -241,8 +248,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
     
     [request setHTTPBody:[object dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+    NSURLSessionDataTask *task = [[self buildSession] dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         id jsonObject = NULL;
@@ -273,8 +279,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"DELETE"];
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+    NSURLSessionDataTask *task = [[self buildSession] dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         handler(httpResponse, error);
@@ -297,8 +302,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"DELETE"];
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+    NSURLSessionDataTask *task = [[self buildSession] dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         handler(httpResponse, error);
@@ -318,8 +322,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
     [request setHTTPBody:[message dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+    NSURLSessionDataTask *task = [[self buildSession] dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         handler(httpResponse, error);
@@ -335,8 +338,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
     if (params) {
         [request setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
     }
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+    NSURLSessionDataTask *task = [[self buildSession] dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         id jsonObject = NULL;
@@ -377,8 +379,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
     // form the HTTP GET request
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"GET"];
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+    NSURLSessionDataTask *task = [[self buildSession] dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         if (error) {
@@ -450,8 +451,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
     // form the HTTP GET request
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"GET"];
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+    NSURLSessionDataTask *task = [[self buildSession] dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         id jsonObject = NULL;
@@ -609,8 +609,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
     NSString *contentLength = [NSString stringWithFormat:@"%lu", (unsigned long)[outData length]];
     [request setValue:contentLength forHTTPHeaderField:@"Content-Length"];
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+    NSURLSessionDataTask *task = [[self buildSession] dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         if (error) {
