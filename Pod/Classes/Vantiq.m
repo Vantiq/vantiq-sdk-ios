@@ -554,7 +554,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
                         [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"],
                         [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"],
                         _appUUID, [[UIDevice currentDevice] name], APNSDeviceToken, [_username lowercaseString]];
-                    [self upsert:@"system.ArsPushTarget" object:props completionHandler:handler];
+                    [self insert:@"system.ArsPushTarget" object:props completionHandler:handler];
                 }
             }
         }
