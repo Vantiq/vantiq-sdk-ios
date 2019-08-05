@@ -75,7 +75,7 @@ to ensure UI operations are completed on the main thread.
 @return response: [iOS HTTP operation response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/)
 @return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
 */
-- (void)verify:(NSString *)accessToken username:(NSString *)username completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler;
+- (void)verify:(NSString *)accessToken username:(NSString *)username completionHandler:(void (^)(NSArray *data, NSHTTPURLResponse *response, NSError *error))handler;
 
 /**
 The authenticate method connects to the Vantiq server with the given authentication

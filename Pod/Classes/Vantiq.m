@@ -39,16 +39,16 @@
     _accessToken = accessToken;
 }
 
-- (void)verify:(NSString *)accessToken username:(NSString *)username completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
+- (void)verify:(NSString *)accessToken username:(NSString *)username completionHandler:(void (^)(NSArray *data, NSHTTPURLResponse *response, NSError *error))handler {
     _accessToken = accessToken;
     _username = username;
     if (_accessToken) {
         [self select:@"system.users" completionHandler:^(NSArray *data, NSHTTPURLResponse *response, NSError *error) {
-            handler(response, error);
+            handler(data, response, error);
         }];
     } else {
         NSError *noTokenErr = [NSError errorWithDomain:VantiqErrorDomain code:errorNoAccessToken userInfo:nil];
-        handler(NULL, noTokenErr);
+        handler(NULL, NULL, noTokenErr);
     }
 }
 

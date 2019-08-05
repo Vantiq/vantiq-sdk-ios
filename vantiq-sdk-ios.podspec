@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "vantiq-sdk-ios"
-  s.version          = "1.4.1"
+  s.version          = "1.4.2"
   s.summary          = "API for the Vantiq system for iOS applications."
   s.description      = <<-DESC
 The Vantiq iOS SDK is Objective-C that provides an API into a Vantiq system for iOS applications. The SDK connects to a Vantiq system using the Vantiq REST API.

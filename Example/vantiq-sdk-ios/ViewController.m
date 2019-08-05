@@ -33,7 +33,7 @@ Vantiq *v;
     v = [[Vantiq alloc] initWithServer:VANTIQ_SERVER_URL];
     accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"com.vantiq.vantiq.accessToken"];
     _username.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"com.vantiq.vantiq.username"];
-    [v verify:accessToken username:_username.text completionHandler:^(NSHTTPURLResponse *response, NSError *error) {
+    [v verify:accessToken username:_username.text completionHandler:^(NSArray *data, NSHTTPURLResponse *response, NSError *error) {
         NSString *resultStr;
         if (![DecodeError formError:response error:error diagnosis:@"" resultStr:&resultStr]) {
             // the user already has a valid token so no need to log in
