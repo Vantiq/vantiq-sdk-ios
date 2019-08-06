@@ -59,7 +59,9 @@ API is required, use the initWithServer:server apiVersion:version contructor.
 /**
 The verify method attempts to validate the given Vantiq server token. If the token has expired
 or a token has never been issued, the error parameter in the callback will be non-null and the
-app should then call authenticate (see below) in order to reauthenticate the user.
+app should then call authenticate (see below) in order to reauthenticate the user. The data
+parameter returned in the completionHandler is an array of user records for the namespace
+associated with the access token.
  
 @warning Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,

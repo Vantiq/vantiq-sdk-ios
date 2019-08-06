@@ -43,7 +43,7 @@
     _accessToken = accessToken;
     _username = username;
     if (_accessToken) {
-        [self select:@"system.users" completionHandler:^(NSArray *data, NSHTTPURLResponse *response, NSError *error) {
+        [self select:@"system.users" props:@[@"currentNamespace",@"email",@"firstName",@"groups",@"lastName",@"phone",@"preferredUsername",@"profiles",@"roles",@"tokenTimeout",@"userType",@"username",@"ars_namespace",@"ars_properties"] completionHandler:^(NSArray *data, NSHTTPURLResponse *response, NSError *error) {
             handler(data, response, error);
         }];
     } else {
