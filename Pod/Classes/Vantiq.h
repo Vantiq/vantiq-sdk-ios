@@ -536,6 +536,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
  @param fileName The file name which also contains its file extension
  @param filePrefix Any directory prefix to be added to the file path when it's uploaded
  @param contentType The MIME type of the file contents
+ @param resourcePath String specification of the destination resource, e.g. @"/resources/documents", @"/resources/images" or @"/resources/videos"
  @param handler The handler block to execute
  
  @return data: result of method execution, if any
@@ -544,4 +545,6 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
 */
 - (void)uploadDocument:(NSString *)filePath fileName:(NSString *)fileName filePrefix:(NSString *)filePrefix
     contentType:(NSString *)contentType completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler;
+- (void)uploadDocument:(NSString *)filePath fileName:(NSString *)fileName filePrefix:(NSString *)filePrefix
+   contentType:(NSString *)contentType resourcePath:(NSString *)resourcePath completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler;
 @end
