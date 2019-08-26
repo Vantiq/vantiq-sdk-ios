@@ -110,6 +110,8 @@
 		
 		<option value="//api/name/select:props:where:sort:completionHandler:">- select:props:where:sort:completionHandler:</option>
 		
+		<option value="//api/name/select:props:where:sort:limit:completionHandler:">- select:props:where:sort:limit:completionHandler:</option>
+		
 		<option value="//api/name/selectOne:id:completionHandler:">- selectOne:id:completionHandler:</option>
 		
 		<option value="//api/name/update:id:object:completionHandler:">- update:id:object:completionHandler:</option>
@@ -232,7 +234,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSString *username</code></div>
+			<div class="method-subsection method-declaration"><code>@property (readwrite, nonatomic) NSString *username</code></div>
 
 		    
 			
@@ -547,12 +549,14 @@ API is required, use the initWithServer:server apiVersion:version contructor.</p
 			<div class="method-subsection brief-description">
 				<p>The verify method attempts to validate the given Vantiq server token. If the token has expired
 or a token has never been issued, the error parameter in the callback will be non-null and the
-app should then call authenticate (see below) in order to reauthenticate the user.</p>
+app should then call authenticate (see below) in order to reauthenticate the user. The data
+parameter returned in the completionHandler is an array of user records for the <a href="#//api/name/namespace">namespace</a>
+associated with the access token.</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)verify:(NSString *)<em>accessToken</em> username:(NSString *)<em>username</em> completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)verify:(NSString *)<em>accessToken</em> username:(NSString *)<em>username</em> completionHandler:(void ( ^ ) ( NSArray *data , NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
 
 		    
 			
@@ -593,7 +597,9 @@ app should then call authenticate (see below) in order to reauthenticate the use
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>The verify method attempts to validate the given Vantiq server token. If the token has expired
 or a token has never been issued, the error parameter in the callback will be non-null and the
-app should then call authenticate (see below) in order to reauthenticate the user.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
+app should then call authenticate (see below) in order to reauthenticate the user. The data
+parameter returned in the completionHandler is an array of user records for the <a href="#//api/name/namespace">namespace</a>
+associated with the access token.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
 its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
 to ensure UI operations are completed on the main thread.</p></div>
@@ -751,6 +757,99 @@ the uniqueness of a server if one server has multiple IP addresses/URL endpoints
 				<p>The retrieveServerId method retrieves a unique VANTIQ server ID once the user has been
 authenticated, setting the <a href="#//api/name/serverId">serverId</a> property in the process. This ID can be used to determine
 the uniqueness of a server if one server has multiple IP addresses/URL endpoints</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
+to ensure UI operations are completed on the main thread.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Vantiq.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/select:props:where:sort:limit:completionHandler:" title="select:props:where:sort:limit:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/select:props:where:sort:limit:completionHandler:">&ndash;&nbsp;select:props:where:sort:limit:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The select method issues a query to select all matching records for a given type.
+The select may query both user-defined types as well as system types, such as procedures and types.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)select:(NSString *)<em>type</em> props:(NSArray *)<em>props</em> where:(NSString *)<em>where</em> sort:(NSString *)<em>sort</em> limit:(int)<em>limit</em> completionHandler:(void ( ^ ) ( NSArray *data , NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>type</code></th>
+						<td><p>The data type to query. If querying for a Vantiq system type (e.g. types, sources), add a &lsquo;system.&rsquo; prefix to the type (e.g. system.types, system.sources).</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>props</code></th>
+						<td><p>Specifies the desired properties to be returned in each record. An empty array or null value means all properties will be returned. The array contains NSStrings.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>where</code></th>
+						<td><p>Specifies constraints to filter the data. Null means all records will be returned.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>sort</code></th>
+						<td><p>Specifies the desired sort for the result set. This is a JSON-formatted string.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>limit</code></th>
+						<td><p>Specifies a limit on the number of records returned. -1 means no limits. If zero or greater, the actual number of records present is returned in the &lsquo;X-Total-Count&rsquo; HTTP header.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>The handler block to execute.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>data: array of NSDictionary objects of matching records</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The select method issues a query to select all matching records for a given type.
+The select may query both user-defined types as well as system types, such as procedures and types.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
 related block. Because this block is called from asynchronous network operations,
 its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
 to ensure UI operations are completed on the main thread.</p></div>
@@ -2243,6 +2342,11 @@ ArsDocument record which contains the contents of the file.</p>
 						<td><p>The handler block to execute</p></td>
 					</tr>
 				
+					<tr>
+						<th scope="row" class="argument-name"><code>resourcePath</code></th>
+						<td><p>String specification of the destination resource, e.g. @&ldquo;/resources/documents&rdquo;, @&ldquo;/resources/images&rdquo; or @&ldquo;/resources/videos&rdquo;</p></td>
+					</tr>
+				
 				</table>
 			</div>
 			
@@ -2299,7 +2403,7 @@ errors returned by the execute operation. The callback data returns the results 
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2018 VANTIQ, Inc. All rights reserved. Updated: 2018-03-19</p>
+						<p class="copyright">Copyright &copy; 2019 VANTIQ, Inc. All rights reserved. Updated: 2019-08-26</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

@@ -53,7 +53,7 @@
 			<Abstract type="html">User name of the last authenticated user</Abstract>
 			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
-			<Declaration>@property (readonly, nonatomic) NSString *username</Declaration>
+			<Declaration>@property (readwrite, nonatomic) NSString *username</Declaration>
 			
 			
 			<Anchor>//api/name/username</Anchor>
@@ -65,7 +65,7 @@
 			<Abstract type="html">User name of the last authenticated user</Abstract>
 			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
-			<Declaration>@property (readonly, nonatomic) NSString *username</Declaration>
+			<Declaration>@property (readwrite, nonatomic) NSString *username</Declaration>
 			
 			
 			<Anchor>//api/name/username</Anchor>
@@ -77,7 +77,7 @@
 			<Abstract type="html">User name of the last authenticated user</Abstract>
 			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
-			<Declaration>@property (readonly, nonatomic) NSString *username</Declaration>
+			<Declaration>@property (readwrite, nonatomic) NSString *username</Declaration>
 			
 			
 			<Anchor>//api/name/username</Anchor>
@@ -240,7 +240,9 @@ API is required, use the initWithServer:server apiVersion:version contructor.</A
 			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/verify:username:completionHandler:</TokenIdentifier>
 			<Abstract type="html">The verify method attempts to validate the given Vantiq server token. If the token has expired
 or a token has never been issued, the error parameter in the callback will be non-null and the
-app should then call authenticate (see below) in order to reauthenticate the user.</Abstract>
+app should then call authenticate (see below) in order to reauthenticate the user. The data
+parameter returned in the completionHandler is an array of user records for the namespace
+associated with the access token.</Abstract>
 			<DeclaredIn>Vantiq.h</DeclaredIn>
 			
 	<RelatedTokens>
@@ -248,7 +250,7 @@ app should then call authenticate (see below) in order to reauthenticate the use
 		
 	</RelatedTokens>
 	
-			<Declaration>- (void)verify:(NSString *)accessToken username:(NSString *)username completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
+			<Declaration>- (void)verify:(NSString *)accessToken username:(NSString *)username completionHandler:(void ( ^ ) ( NSArray *data , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
 			<Parameters>
 				<Parameter>
 					<Name>accessToken</Name>
@@ -306,6 +308,39 @@ the uniqueness of a server if one server has multiple IP addresses/URL endpoints
 			</Parameters>
 			<ReturnValue><Abstract type="html">response: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
 			<Anchor>//api/name/retrieveServerId:</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/Vantiq/select:props:where:sort:limit:completionHandler:</TokenIdentifier>
+			<Abstract type="html">The select method issues a query to select all matching records for a given type.
+The select may query both user-defined types as well as system types, such as procedures and types.</Abstract>
+			<DeclaredIn>Vantiq.h</DeclaredIn>
+			
+			<Declaration>- (void)select:(NSString *)type props:(NSArray *)props where:(NSString *)where sort:(NSString *)sort limit:(int)limit completionHandler:(void ( ^ ) ( NSArray *data , NSHTTPURLResponse *response , NSError *error ))handler</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>type</Name>
+					<Abstract type="html">The data type to query. If querying for a Vantiq system type (e.g. types, sources), add a &apos;system.&apos; prefix to the type (e.g. system.types, system.sources).</Abstract>
+				</Parameter><Parameter>
+					<Name>props</Name>
+					<Abstract type="html">Specifies the desired properties to be returned in each record. An empty array or null value means all properties will be returned. The array contains NSStrings.</Abstract>
+				</Parameter><Parameter>
+					<Name>where</Name>
+					<Abstract type="html">Specifies constraints to filter the data. Null means all records will be returned.</Abstract>
+				</Parameter><Parameter>
+					<Name>sort</Name>
+					<Abstract type="html">Specifies the desired sort for the result set. This is a JSON-formatted string.</Abstract>
+				</Parameter><Parameter>
+					<Name>limit</Name>
+					<Abstract type="html">Specifies a limit on the number of records returned. -1 means no limits. If zero or greater, the actual number of records present is returned in the &apos;X-Total-Count&apos; HTTP header.</Abstract>
+				</Parameter><Parameter>
+					<Name>handler</Name>
+					<Abstract type="html">The handler block to execute.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">data: array of NSDictionary objects of matching recordsresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>
+			<Anchor>//api/name/select:props:where:sort:limit:completionHandler:</Anchor>
             <NodeRef refid="1"/>
 		</Token>
 		
@@ -767,6 +802,9 @@ ArsDocument record which contains the contents of the file.</Abstract>
 				</Parameter><Parameter>
 					<Name>handler</Name>
 					<Abstract type="html">The handler block to execute</Abstract>
+				</Parameter><Parameter>
+					<Name>resourcePath</Name>
+					<Abstract type="html">String specification of the destination resource, e.g. @&quot;/resources/documents&quot;, @&quot;/resources/images&quot; or @&quot;/resources/videos&quot;</Abstract>
 				</Parameter>
 			</Parameters>
 			<ReturnValue><Abstract type="html">data: result of method execution, if anyresponse: iOS HTTP operation responseerror: iOS error condition response</Abstract></ReturnValue>

@@ -563,6 +563,12 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
 
 - (void)uploadDocument:(NSString *)filePath fileName:(NSString *)fileName filePrefix:(NSString *)filePrefix
     contentType:(NSString *)contentType completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
+    [self uploadDocument:filePath fileName:fileName filePrefix:filePrefix contentType:contentType resourcePath:@"/resources/documents" completionHandler:handler];
+}
+    
+- (void)uploadDocument:(NSString *)filePath fileName:(NSString *)fileName filePrefix:(NSString *)filePrefix
+    contentType:(NSString *)contentType resourcePath:(NSString *)resourcePath
+    completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
     //
     //  This string is arbitrary; we just choose something to represent the boundary between the various multi-part
     //  MIME "parts".
@@ -580,7 +586,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
                                    fileName, filePrefix, fileName] dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSData* contentBody = [[NSString stringWithFormat:@"Content-Type: %@", contentType] dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     
-    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/documents", _apiServer, _apiVersion];
+    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu%@", _apiServer, _apiVersion, resourcePath];
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
     
     // overwrite our default content type
