@@ -399,6 +399,39 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
     [self count:type where:NULL completionHandler:handler];
 }
 
+- (void)batch:(NSData *)encodedQueries
+    completionHandler:(void (^)(NSArray *data, NSHTTPURLResponse *response, NSError *error))handler {
+    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/batch",
+        _apiServer, _apiVersion];
+    
+    // form the HTTP GET request
+    NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
+    [request setHTTPBody:encodedQueries];
+    
+    NSURLSessionDataTask *task = [[self buildSession] dataTaskWithRequest:request
+        completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        if (error) {
+            handler(NULL, httpResponse, error);
+        } else {
+            id jsonObject = NULL;
+            NSError *jsonError = NULL;
+
+            NSString *returnString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
+            jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]
+                options:0 error:&jsonError];
+            if (!jsonError) {
+                if (![jsonObject isKindOfClass:[NSArray class]]) {
+                    // error if return isn't a dictionary
+                    jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
+                }
+            }
+            handler(jsonObject, httpResponse, jsonError);
+        }
+    }];
+    [task resume];
+}
+
 - (void)select:(NSString *)type props:(NSArray *)props where:(NSString *)where
     sort:(NSString *)sort limit:(int)limit completionHandler:(void (^)(NSArray *data, NSHTTPURLResponse *response, NSError *error))handler {
     NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@",
