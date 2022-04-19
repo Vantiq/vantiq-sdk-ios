@@ -317,7 +317,12 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
 
 - (void)publish:(NSString *)topic message:(NSString *)message
     completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
-    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/topics/%@", _apiServer, _apiVersion, topic];
+    [self publishEvent:@"topics" event:topic message:message completionHandler:handler];
+}
+
+- (void)publishEvent:(NSString *)resource event:(NSString *)resourceId message:(NSString *)message
+    completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
+    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@/%@", _apiServer, _apiVersion, resource, resourceId];
     
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
     [request setHTTPBody:[message dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
