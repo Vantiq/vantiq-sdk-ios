@@ -540,7 +540,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
     completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error))handler {
     
     NSString *whereClause = [NSString stringWithFormat:@"{\"username\":\"%@\", \"deviceId\":\"%@\"}", [_username lowercaseString], _appUUID];
-    [self select:@"system.ArsPushTarget" props:@[] where:whereClause completionHandler:^(NSArray *tokenArray,
+    [self select:@"ArsPushTarget" props:@[] where:whereClause completionHandler:^(NSArray *tokenArray,
         NSHTTPURLResponse *response, NSError *error) {
         if (error) {
             handler(nil, response, error);
@@ -570,7 +570,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
                 if (tokenDict && !foundToken) {
                     // we need to update an existing record with the new token value
                     NSString *newToken = [NSString stringWithFormat:@"{\"token\":\"%@\"}", APNSDeviceToken];
-                    [self update:@"system.ArsPushTarget" id:[tokenDict objectForKey:@"_id"] object:newToken completionHandler:^(NSDictionary *data, NSHTTPURLResponse *response, NSError *error) {
+                    [self update:@"ArsPushTarget" id:[tokenDict objectForKey:@"_id"] object:newToken completionHandler:^(NSDictionary *data, NSHTTPURLResponse *response, NSError *error) {
                         handler(nil, response, error);
                     }];
                     needRegistration = false;
@@ -592,7 +592,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
                         [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"],
                         [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"],
                         _appUUID, [[UIDevice currentDevice] name], APNSDeviceToken, [_username lowercaseString]];
-                    [self insert:@"system.ArsPushTarget" object:props completionHandler:handler];
+                    [self insert:@"ArsPushTarget" object:props completionHandler:handler];
                 }
             }
         }
