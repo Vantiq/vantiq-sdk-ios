@@ -23,6 +23,8 @@ The Vantiq iOS SDK is Objective-C that provides an API into a Vantiq system for 
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
+  # added the following line on 02/23/23 to overcome info.plist missing errors
+  s.user_target_xcconfig = {'GENERATE_INFOPLIST_FILE' => 'YES'}
   # s.resource_bundles = {
   #   'vantiq-sdk-ios' => ['Pod/Assets/*.png']
   # }
