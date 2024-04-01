@@ -28,7 +28,7 @@ User name of the last authenticated user
 /**
 Namespace of the last authenticated user
  */
-@property (readonly, nonatomic) NSString *namespace;
+@property (readwrite, nonatomic) NSString *namespace;
 /**
 Server ID of the last authenticated user
  */

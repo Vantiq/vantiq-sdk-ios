@@ -10,7 +10,6 @@
 
 @interface Vantiq()
 @property (strong, nonatomic) NSString *apiServer;
-@property (readwrite, nonatomic) NSString *namespace;
 @property (readwrite, nonatomic) NSString *serverId;
 @property (readwrite, nonatomic) NSString *appUUID;
 @property unsigned long apiVersion;
@@ -148,6 +147,9 @@
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     [request setValue:[NSString stringWithFormat:@"Bearer %@", _accessToken] forHTTPHeaderField:@"Authorization"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    if (_namespace) {
+        [request setValue:_namespace forHTTPHeaderField:@"X-Target-Namespace"];
+    }
     return request;
 }
 
