@@ -5,7 +5,8 @@
 //  Created by Michael Swan on 3/25/16.
 //  Copyright © 2016 Vantiq, Inc. All rights reserved.
 //
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
 #import <Foundation/Foundation.h>
 
 #define VantiqAPIVersion               1
@@ -619,3 +620,4 @@ of the URIs, if any.
 - (void)batch:(NSData *)encodedQueries
     completionHandler:(void (^)(NSArray *data, NSHTTPURLResponse *response, NSError *error))handler;
 @end
+#pragma clang diagnostic pop

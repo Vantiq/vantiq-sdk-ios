@@ -77,9 +77,9 @@
                 if (!jsonError) {
                     if ([jsonObject isKindOfClass:[NSDictionary class]]) {
                         if ([jsonObject objectForKey:@"accessToken"]) {
-                            _accessToken = [jsonObject objectForKey:@"accessToken"];
-                            _username = username;
-                            _namespace = [jsonObject objectForKey:@"namespace"];
+                            self->_accessToken = [jsonObject objectForKey:@"accessToken"];
+                            self->_username = username;
+                            self->_namespace = [jsonObject objectForKey:@"namespace"];
                             
                             // we also want to know the server's globally unique ID if we want to access multiple servers
                             [self retrieveServerId:^(NSHTTPURLResponse *response, NSError *error) {
@@ -117,7 +117,7 @@
             NSError *jsonError = nil;
             if (httpResponse.statusCode == 200) {
                 if (data.count >= 1) {
-                    _serverId = [data[0] objectForKey:@"uuid"];
+                    self->_serverId = [data[0] objectForKey:@"uuid"];
                 } else {
                     jsonError = [NSError errorWithDomain:VantiqErrorDomain code:errorCodeIncompleteJSON userInfo:nil];
                 }
@@ -579,21 +579,21 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
                 }
                 if (needRegistration) {
                     // register a completely new token
-                    _appUUID = [[NSUserDefaults standardUserDefaults] stringForKey:@"com.vantiq.vantiq.appUUID"];
-                    if (!_appUUID) {
+                    self->_appUUID = [[NSUserDefaults standardUserDefaults] stringForKey:@"com.vantiq.vantiq.appUUID"];
+                    if (!self->_appUUID) {
                         // create an UUID associated with this app and save it for future use
                         CFUUIDRef aUUID = CFUUIDCreate(NULL);
                         CFStringRef string = CFUUIDCreateString(NULL, aUUID);
                         CFRelease(aUUID);
-                        _appUUID = (NSString*)CFBridgingRelease(string);
-                        [[NSUserDefaults standardUserDefaults] setObject:_appUUID forKey:@"com.vantiq.vantiq.appUUID"];
+                        self->_appUUID = (NSString*)CFBridgingRelease(string);
+                        [[NSUserDefaults standardUserDefaults] setObject:self->_appUUID forKey:@"com.vantiq.vantiq.appUUID"];
                         [[NSUserDefaults standardUserDefaults] synchronize];
                     }
                     
                     NSString *props = [NSString stringWithFormat:@"{\"appId\":\"%@\", \"appName\":\"%@\", \"deviceId\":\"%@\", \"deviceName\":\"%@\", \"platform\":0,  \"token\":\"%@\", \"username\":\"%@\"}",
                         [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"],
                         [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"],
-                        _appUUID, [[UIDevice currentDevice] name], APNSDeviceToken, [_username lowercaseString]];
+                        self->_appUUID, [[UIDevice currentDevice] name], APNSDeviceToken, [self->_username lowercaseString]];
                     [self insert:@"ArsPushTarget" object:props completionHandler:handler];
                 }
             }

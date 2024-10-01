@@ -76,6 +76,8 @@
 		
 		<option value="//api/name/authenticate:password:completionHandler:">- authenticate:password:completionHandler:</option>
 		
+		<option value="//api/name/batch:completionHandler:">- batch:completionHandler:</option>
+		
 		<option value="//api/name/count:completionHandler:">- count:completionHandler:</option>
 		
 		<option value="//api/name/count:where:completionHandler:">- count:where:completionHandler:</option>
@@ -97,6 +99,8 @@
 		<option value="//api/name/insert:object:completionHandler:">- insert:object:completionHandler:</option>
 		
 		<option value="//api/name/publish:message:completionHandler:">- publish:message:completionHandler:</option>
+		
+		<option value="//api/name/publishEvent:event:message:completionHandler:">- publishEvent:event:message:completionHandler:</option>
 		
 		<option value="//api/name/registerForPushNotifications:completionHandler:">- registerForPushNotifications:completionHandler:</option>
 		
@@ -282,7 +286,7 @@
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSString *namespace</code></div>
+			<div class="method-subsection method-declaration"><code>@property (readwrite, nonatomic) NSString *namespace</code></div>
 
 		    
 			
@@ -2051,6 +2055,92 @@ errors returned by the publish operation.</p></div>
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/publishEvent:event:message:completionHandler:" title="publishEvent:event:message:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/publishEvent:event:message:completionHandler:">&ndash;&nbsp;publishEvent:event:message:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The publishEvent method publishes a message onto a given resource (topics, sources or services) and event. Messages published onto resources can trigger rules to facilitate identifying situations.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)publishEvent:(NSString *)<em>resource</em> event:(NSString *)<em>resourceId</em> message:(NSString *)<em>message</em> completionHandler:(void ( ^ ) ( NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>resource</code></th>
+						<td><p>The resource on which to publish.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>resourceId</code></th>
+						<td><p>The resource instance on which to publish.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>message</code></th>
+						<td><p>The message to publish. This is a JSON-formatted string.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>The handler block to execute.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The publishEvent method publishes a message onto a given resource (topics, sources or services) and event. Messages published onto resources can trigger rules to facilitate identifying situations.</p>
+
+<p>event is a slash-delimited strings for topics, such as &lsquo;/test/topic&rsquo;, a source name for sources, and a <serviceName>/<inboundEventName> for services.</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
+to ensure UI operations are completed on the main thread.</p>
+
+<p>It is important to check the response and error callback return values to verify there were no
+errors returned by the publish operation.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Vantiq.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/execute:params:completionHandler:" title="execute:params:completionHandler:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/execute:params:completionHandler:">&ndash;&nbsp;execute:params:completionHandler:</a></code>
 </h3>
@@ -2370,7 +2460,7 @@ its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
-errors returned by the execute operation. The callback data returns the results of the procedure, if any.</p></div>
+errors returned by the execute operation. The callback data returns the results of the upload, if any.</p></div>
 			</div>
 			
 
@@ -2468,7 +2558,82 @@ its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue
 to ensure UI operations are completed on the main thread.</p>
 
 <p>It is important to check the response and error callback return values to verify there were no
-errors returned by the execute operation. The callback data returns the results of the procedure, if any.</p></div>
+errors returned by the execute operation. The callback data returns the results of the upload, if any.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">Vantiq.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/batch:completionHandler:" title="batch:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/batch:completionHandler:">&ndash;&nbsp;batch:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The batch method  uses the batch REST API endpoint to process multiple REST URIs</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)batch:(NSData *)<em>encodedQueries</em> completionHandler:(void ( ^ ) ( NSArray *data , NSHTTPURLResponse *response , NSError *error ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>encodedQueries</code></th>
+						<td><p>NSData-encoded JSON request array</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>The handler block to execute</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>data: result of method execution, if any</p><p>response: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/">iOS HTTP operation response</a></p><p>error: <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/">iOS error condition response</a></p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The batch method  uses the batch REST API endpoint to process multiple REST URIs</p><div class="warning"><p><strong>Warning:</strong> Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to <em>dispatch_async(dispatch_get_main_queue(), ^ {&hellip;});</em>
+to ensure UI operations are completed on the main thread.</p>
+
+<p>It is important to check the response and error callback return values to verify there were no
+errors returned by the execute operation. The callback data returns an array of results of each
+of the URIs, if any.</p></div>
 			</div>
 			
 
@@ -2500,7 +2665,7 @@ errors returned by the execute operation. The callback data returns the results 
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2019 VANTIQ, Inc. All rights reserved. Updated: 2019-08-26</p>
+						<p class="copyright">Copyright &copy; 2024 VANTIQ, Inc. All rights reserved. Updated: 2024-10-01</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
