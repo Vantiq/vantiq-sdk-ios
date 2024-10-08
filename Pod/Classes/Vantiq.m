@@ -79,7 +79,7 @@
                         if ([jsonObject objectForKey:@"accessToken"]) {
                             self->_accessToken = [jsonObject objectForKey:@"accessToken"];
                             self->_username = username;
-                            self->_namespace = [jsonObject objectForKey:@"namespace"];
+                            self->_idToken = [jsonObject objectForKey:@"idToken"];
                             
                             // we also want to know the server's globally unique ID if we want to access multiple servers
                             [self retrieveServerId:^(NSHTTPURLResponse *response, NSError *error) {

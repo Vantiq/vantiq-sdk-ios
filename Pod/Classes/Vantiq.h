@@ -23,6 +23,10 @@ Access token to be used for direct Vantiq server operations.
  */
 @property (readwrite, nonatomic) NSString *accessToken;
 /**
+ID token to be used for refresh token use.
+ */
+@property (readwrite, nonatomic) NSString *idToken;
+/**
 User name of the last authenticated user
  */
 @property (readwrite, nonatomic) NSString *username;
