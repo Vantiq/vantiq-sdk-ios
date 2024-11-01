@@ -23,6 +23,10 @@ Access token to be used for direct Vantiq server operations.
  */
 @property (readwrite, nonatomic) NSString *accessToken;
 /**
+ID token to be used for refresh token use.
+ */
+@property (readwrite, nonatomic) NSString *idToken;
+/**
 User name of the last authenticated user
  */
 @property (readwrite, nonatomic) NSString *username;
@@ -495,7 +499,7 @@ The upsert method either creates or updates a record in the database depending i
 @return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
  */
 - (void)execute:(NSString *)procedure params:(NSString *)params
-completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler;
+    completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler;
 /**
  The execute method executes a procedure on the Vantiq server. Procedures can take parameters (i.e. arguments) and produce a result.
  
@@ -518,6 +522,29 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
  */
 - (void)execute:(NSString *)procedure
     completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler;
+
+/**
+ The publicExecute method executes a public procedure on the Vantiq server. Procedures must take parameters (i.e. arguments) and produce a result.
+ 
+ @warning Please also note this method invokes a callback block associated with a network-
+ related block. Because this block is called from asynchronous network operations,
+ its code must be wrapped by a call to _dispatch_async(dispatch_get_main_queue(), ^ {...});_
+ to ensure UI operations are completed on the main thread.
+ 
+ It is important to check the response and error callback return values to verify there were no
+ errors returned by the execute operation. The callback data returns the results of the procedure, if any.
+ 
+ @see execute:params:completionHandler:
+ 
+ @param  procedure    The Public procedure to execute. The parameters may be provided as an array where the arguments are given in order. Alternatively, the parameters may be provided as an object where the arguments are named.
+ @param handler    The handler block to execute.
+ 
+@return data: result of method execution, if any, usually an NSDictionary or NSArray (use isKindOfClass to determine)
+@return response: [iOS HTTP operation response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/)
+@return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
+ */
+- (void)publicExecute:(NSString *)procedure params:(NSString *)params
+    completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler;
 
 /**
  The registerForPushNotifications method registers an app to receive Apple Push Notifications. Please note that

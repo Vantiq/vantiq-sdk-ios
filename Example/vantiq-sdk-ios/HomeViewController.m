@@ -217,6 +217,19 @@ extern Vantiq *v;
     }];
 }
 
+- (void)runPublicExecuteTest:(NSString *)procedure params:(NSString *)params {
+    [v publicExecute:procedure params:params completionHandler:^(NSHTTPURLResponse *response, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            NSString *resultStr;
+            if (![DecodeError formError:response error:error
+                diagnosis:NSLocalizedString(@"com.vantiq.demo.ExecuteErrorExplain", @"") resultStr:&resultStr]) {
+                resultStr = [NSString stringWithFormat:@"publicExecute(%@) successful.", procedure];
+            }
+            AddToResults();
+        });
+    }];
+}
+
 /*
  *  runTests
  *      - run the actual tests on a separate thread so we can remain responsive
@@ -271,6 +284,9 @@ extern Vantiq *v;
     [self runDeleteTest:@"TestType" where:@"{\"intValue\":42}"];
     [NSThread sleepForTimeInterval:.3];
     [self runDeleteTest:@"TestType" where:@"{\"intValue\":43}"];
+    
+    /* [NSThread sleepForTimeInterval:.3];
+    [self runPublicExecuteTest:@"Registration.createInternalUser" params:@"{\"obj\":{\"username\":\"internaluser\",\"password\":\"$%02#*$\",\"email\":\"mswan@vantiq.com\",\"firstName\":\"Michael\",\"lastName\":\"Swan\",\"phone\":\"360-8089\"}}"]; */
 }
 
 /*

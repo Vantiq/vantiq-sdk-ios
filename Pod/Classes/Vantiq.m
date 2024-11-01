@@ -79,7 +79,7 @@
                         if ([jsonObject objectForKey:@"accessToken"]) {
                             self->_accessToken = [jsonObject objectForKey:@"accessToken"];
                             self->_username = username;
-                            self->_namespace = [jsonObject objectForKey:@"namespace"];
+                            self->_idToken = [jsonObject objectForKey:@"idToken"];
                             
                             // we also want to know the server's globally unique ID if we want to access multiple servers
                             [self retrieveServerId:^(NSHTTPURLResponse *response, NSError *error) {
@@ -367,6 +367,20 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
 - (void)execute:(NSString *)procedure
 completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler {
     [self execute:procedure params:NULL completionHandler:handler];
+}
+
+- (void)publicExecute:(NSString *)procedure params:(NSString *)params
+    completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
+    NSString *urlString = [NSString stringWithFormat:@"%@/api/v%lu/resources/public/%@/procedures/%@", _apiServer, _apiVersion, _namespace, procedure];
+    NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
+    [request setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
+    
+    NSURLSessionTask *task = [[self buildSession] dataTaskWithRequest:request
+        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        handler(httpResponse, error);
+    }];
+    [task resume];
 }
 
 - (void)count:(NSString *)type where:(NSString *)where completionHandler:(void (^)(int count, NSHTTPURLResponse *response, NSError *error))handler {

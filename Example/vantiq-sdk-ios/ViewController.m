@@ -15,7 +15,8 @@
 // our one globally-available Vantiq endpoint
 Vantiq *v;
 
-#define VANTIQ_SERVER_URL   @"https://dev.vantiq.com"
+#define VANTIQ_SERVER_URL   @"https://9a55a50688ee.ngrok.app"
+#define VANTIQ_NAMESPACE    @"swan"
 
 @interface ViewController () {
     NSString *accessToken;
@@ -38,6 +39,7 @@ Vantiq *v;
         if (![DecodeError formError:response error:error diagnosis:@"" resultStr:&resultStr]) {
             // the user already has a valid token so no need to log in
             dispatch_async(dispatch_get_main_queue(), ^ {
+                v.namespace = VANTIQ_NAMESPACE;
                 [self performSegueWithIdentifier:@"Home" sender:self];
             });
         } else {
@@ -50,6 +52,7 @@ Vantiq *v;
                         OAuthURL = [headerFields objectForKey:@"Www-Authenticate"];
                         if (OAuthURL && ![OAuthURL isEqualToString:@"Vantiq"]) {
                             dispatch_async(dispatch_get_main_queue(), ^ {
+                                v.namespace = VANTIQ_NAMESPACE;
                                 [self performSegueWithIdentifier:@"OauthWeb" sender:self];
                             });
                         }
@@ -82,6 +85,7 @@ Vantiq *v;
                 
                 // clear our password field
                 _password.text = @"";
+                v.namespace = VANTIQ_NAMESPACE;
                 // transition to the home view
                 [self performSegueWithIdentifier:@"Home" sender:self];
             });
