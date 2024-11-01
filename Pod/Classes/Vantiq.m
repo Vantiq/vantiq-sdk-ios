@@ -369,6 +369,21 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
     [self execute:procedure params:NULL completionHandler:handler];
 }
 
+- (void)publicExecute:(NSString *)procedure params:(NSString *)params
+    completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
+    NSString *urlString = [NSString stringWithFormat:@"%@/api/v%lu/resources/public/%@/procedures/%@", _apiServer, _apiVersion, _namespace, procedure];
+    NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
+    NSData *p = [params dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+    [request setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
+    
+    NSURLSessionTask *task = [[self buildSession] dataTaskWithRequest:request
+        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        handler(httpResponse, error);
+    }];
+    [task resume];
+}
+
 - (void)count:(NSString *)type where:(NSString *)where completionHandler:(void (^)(int count, NSHTTPURLResponse *response, NSError *error))handler {
     NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@",
         _apiServer, _apiVersion, [self buildURLResourceType:type]];
