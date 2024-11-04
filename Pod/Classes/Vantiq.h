@@ -539,7 +539,7 @@ The upsert method either creates or updates a record in the database depending i
  @param  procedure    The Public procedure to execute. The parameters may be provided as an array where the arguments are given in order. Alternatively, the parameters may be provided as an object where the arguments are named.
  @param handler    The handler block to execute.
  
-@return data: result of method execution, if any, usually an NSDictionary or NSArray (use isKindOfClass to determine)
+@return data: result of method execution of type NSData, if any. Must convert the data using [NSString initWithData] depending on the Procedure executed
 @return response: [iOS HTTP operation response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/)
 @return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
  */

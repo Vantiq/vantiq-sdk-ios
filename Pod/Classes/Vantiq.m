@@ -378,17 +378,10 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
     NSURLSessionTask *task = [[self buildSession] dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        id jsonObject = NULL;
-        if (error) {
+        if (error || (httpResponse.statusCode != 200)) {
             handler(nil, httpResponse, error);
         } else {
-            NSError *jsonError = NULL;
-            if (httpResponse.statusCode == 200) {
-                NSString *returnString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
-                jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]
-                    options:0 error:&jsonError];
-            }
-            handler(jsonObject, httpResponse, error);
+            handler(data, httpResponse, error);
         }
     }];
     [task resume];
