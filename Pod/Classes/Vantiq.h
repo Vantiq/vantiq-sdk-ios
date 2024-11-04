@@ -544,7 +544,7 @@ The upsert method either creates or updates a record in the database depending i
 @return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
  */
 - (void)publicExecute:(NSString *)procedure params:(NSString *)params
-    completionHandler:(void (^)(NSData *data, NSHTTPURLResponse *response, NSError *error))handler;
+    completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler;
 
 /**
  The registerForPushNotifications method registers an app to receive Apple Push Notifications. Please note that
