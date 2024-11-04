@@ -350,7 +350,7 @@ completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSE
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         id jsonObject = NULL;
         if (error) {
-            handler(0, httpResponse, error);
+            handler(nil, httpResponse, error);
         } else {
             NSError *jsonError = NULL;
             if (httpResponse.statusCode == 200) {
@@ -370,7 +370,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
 }
 
 - (void)publicExecute:(NSString *)procedure params:(NSString *)params
-    completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
+    completionHandler:(void (^)(NSData *data, NSHTTPURLResponse *response, NSError *error))handler {
     NSString *urlString = [NSString stringWithFormat:@"%@/api/v%lu/resources/public/%@/procedures/%@", _apiServer, _apiVersion, _namespace, procedure];
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
     [request setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
@@ -378,7 +378,18 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
     NSURLSessionTask *task = [[self buildSession] dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        handler(httpResponse, error);
+        id jsonObject = NULL;
+        if (error) {
+            handler(nil, httpResponse, error);
+        } else {
+            NSError *jsonError = NULL;
+            if (httpResponse.statusCode == 200) {
+                NSString *returnString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
+                jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]
+                    options:0 error:&jsonError];
+            }
+            handler(jsonObject, httpResponse, error);
+        }
     }];
     [task resume];
 }
