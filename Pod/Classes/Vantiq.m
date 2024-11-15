@@ -145,7 +145,9 @@
     [request setURL:[NSURL URLWithString:urlString]];
     [request setHTTPMethod:method];
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
-    [request setValue:[NSString stringWithFormat:@"Bearer %@", _accessToken] forHTTPHeaderField:@"Authorization"];
+    if (_accessToken) {
+        [request setValue:[NSString stringWithFormat:@"Bearer %@", _accessToken] forHTTPHeaderField:@"Authorization"];
+    }
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     if (_namespace) {
         [request setValue:_namespace forHTTPHeaderField:@"X-Target-Namespace"];
@@ -370,7 +372,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
 }
 
 - (void)publicExecute:(NSString *)procedure params:(NSString *)params
-    completionHandler:(void (^)(NSData *data, NSHTTPURLResponse *response, NSError *error))handler {
+    completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler {
     NSString *urlString = [NSString stringWithFormat:@"%@/api/v%lu/resources/public/%@/procedures/%@", _apiServer, _apiVersion, _namespace, procedure];
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
     [request setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
@@ -378,17 +380,10 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
     NSURLSessionTask *task = [[self buildSession] dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        id jsonObject = NULL;
-        if (error) {
+        if (error || (httpResponse.statusCode != 200)) {
             handler(nil, httpResponse, error);
         } else {
-            NSError *jsonError = NULL;
-            if (httpResponse.statusCode == 200) {
-                NSString *returnString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
-                jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]
-                    options:0 error:&jsonError];
-            }
-            handler(jsonObject, httpResponse, error);
+            handler(data, httpResponse, error);
         }
     }];
     [task resume];
