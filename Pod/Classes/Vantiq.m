@@ -8,7 +8,102 @@
 
 #import "Vantiq.h"
 
-@interface Vantiq()
+// for the executeStreamed functionality, the user may want to have more than one
+// streaming session occurring at once. this means for every session, we need to
+// maintain state which is indexed by the session itself
+@interface StreamedSessionState : NSObject
+@property (readwrite, nonatomic) NSURLSession *streamedSession;
+@property (readwrite, nonatomic) NSString *streamedString;
+@property (readwrite, nonatomic) NSHTTPURLResponse *streamedResponse;
+@property (readwrite, nonatomic) id streamedData;
+@property (readwrite, nonatomic) void (^streamedHandler)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error);
+@property (readwrite, nonatomic) void (^progressCallback)(NSDictionary *response);
+
+// cumulative state properties
+@property (readwrite, nonatomic) NSInteger chunksReceived;
+@property (readwrite, nonatomic) NSInteger totalRowsReceived;
+@property (readwrite, nonatomic) NSInteger newRowsReceived;
+@property (readwrite, nonatomic) NSInteger firstNewRowIndex;
+@end
+@implementation StreamedSessionState
+- (id)init:(NSURLSession *)_session progressCallback:(void (^)(NSDictionary *))_progress
+    handler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))_handler {
+    if ([super init]) {
+        _streamedSession = _session;
+        _streamedString = @"";
+        _streamedResponse = nil;
+        _streamedData = nil;
+        _streamedHandler = _handler;
+        _progressCallback = _progress;
+        
+        _chunksReceived = _totalRowsReceived =
+            _newRowsReceived = _firstNewRowIndex = 0;
+    }
+    return self;
+}
+- (NSDictionary *)buildResponse:(BOOL)isComplete error:(NSError *)error {
+    NSMutableDictionary *responseDict = [[NSMutableDictionary alloc]
+        initWithObjectsAndKeys:isComplete ? @"true" : @"false", @"isComplete",
+        [NSNumber numberWithInteger:_chunksReceived], @"chunksReceived",
+        [NSNumber numberWithInteger:_totalRowsReceived], @"totalRowsReceived",
+        [NSNumber numberWithInteger:_newRowsReceived], @"newRowsReceived",
+        [NSNumber numberWithInteger:_firstNewRowIndex], @"firstNewRowIndex", nil];
+    if (_streamedData) {
+        [responseDict setObject:_streamedData forKey:@"data"];
+    }
+    if (_streamedString) {
+        [responseDict setObject:_streamedString forKey:@"rawData"];
+    }
+    if (error) {
+        NSInteger httpStatus = _streamedResponse ? _streamedResponse.statusCode : 0;
+        NSDictionary *errorDict = [[NSDictionary alloc]
+            initWithObjectsAndKeys:[error domain], @"errorCode",
+            [error localizedDescription], @"errorMessage",
+            [NSNumber numberWithInteger:httpStatus], @"httpStatus", nil];
+        [responseDict setObject:errorDict forKey:@"error"];
+    }
+    return responseDict;
+}
+@end
+
+// to support the StreamedSessionState, the StreamedSession cache class exists only
+// to maintain an array of any existing sessions
+@interface StreamedSessionCache : NSObject {
+    NSMutableArray *sessionCache;
+}
+- (StreamedSessionState *)findState:(NSURLSession *)session;
+@end
+@implementation StreamedSessionCache
+- (id)init {
+    if ([super init]) {
+        sessionCache = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+- (StreamedSessionState *)findState:(NSURLSession *)session {
+    StreamedSessionState *s;
+    for (int i = 0; i < [sessionCache count]; i++) {
+        s = [sessionCache objectAtIndex:i];
+        if (session == s.streamedSession) {
+            return sessionCache[i];
+        }
+    }
+    return nil;
+}
+- (void)addSession:(StreamedSessionState *)sessionState {
+    [sessionCache addObject:sessionState];
+}
+- (void)removeSession:(StreamedSessionState *)sessionState {
+    [sessionCache removeObject:sessionState];
+}
+@end
+
+@interface Vantiq() {
+    /* NSString *streamedString;
+    NSHTTPURLResponse *streamedResponse;
+    void (^_Nonnull streamedHandler)(id data, NSHTTPURLResponse *response, NSError *error); */
+    StreamedSessionCache *sessionCache;
+}
 @property (strong, nonatomic) NSString *apiServer;
 @property (readwrite, nonatomic) NSString *serverId;
 @property (readwrite, nonatomic) NSString *appUUID;
@@ -25,6 +120,7 @@
         }
         _apiServer = server;
         _apiVersion = version;
+        sessionCache = [[StreamedSessionCache alloc] init];
     }
     return self;
 }
@@ -180,7 +276,7 @@
 }
 
 - (void)update:(NSString *)type id:(NSString *)ID object:(NSString *)object
-completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error))handler {
+    completionHandler:(void (^)(NSDictionary *data, NSHTTPURLResponse *response, NSError *error))handler {
     NSString *urlString = [NSString stringWithFormat:@"%@/api/v%lu/resources/%@/%@",
         _apiServer, _apiVersion, [self buildURLResourceType:type], ID];
     
@@ -388,6 +484,119 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
     }];
     [task resume];
 }
+
+- (void)executeStreamed:(NSString *)procedure params:(NSString *)params maxBufferSize:(int)maxBufferSize
+    maxFlushInterval:(long)maxFlushInterval progressCallback:(void (^)(NSDictionary *))progressCallback
+    completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler {
+    NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/procedures/%@?stream=true", _apiServer, _apiVersion, procedure];
+    if (maxBufferSize) {
+        [urlString appendString:[NSString stringWithFormat:@"&maxBufferSize=%d", maxBufferSize]];
+    }
+    if (maxFlushInterval) {
+        [urlString appendString:[NSString stringWithFormat:@"&maxFlushInterval=%ld", maxFlushInterval]];
+    }
+    
+    NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
+    // set some streamed-specific HTTP header values
+    [request setValue:@"gzip, deflate, br, zstd" forHTTPHeaderField:@"Accept-Encoding"];
+    [request setValue:@"en,ja;q=0.9,zh-CN;q=0.8,zh;q=0.7,es;q=0.6,en-US;q=0.5,he;q=0.4" forHTTPHeaderField:@"Accept-Language"];
+    [request setValue:@"keep-alive" forHTTPHeaderField:@"Connection"];
+    [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Current-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    // setting an HTTP body to pass the Procedure parameters is going to produce a runtime
+    // error but I couldn't get the recommended way to do this (via the needNewBodyStreamFromOffset
+    // delegate method) to work
+    [request setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    config.timeoutIntervalForRequest = config.timeoutIntervalForResource = 15.0;
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
+    [sessionCache addSession:[[StreamedSessionState alloc] init:session
+        progressCallback:progressCallback handler:handler]];
+    
+    NSURLSessionUploadTask *task = [session uploadTaskWithStreamedRequest:request];
+    [task resume];
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
+    StreamedSessionState *sss = [sessionCache findState:session];
+    if (sss) {
+        sss.streamedResponse = (NSHTTPURLResponse *)response;
+    }
+    completionHandler(NSURLSessionResponseAllow);
+}
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
+    NSString *returnString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
+    StreamedSessionState *sss = [sessionCache findState:session];
+    if (sss) {
+        sss.streamedString = [sss.streamedString stringByAppendingString:returnString];
+        
+        NSError *jsonError = nil;
+        NSString *tryElement;
+        NSArray *tryArray = [[NSArray alloc] initWithObjects:sss.streamedString, [NSString stringWithFormat:@"%@]", sss.streamedString], [NSString stringWithFormat:@"%@\"]", sss.streamedString], nil];
+        for (int try = 0; try < [tryArray count]; try++) {
+            tryElement = tryArray[try];
+            sss.streamedData = [NSJSONSerialization JSONObjectWithData:[tryElement dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES] options:NSJSONReadingMutableContainers error:&jsonError];
+            if (!jsonError) {
+                break;
+            }
+        }
+        if (jsonError) {
+            NSCharacterSet *characterSet = [NSCharacterSet characterSetWithCharactersInString:@"[]"];
+            NSArray *elementArray = [[[tryElement componentsSeparatedByCharactersInSet:characterSet]
+                componentsJoinedByString:@""] componentsSeparatedByString:@","];
+            NSMutableArray *processedArray = [[NSMutableArray alloc] init];
+            for (int e = 0; e < [elementArray count]; e++) {
+                [processedArray addObject:[elementArray[e] stringByReplacingOccurrencesOfString:@"\"" withString:@""]];
+            }
+            sss.streamedData = processedArray;
+        }
+        if ([sss.streamedData isKindOfClass:[NSArray class]]) {
+            NSInteger currentLength = [sss.streamedData count];
+            sss.firstNewRowIndex = sss.totalRowsReceived;
+            sss.newRowsReceived = currentLength - sss.totalRowsReceived;
+            sss.totalRowsReceived = currentLength;
+        }
+        sss.chunksReceived++;
+        sss.progressCallback([sss buildResponse:NO error:nil]);
+    }
+}
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+    StreamedSessionState *sss = [sessionCache findState:session];
+    if (sss) {
+        sss.streamedHandler([sss buildResponse:YES error:error], sss.streamedResponse, error);
+        [sessionCache removeSession:sss];
+    }
+    NSLog(@"executeStreamed:didCompleteWithError: %@", [error localizedDescription]);
+}
+
+/* not in use -- attempt to solve runtime error regarding HTTP body use
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task needNewBodyStreamFromOffset:(int64_t)offset completionHandler:(void (^)(NSInputStream * _Nullable))completionHandler {
+    NSLog(@"executeStreamed:needNewBodyStreamFromOffset");
+    NSInputStream *inStream = nil;
+    NSOutputStream *outStream  = nil;
+    [NSStream getBoundStreamsWithBufferSize:4096 inputStream:&inStream outputStream:&outStream];
+    streamedOutputStream = outStream;
+    [streamedOutputStream setDelegate:self];
+    [streamedOutputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [streamedOutputStream open];
+    completionHandler(inStream);
+}
+
+- (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode {
+    NSLog(@"executeStreamed:handleEvent: %ld", eventCode);
+    switch (eventCode) {
+        case NSStreamEventHasSpaceAvailable:
+            NSLog(@"executeStreamed:handleEvent:NSStreamEventHasSpaceAvailable");
+            [streamedOutputStream write:(const uint8_t *)[streamedParams cStringUsingEncoding:NSUTF8StringEncoding] maxLength:streamedParams.length];
+            break;
+        default:
+            break;
+    }
+}
+*/
 
 - (void)count:(NSString *)type where:(NSString *)where completionHandler:(void (^)(int count, NSHTTPURLResponse *response, NSError *error))handler {
     NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/%@",

@@ -17,7 +17,7 @@
 /**
 The Vantiq class declares the interface for authentication and subsequent interaction with a Vantiq server.
  */
-@interface Vantiq : NSObject
+@interface Vantiq : NSObject <NSURLSessionDelegate>
 /**
 Access token to be used for direct Vantiq server operations.
  */
@@ -544,6 +544,10 @@ The upsert method either creates or updates a record in the database depending i
 @return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
  */
 - (void)publicExecute:(NSString *)procedure params:(NSString *)params
+    completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler;
+
+- (void)executeStreamed:(NSString *)procedure params:(NSString *)params maxBufferSize:(int)maxBufferSize
+    maxFlushInterval:(long)maxFlushInterval progressCallback:(void (^)(NSDictionary *))progressCallback
     completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler;
 
 /**

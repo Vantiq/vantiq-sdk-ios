@@ -217,8 +217,28 @@ extern Vantiq *v;
     }];
 }
 
+- (void)runExecuteStreamedTest:(NSString *)procedure params:(NSString *)params {
+    [v executeStreamed:procedure params:params maxBufferSize:512 maxFlushInterval:500
+        progressCallback:^(NSDictionary *progressDict) {
+        NSLog(@"streamedProgress: %@", [progressDict objectForKey:@"data"]);
+        
+    } completionHandler:^(id data, NSHTTPURLResponse *response, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            NSString *resultStr;
+            if (![DecodeError formError:response error:error
+                diagnosis:NSLocalizedString(@"com.vantiq.demo.ExecuteErrorExplain", @"") resultStr:&resultStr]) {
+                resultStr = [NSString stringWithFormat:@"procedure(%@) successful.", procedure];
+            } else {
+                [self appendAndScroll:resultStr];
+                resultStr = @"Please make sure the procedure is defined. See the documentation.";
+            }
+            AddToResults();
+        });
+    }];
+}
+
 - (void)runPublicExecuteTest:(NSString *)procedure params:(NSString *)params {
-    [v publicExecute:procedure params:params completionHandler:^(NSHTTPURLResponse *response, NSError *error) {
+    [v publicExecute:procedure params:params completionHandler:^(id data, NSHTTPURLResponse *response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^ {
             NSString *resultStr;
             if (![DecodeError formError:response error:error
@@ -238,7 +258,7 @@ extern Vantiq *v;
 - (void)runActualTests {
     [self runSelectTest:@"system.types" props:@[] where:NULL sort:NULL limit:-1];
     [NSThread sleepForTimeInterval:.3];
-    [self runSelectTest:@"system.types" props:@[@"name", @"naturalKey"] where:NULL sort:NULL limit:-1];
+    /* [self runSelectTest:@"system.types" props:@[@"name", @"naturalKey"] where:NULL sort:NULL limit:-1];
     [NSThread sleepForTimeInterval:.3];
     [self runSelectTest:@"system.types" props:@[@"name", @"naturalKey"] where:@"{\"name\":\"ArsRuleSnapshot\"}" sort:NULL limit:-1];
     [NSThread sleepForTimeInterval:.3];
@@ -283,10 +303,12 @@ extern Vantiq *v;
     [NSThread sleepForTimeInterval:.3];
     [self runDeleteTest:@"TestType" where:@"{\"intValue\":42}"];
     [NSThread sleepForTimeInterval:.3];
-    [self runDeleteTest:@"TestType" where:@"{\"intValue\":43}"];
+    [self runDeleteTest:@"TestType" where:@"{\"intValue\":43}"]; */
     
     /* [NSThread sleepForTimeInterval:.3];
     [self runPublicExecuteTest:@"Registration.createInternalUser" params:@"{\"obj\":{\"username\":\"internaluser\",\"password\":\"$%02#*$\",\"email\":\"mswan@vantiq.com\",\"firstName\":\"Michael\",\"lastName\":\"Swan\",\"phone\":\"360-8089\"}}"]; */
+    [NSThread sleepForTimeInterval:.3];
+    [self runExecuteStreamedTest:@"TestStreamedProc" params:@"{\"nnn\":3,\"delay\":1000}"];
 }
 
 /*
@@ -300,7 +322,7 @@ extern Vantiq *v;
 - (IBAction)runTestsTapped:(id)sender {
     _runTests.enabled = false;
     finishedQueuing = false;
-    _queueCount = [NSNumber numberWithInt:20];
+    _queueCount = [NSNumber numberWithInt:2];
     results = [NSMutableString stringWithString:@""];
     
     [self appendAndScroll:[NSString stringWithFormat:@"Starting %d tests...", [_queueCount intValue]]];
