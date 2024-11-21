@@ -238,7 +238,7 @@ extern Vantiq *v;
 }
 
 - (void)runPublicExecuteTest:(NSString *)procedure params:(NSString *)params {
-    [v publicExecute:procedure params:params completionHandler:^(id data, NSHTTPURLResponse *response, NSError *error) {
+    [v publicExecute:v.namespace procedure:procedure params:params completionHandler:^(id data, NSHTTPURLResponse *response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^ {
             NSString *resultStr;
             if (![DecodeError formError:response error:error

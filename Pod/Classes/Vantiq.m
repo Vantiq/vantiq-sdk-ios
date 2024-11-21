@@ -467,9 +467,9 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
     [self execute:procedure params:NULL completionHandler:handler];
 }
 
-- (void)publicExecute:(NSString *)procedure params:(NSString *)params
+- (void)publicExecute:(NSString *)namespace procedure:(NSString *)procedure params:(NSString *)params
     completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler {
-    NSString *urlString = [NSString stringWithFormat:@"%@/api/v%lu/resources/public/%@/procedures/%@", _apiServer, _apiVersion, _namespace, procedure];
+    NSString *urlString = [NSString stringWithFormat:@"%@/api/v%lu/resources/public/%@/procedures/%@", _apiServer, _apiVersion, namespace, procedure];
     NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
     [request setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
     

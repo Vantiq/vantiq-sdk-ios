@@ -524,7 +524,7 @@ The upsert method either creates or updates a record in the database depending i
     completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler;
 
 /**
- The publicExecute method executes a public procedure on the Vantiq server. Procedures must take parameters (i.e. arguments) and produce a result.
+ The publicExecute method executes a public Procedure on the Vantiq server. Procedures must take parameters (i.e. arguments) and produce a result.
  
  @warning Please also note this method invokes a callback block associated with a network-
  related block. Because this block is called from asynchronous network operations,
@@ -536,16 +536,41 @@ The upsert method either creates or updates a record in the database depending i
  
  @see execute:params:completionHandler:
  
- @param  procedure    The Public procedure to execute. The parameters may be provided as an array where the arguments are given in order. Alternatively, the parameters may be provided as an object where the arguments are named.
+ @param namespace   The Namespace in which the Procedure is found
+ @param procedure    The public Procedure to execute. The parameters may be provided as an array where the arguments are given in order. Alternatively, the parameters may be provided as an object where the arguments are named.
+ @param params Parameters passed to the procedure. This is a JSON-formatted string.
  @param handler    The handler block to execute.
  
-@return data: result of method execution of type NSData, if any. Must convert the data using [NSString initWithData] depending on the Procedure executed
+@return data: result of method execution, if any, usually an NSDictionary or NSArray (use isKindOfClass to determine)
 @return response: [iOS HTTP operation response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/)
 @return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
  */
-- (void)publicExecute:(NSString *)procedure params:(NSString *)params
+- (void)publicExecute:(NSString *)namespace procedure:(NSString *)procedure params:(NSString *)params
     completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler;
 
+/**
+ The exeduteStreamed method executes a streamed Procedure on the Vantiq server. Procedures must take parameters (i.e. arguments) and produce streamed and final results.
+ 
+ @warning Please also note this method invokes a callback block associated with a network-
+ related block. Because this block is called from asynchronous network operations,
+ its code must be wrapped by a call to _dispatch_async(dispatch_get_main_queue(), ^ {...});_
+ to ensure UI operations are completed on the main thread.
+ 
+ It is important to check the response and error callback return values to verify there were no
+ errors returned by the execute operation. The callback data returns the results of the procedure, if any.
+ 
+ @see execute:params:completionHandler:
+ 
+ @param procedure    The public Procedure to execute. The parameters may be provided as an array where the arguments are given in order. Alternatively, the parameters may be provided as an object where the arguments are named.
+ @param params Parameters passed to the procedure. This is a JSON-formatted string.
+ @param maxBufferSize maximum number of characters before the streamed data is sent to the progressCallback method, a value of zero indicates the default value of 64K.
+ @param maxFlushInterval maximim time in milliseconds before the streamed data is sent to the progressCallback method, a value of zero indicates the default value of 5000 (5 seconds)
+ @param handler    The handler block to execute.
+ 
+@return data: result of method execution of type. Will be an NSDictionary with keys as defined by the Client documentation
+@return response: [iOS HTTP operation response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/)
+@return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
+ */
 - (void)executeStreamed:(NSString *)procedure params:(NSString *)params maxBufferSize:(int)maxBufferSize
     maxFlushInterval:(long)maxFlushInterval progressCallback:(void (^)(NSDictionary *))progressCallback
     completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler;
