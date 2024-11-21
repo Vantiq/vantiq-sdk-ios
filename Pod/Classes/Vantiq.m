@@ -479,7 +479,12 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
         if (error || (httpResponse.statusCode != 200)) {
             handler(nil, httpResponse, error);
         } else {
-            handler(data, httpResponse, error);
+            id jsonObject = NULL;
+            NSError *jsonError = NULL;
+            NSString *returnString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
+            jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]
+                options:0 error:&jsonError];
+            handler(jsonObject, httpResponse, jsonError);
         }
     }];
     [task resume];
@@ -544,6 +549,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
             }
         }
         if (jsonError) {
+            // if the data isn't JSON, treat it like an array of strings
             NSCharacterSet *characterSet = [NSCharacterSet characterSetWithCharactersInString:@"[]"];
             NSArray *elementArray = [[[tryElement componentsSeparatedByCharactersInSet:characterSet]
                 componentsJoinedByString:@""] componentsSeparatedByString:@","];
@@ -558,9 +564,10 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
             sss.firstNewRowIndex = sss.totalRowsReceived;
             sss.newRowsReceived = currentLength - sss.totalRowsReceived;
             sss.totalRowsReceived = currentLength;
+            jsonError = nil;
         }
         sss.chunksReceived++;
-        sss.progressCallback([sss buildResponse:NO error:nil]);
+        sss.progressCallback([sss buildResponse:NO error:jsonError]);
     }
 }
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
