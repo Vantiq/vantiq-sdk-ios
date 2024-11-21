@@ -234,7 +234,8 @@
  *      - given a URL and an HTTP operation, form a URLRequest with appropriate
  *          authentication headers and timeout values
  */
-- (NSMutableURLRequest *)buildURLRequest:(NSString *)urlString method:(NSString *)method {
+- (NSMutableURLRequest *)buildURLRequest:(NSString *)urlString method:(NSString *)method
+    timeoutInterval:(NSTimeInterval)timeoutInterval {
     // form the HTTP GET request
     NSMutableURLRequest *request = [NSMutableURLRequest new];
     [request setTimeoutInterval:15.0];
@@ -250,15 +251,21 @@
     }
     return request;
 }
+- (NSMutableURLRequest *)buildURLRequest:(NSString *)urlString method:(NSString *)method {
+    return [self buildURLRequest:urlString method:method timeoutInterval:15.0];
+}
 
 /*
  *  buildSession
  *      - we want sessions that have sensible/short timeouts to avoid indefinite callback wait times
  */
-- (NSURLSession *)buildSession {
+- (NSURLSession *)buildSession:(NSTimeInterval)timeoutInterval {
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    config.timeoutIntervalForRequest = config.timeoutIntervalForResource = 15.0;
+    config.timeoutIntervalForRequest = config.timeoutIntervalForResource = timeoutInterval;
     return [NSURLSession sessionWithConfiguration:config];
+}
+- (NSURLSession *)buildSession {
+    return [self buildSession:15.0];
 }
 
 /*
@@ -439,7 +446,7 @@
     completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler {
     NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/procedures/%@", _apiServer, _apiVersion, procedure];
     
-    NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
+    NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST" timeoutInterval:120];
     if (params) {
         [request setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
     }
@@ -470,7 +477,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
 - (void)publicExecute:(NSString *)namespace procedure:(NSString *)procedure params:(NSString *)params
     completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler {
     NSString *urlString = [NSString stringWithFormat:@"%@/api/v%lu/resources/public/%@/procedures/%@", _apiServer, _apiVersion, namespace, procedure];
-    NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
+    NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST" timeoutInterval:120];
     [request setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
     
     NSURLSessionTask *task = [[self buildSession] dataTaskWithRequest:request
@@ -501,7 +508,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
         [urlString appendString:[NSString stringWithFormat:@"&maxFlushInterval=%ld", maxFlushInterval]];
     }
     
-    NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
+    NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST" timeoutInterval:120.0];
     // set some streamed-specific HTTP header values
     [request setValue:@"gzip, deflate, br, zstd" forHTTPHeaderField:@"Accept-Encoding"];
     [request setValue:@"en,ja;q=0.9,zh-CN;q=0.8,zh;q=0.7,es;q=0.6,en-US;q=0.5,he;q=0.4" forHTTPHeaderField:@"Accept-Language"];
@@ -516,7 +523,7 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
     [request setHTTPBody:[params dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
     
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    config.timeoutIntervalForRequest = config.timeoutIntervalForResource = 15.0;
+    config.timeoutIntervalForRequest = config.timeoutIntervalForResource = 120.0;
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
     [sessionCache addSession:[[StreamedSessionState alloc] init:session
         progressCallback:progressCallback handler:handler]];
