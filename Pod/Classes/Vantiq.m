@@ -442,6 +442,20 @@
     [task resume];
 }
 
+- (id)parseExecuteNonJSON:(NSString *)returnStr {
+    if ([returnStr characterAtIndex:0] == '[') {
+        NSCharacterSet *characterSet = [NSCharacterSet characterSetWithCharactersInString:@"[]"];
+        NSArray *elementArray = [[[returnStr componentsSeparatedByCharactersInSet:characterSet]
+            componentsJoinedByString:@""] componentsSeparatedByString:@","];
+        NSMutableArray *processedArray = [[NSMutableArray alloc] init];
+        for (int e = 0; e < [elementArray count]; e++) {
+            [processedArray addObject:[elementArray[e] stringByReplacingOccurrencesOfString:@"\"" withString:@""]];
+        }
+        return processedArray;
+    }
+    return returnStr;
+}
+
 - (void)execute:(NSString *)procedure params:(NSString *)params
     completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error))handler {
     NSMutableString *urlString = [NSMutableString stringWithFormat:@"%@/api/v%lu/resources/procedures/%@", _apiServer, _apiVersion, procedure];
@@ -453,17 +467,19 @@
     NSURLSessionDataTask *task = [[self buildSession] dataTaskWithRequest:request
         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        id jsonObject = NULL;
-        if (error) {
+        if (error || (httpResponse.statusCode != 200)) {
             handler(nil, httpResponse, error);
         } else {
+            id jsonObject = NULL;
             NSError *jsonError = NULL;
-            if (httpResponse.statusCode == 200) {
-                NSString *returnString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
-                jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]
-                    options:0 error:&jsonError];
+            NSString *returnString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
+            jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]
+                options:0 error:&jsonError];
+            if (jsonError) {
+                handler([self parseExecuteNonJSON:returnString], httpResponse, nil);
+            } else {
+                handler(jsonObject, httpResponse, jsonError);
             }
-            handler(jsonObject, httpResponse, jsonError);
         }
     }];
     [task resume];
@@ -491,7 +507,11 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
             NSString *returnString = [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding];
             jsonObject = [NSJSONSerialization JSONObjectWithData:[returnString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]
                 options:0 error:&jsonError];
-            handler(jsonObject, httpResponse, jsonError);
+            if (jsonError) {
+                handler([self parseExecuteNonJSON:returnString], httpResponse, nil);
+            } else {
+                handler(jsonObject, httpResponse, jsonError);
+            }
         }
     }];
     [task resume];
@@ -557,14 +577,14 @@ completionHandler:(void (^)(id data, NSHTTPURLResponse *response, NSError *error
         }
         if (jsonError) {
             // if the data isn't JSON, treat it like an array of strings
-            NSCharacterSet *characterSet = [NSCharacterSet characterSetWithCharactersInString:@"[]"];
+            /* NSCharacterSet *characterSet = [NSCharacterSet characterSetWithCharactersInString:@"[]"];
             NSArray *elementArray = [[[tryElement componentsSeparatedByCharactersInSet:characterSet]
                 componentsJoinedByString:@""] componentsSeparatedByString:@","];
             NSMutableArray *processedArray = [[NSMutableArray alloc] init];
             for (int e = 0; e < [elementArray count]; e++) {
                 [processedArray addObject:[elementArray[e] stringByReplacingOccurrencesOfString:@"\"" withString:@""]];
-            }
-            sss.streamedData = processedArray;
+            } */
+            sss.streamedData = [self parseExecuteNonJSON:tryElement];
         }
         if ([sss.streamedData isKindOfClass:[NSArray class]]) {
             NSInteger currentLength = [sss.streamedData count];
