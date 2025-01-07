@@ -99,9 +99,6 @@
 @end
 
 @interface Vantiq() {
-    /* NSString *streamedString;
-    NSHTTPURLResponse *streamedResponse;
-    void (^_Nonnull streamedHandler)(id data, NSHTTPURLResponse *response, NSError *error); */
     StreamedSessionCache *sessionCache;
 }
 @property (strong, nonatomic) NSString *apiServer;
@@ -202,6 +199,26 @@
         }
     }];
     [task resume];
+}
+
+- (void)revokeCredentials:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {
+    NSString *urlString = [NSString stringWithFormat:@"%@/authenticate/revoke", _apiServer];
+    
+    NSMutableURLRequest *request = [self buildURLRequest:urlString method:@"POST"];
+    [request setValue:@"text/plain" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:[_accessToken dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
+    
+    NSURLSessionDataTask *task = [[self buildSession] dataTaskWithRequest:request
+        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        if (error) {
+            handler(httpResponse, error);
+        } else {
+            handler(httpResponse, NULL);
+        }
+    }];
+    [task resume];
+    
 }
 
 - (void)retrieveServerId:(void (^)(NSHTTPURLResponse *response, NSError *error))handler {

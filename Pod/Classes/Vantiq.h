@@ -104,6 +104,21 @@ to ensure UI operations are completed on the main thread.
     completionHandler:(void (^)(NSHTTPURLResponse *response, NSError *error))handler;
 
 /**
+The revokeCredentials method revokes the current access token and is used as part of a user logout UI
+
+@warning Please also note this method invokes a callback block associated with a network-
+related block. Because this block is called from asynchronous network operations,
+its code must be wrapped by a call to _dispatch_async(dispatch_get_main_queue(), ^ {...});_
+to ensure UI operations are completed on the main thread.
+ 
+@param handler    The handler block to execute.
+ 
+@return response: [iOS HTTP operation response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSHTTPURLResponse_Class/)
+@return error: [iOS error condition response](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSError_Class/)
+ */
+- (void)revokeCredentials:(void (^)(NSHTTPURLResponse *response, NSError *error))handler;
+
+/**
 The retrieveServerId method retrieves a unique VANTIQ server ID once the user has been
 authenticated, setting the serverId property in the process. This ID can be used to determine
 the uniqueness of a server if one server has multiple IP addresses/URL endpoints

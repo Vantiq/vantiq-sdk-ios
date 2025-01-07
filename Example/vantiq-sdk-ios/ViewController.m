@@ -15,8 +15,8 @@
 // our one globally-available Vantiq endpoint
 Vantiq *v;
 
-#define VANTIQ_SERVER_URL   @"https://2334355bb174.ngrok.app"
-#define VANTIQ_NAMESPACE    @"swan"
+#define VANTIQ_SERVER_URL   @"https://staging.vantiq.com"
+#define VANTIQ_NAMESPACE    @"react"
 
 @interface ViewController () {
     NSString *accessToken;

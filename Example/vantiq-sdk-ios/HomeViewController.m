@@ -306,9 +306,16 @@ extern Vantiq *v;
     [self runDeleteTest:@"TestType" where:@"{\"intValue\":43}"];
     
     [NSThread sleepForTimeInterval:.3];
-    [self runPublicExecuteTest:@"Registration.createInternalUser" params:@"{\"obj\":{\"username\":\"internaluser\",\"password\":\"$%02#*$\",\"email\":\"mswan@vantiq.com\",\"firstName\":\"Michael\",\"lastName\":\"Swan\",\"phone\":\"360-8089\"}}"];
-    [NSThread sleepForTimeInterval:.3];
-    [self runExecuteStreamedTest:@"TestStreamedProc" params:@"{\"nnn\":3,\"delay\":1000}"];
+    [v revokeCredentials:^(NSHTTPURLResponse *response, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            NSString *resultStr;
+            if (![DecodeError formError:response error:error
+                diagnosis:@"revokeCredentials: %@" resultStr:&resultStr]) {
+                resultStr = [NSString stringWithFormat:@"revokeCredentials successful."];
+            }
+            AddToResults();
+        });
+    }];
 }
 
 /*
@@ -322,7 +329,7 @@ extern Vantiq *v;
 - (IBAction)runTestsTapped:(id)sender {
     _runTests.enabled = false;
     finishedQueuing = false;
-    _queueCount = [NSNumber numberWithInt:22];
+    _queueCount = [NSNumber numberWithInt:21];
     results = [NSMutableString stringWithString:@""];
     
     [self appendAndScroll:[NSString stringWithFormat:@"Starting %d tests...", [_queueCount intValue]]];
